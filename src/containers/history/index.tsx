@@ -14,7 +14,7 @@ import Contest3JPG from "src/assets/png/contest-3.jpg";
 import MentorJPG from "src/assets/png/mentor.jpg";
 import Link from "next/link";
 
-const historyPage: NextPage = () => {
+const HistoryPage: NextPage = () => {
     return (
         <main style={{ width: "100%" }}>
             <Section>
@@ -39,9 +39,8 @@ const historyPage: NextPage = () => {
                 }
                 description={
                     <>
-                        네트워크, 디지털 포렌식, 시스템, 암호학, 웹의 멘토들이 자신의 분야를 발표하며 자신의 분야에 대해 알려주었어요. 이를 통해 보안에 대한 기본적인 분야들을 습득할 수 있었고, 각 분야가 
-                        <br />
-                        어떤식으로 운영되는지 알 수 있었어요.
+                        네트워크, 디지털 포렌식, 시스템, 암호학, 웹의 멘토들이 자신의 분야를 발표하며 자신의 분야에 대해 알려주었어요. 
+                        이를 통해 보안에 대한 기본적인 분야들을 습득할 수 있었고, 각 분야가 어떤식으로 운영되는지 알 수 있었어요.
                     </>
                 }
             >
@@ -57,8 +56,7 @@ const historyPage: NextPage = () => {
                 }
                 description={
                     <>
-                        분야별 멘토링을 통해 자신이 선택한 분야에 대해 선배들과 함께 공부하고, 문제를 풀어보며
-                        <br />
+                        분야별 멘토링을 통해 자신이 선택한 분야에 대해 선배들과 함께 공부하고, 문제를 풀어보며 
                         실력을 키워나갔어요. 멘토님들의 피드백을 통해 자신의 실력을 더욱 키울 수 있었어요.
                     </>
                 }
@@ -76,10 +74,13 @@ const historyPage: NextPage = () => {
                 }
                 description={
                     <>
-                        1학기때 쌓아온 실력을 바탕으로 대회에서 실제 문제를 출제해보고, 부원들끼리 풀어보는 
+                        1학기때 쌓아온 실력을 바탕으로 대회에서 실제 문제를 출제해보고, 부원들끼리
                         <br />
-                        시간을 가졌어요. 
-                        풀어보면서 서로가 서로의 문제를 봐주고, 피드백을 주고받는 시간을 가졌어요.
+                        풀어보는
+                        시간을 가졌어요.
+                        풀어보면서 서로가 서로의 문제를 봐주고,
+                        <br />
+                        피드백을 주고받는 시간을 가졌어요.
                         마지막으로 외부강사님이 오셔서 문제를
                         <br />
                         봐주시고, 피드백을 주시는 시간을 가졌어요.
@@ -87,32 +88,12 @@ const historyPage: NextPage = () => {
                 }
             >
                 <S.ContestPosterImagesWrapper>
-                    {/*  */}
-                    <S.ContestPosterImage src={SixthSecurityContestJPG.src} /> 
+                    <S.ContestPosterImage src={SixthSecurityContestJPG.src} />
                     <S.ContestPosterImage src={SeventhSecurityContestJPG.src} />
                 </S.ContestPosterImagesWrapper>
             </SectionTemplate>
-            {/* <SectionTemplate
-                shortDescription="보안관제에만 있어요!"
-                title={
-                    <>
-                        국내 최초 특성화고
-                        <br />
-                        <strong>보안관제센터</strong>
-                    </>
-                }
-                description={
-                    <>
-                        여러 기업과 마포구청, 교육청의 지원을 받아
-                        <br />
-                        국내 최초 특성화고에 보안관제센터를 구축했어요
-                    </>
-                }
-            >
-                <S.ServerRoomSectionImage src="" images={[ServerRoom1JPG.src, ServerRoom2JPG.src, ServerRoom3JPG.src, ServerRoom4JPG.src]} />
-            </SectionTemplate> */}
         </main >
     );
 };
 
-export default historyPage;
+export default HistoryPage;

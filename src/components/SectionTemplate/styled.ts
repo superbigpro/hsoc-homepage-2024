@@ -60,13 +60,13 @@ export const TitleText = styled.p`
 	}
 `;
 
-export const DescriptionText = styled.p`
-	width: 330px;
+export const DescriptionText = styled.p<{ isSecondary?: boolean }>`
 	color: #b1b3ba;
 	font-size: 18px;
 	font-weight: 400;
 	line-height: 22.54px;
 	margin: 25px 0;
+	${(props) => (props.isSecondary ? "margin-left" : "margin-right")}: 50px;
 
 	@media screen and (max-width: 991px) {
 		font-size: 16px;

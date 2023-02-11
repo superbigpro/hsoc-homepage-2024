@@ -25,7 +25,7 @@ export const SectionTemplate: React.FC<SectionTemplateProps> = ({ isSecondary, s
 					<S.ShortDescriptionText>{shortDescription}</S.ShortDescriptionText>
 					<S.ShortDescriptionTextSecondary>{ShortDescriptionTextSecondary}</S.ShortDescriptionTextSecondary>
 					<S.TitleText>{title}</S.TitleText>
-					<S.DescriptionText>{description}</S.DescriptionText>
+					<S.DescriptionText isSecondary={isSecondary} >{description}</S.DescriptionText>
 					<S.LinksContainer>
 						{links?.map((v, i) => {
 							return (
