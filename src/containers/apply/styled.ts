@@ -6,28 +6,25 @@ export const LogoBigImage = styled.div<{ src: string }>`
     background-position: center;
     background-attachment: fixed; 
     align-self: center;
-    height: 90vh;
+    height: 90%;
     position: absolute;
     background-size: cover;
-    width: 100vw;
+    width: 100%;
     filter: blur(14px) brightness(0.15);
 `;
 
 export const Wrap = styled.div`
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    margin-top: 7rem;
 `;
 
 export const LoginFrom = styled.form`
     display: flex;
     width: 400px;
+    z-index: 10;
     padding: 30px 0;
     flex-direction: column;
     flex-wrap: wrap;
@@ -42,18 +39,30 @@ export const LoginFrom = styled.form`
 `;
 
 
-export const UserDiv = styled.div`
-    text-align: right;
+export const InputDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    text-align: left;
     margin-bottom: 30px;
     width: 85%;
 `;
 
-export const InputDiv = styled.div`
-    display: flex;
-    flex-direction: column;
+export const Title = styled.h1`
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-white);
+    margin: 0;
+`;
+
+export const Example = styled.p`
+    color: var(--color-white);
+    font-size: 15px;
+    opacity: 0.5;
+    margin-top: 5px;
 `;
 
 export const Username = styled.textarea`
+    margin-top: 10px;
     background-color: rgba(0,0,0,0.5);
     border: 1px solid #323232;
     border-radius: 10px;
@@ -78,17 +87,18 @@ export const Message = styled.p`
     text-align: left;
     margin-left: 10px;
     font-size: 13px;
+    margin-top: 5px;
     color: red;
 `;
 
 export const UserMessage = styled(Message)`
 `;
 
-export const PasswordDiv = styled(UserDiv)`
+export const IntroduceDiv = styled(InputDiv)`
     margin-bottom: 0;
 `;
 
-export const Password = styled(Username)`
+export const Introduce = styled(Username)`
     height: 130px;
 `;
 

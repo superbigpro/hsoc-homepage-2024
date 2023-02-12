@@ -35,57 +35,55 @@ const ApplyPage: NextPage = () => {
             <S.LogoBigImage src={LogoBig.src} />
             <S.Wrap>
                 <S.LoginFrom onSubmit={handleSubmit(onValid)}>
-                    <S.UserDiv>
                         <S.InputDiv>
+                            <S.Title>이름</S.Title>
                             <div>
                                 <S.Username {...register("name", {
-                                    required: "이름은 필수 입니다",
+                                    required: "이름은 필수 입니다.",
                                     minLength: {
                                         value: 2,
-                                        message: "이름은 2자 이상이어야 합니다"
+                                        message: "이름은 2자 이상이어야 합니다."
                                     },
                                     maxLength: {
                                         value: 4,
-                                        message: "이름은 4자 이하이어야 합니다"
+                                        message: "이름은 4자 이하이어야 합니다."
                                     }
-                                })} placeholder="이름" />
+                                })} />
                             </div>
                             <S.UserMessage>{errors.name?.message}</S.UserMessage>
                         </S.InputDiv>
-                    </S.UserDiv>
-                    <S.UserDiv>
                         <S.InputDiv>
+                            <S.Title>학번</S.Title> 
+                            <S.Example>예) 클라우드보안과 1학년 1반 1번 - C1111</S.Example>
                             <div>
                                 <S.Username {...register("studentId", {
-                                    required: "학번은 필수 입니다",
+                                    required: "학번은 필수 입니다.",
                                     minLength: {
-                                        value: 2,
-                                        message: "학번은 2자 이상이어야 합니다"
+                                        value: 5,
+                                        message: "학번은 5자여야 합니다."
                                     },
                                     maxLength: {
-                                        value: 4,
-                                        message: "학번은 4자 이하이어야 합니다"
+                                        value: 5,
+                                        message: "학번은 5자여야 합니다."
                                     }
-                                })} placeholder="학번" />
+                                })} />
                             </div>
                             <S.UserMessage>{errors.studentId?.message}</S.UserMessage>
                         </S.InputDiv>
-                    </S.UserDiv>
-                    <S.PasswordDiv>
-                        <S.InputDiv>
+                        <S.IntroduceDiv>
+                            <S.Title>자기소개</S.Title> 
                             <div>
-                                <S.Password {...register("introduce", {
-                                    required: "자기소개는 필수 입니다",
+                                <S.Introduce {...register("introduce", {
+                                    required: "자기소개는 필수 입니다.",
                                     minLength: {
                                         value: 5,
-                                        message: "자기소개는 5자 이상이어야 합니다"
+                                        message: "자기소개는 5자 이상이어야 합니다."
                                     }
                                 })} 
-                                v-model="text" placeholder="자기소개"/>
+                                v-model="text" />
                             </div>
                             <S.Message>{errors.introduce?.message}</S.Message>
-                        </S.InputDiv>
-                    </S.PasswordDiv>
+                        </S.IntroduceDiv>
                     <S.LoginButton>Login</S.LoginButton>
                 </S.LoginFrom>
             </S.Wrap>
