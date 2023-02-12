@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
 
     * {
         box-sizing: border-box;
+        outline: none;
     }
 
     :root {
@@ -15,7 +16,7 @@ export const GlobalStyle = createGlobalStyle`
         --desktop-breakpoint: 1200px;
         
         --color-primary: #5B3CFF;  
-        --color-secondary: #fafafa;
+        --color-white: #fafafa;
     }
 
     html, body, #__next {

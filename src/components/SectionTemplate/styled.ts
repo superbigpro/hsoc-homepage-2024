@@ -36,7 +36,7 @@ export const ShortDescriptionText = styled.p`
 export const ShortDescriptionTextSecondary = styled(ShortDescriptionText)`
 	margin-top: 10px;
 	margin: 0;
-	color: var(--color-secondary);
+	color: var(--color-white);
 `;
 
 export const TitleText = styled.p`

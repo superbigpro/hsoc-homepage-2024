@@ -80,7 +80,8 @@ const ApplyPage: NextPage = () => {
                                         value: 5,
                                         message: "자기소개는 5자 이상이어야 합니다"
                                     }
-                                })} placeholder="자기소개" />
+                                })} 
+                                v-model="text" placeholder="자기소개"/>
                             </div>
                             <S.Message>{errors.introduce?.message}</S.Message>
                         </S.InputDiv>

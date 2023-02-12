@@ -13,7 +13,7 @@ export const LogoBigImage = styled.div<{ src: string }>`
     filter: blur(14px) brightness(0.15);
 `;
 
-export const Wrap = styled.section`
+export const Wrap = styled.div`
     height: 100%;
     display: flex;
     justify-content: center;
@@ -25,17 +25,10 @@ export const Wrap = styled.section`
     left: 0;
 `;
 
-export const FormIConDiv = styled.div`
-    background-color: #323232;
-    padding: 1.5rem;
-    border-radius: 50%;
-    margin-bottom: 2.5rem;
-`;
-
 export const LoginFrom = styled.form`
     display: flex;
     width: 400px;
-    height: 330px;
+    padding: 30px 0;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
@@ -44,20 +37,15 @@ export const LoginFrom = styled.form`
     background-color: #171717;
     border: 1px solid #323232;
     @media screen and (max-width: 500px) and (min-width: 300px) {
-        width: 350px;
-        height: 280px;
+        width: 380px;
     };
 `;
 
-export const SignUpFrom = styled(LoginFrom)`
-    height: 400px;
-`;
 
 export const UserDiv = styled.div`
     text-align: right;
     margin-bottom: 30px;
-    height: 50px;
-    width: 80%;
+    width: 85%;
 `;
 
 export const InputDiv = styled.div`
@@ -65,15 +53,18 @@ export const InputDiv = styled.div`
     flex-direction: column;
 `;
 
-export const Username = styled.input`
+export const Username = styled.textarea`
     background-color: rgba(0,0,0,0.5);
     border: 1px solid #323232;
     border-radius: 10px;
+    padding: 15px 10px;
+    resize: none;
     height: 50px;
-    padding-left: 10px;
-    z-index: 7;
     width: 100%;
-    caret-color: auto; 
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    caret-color: auto;
     color: var(--color-white);
     &:focus{
         outline: none;
@@ -84,22 +75,13 @@ export const Username = styled.input`
 `;
 
 export const Message = styled.p`
+    text-align: left;
+    margin-left: 10px;
+    font-size: 13px;
     color: red;
-    font-size: 12px;
-    position: relative;
-    bottom: 25px;
-    @media screen and (max-width: 500px) and (min-width: 300px) {
-        position: relative;
-        bottom: 20px;
-    };
 `;
 
 export const UserMessage = styled(Message)`
-    bottom: 33px;
-    @media screen and (max-width: 500px) and (min-width: 300px) {
-        position: relative;
-        bottom: 25px;
-    };
 `;
 
 export const PasswordDiv = styled(UserDiv)`
@@ -107,14 +89,13 @@ export const PasswordDiv = styled(UserDiv)`
 `;
 
 export const Password = styled(Username)`
+    height: 130px;
 `;
-
-export const CheckPassword = styled(Username)``;
 
 export const LoginButton = styled.button`
     margin-top: 30px;
     text-align: center;
-    width: 80%;
+    width: 85%;
     border-radius: .3rem;
     border: none;
     padding: 10px;
@@ -127,32 +108,6 @@ export const LoginButton = styled.button`
         cursor: pointer;
         background-color: #797474;
     }
-    @media screen and (max-width: 500px) and (min-width: 300px) {
-        font-size: 1.5rem;
-    };
-`;
-
-export const LinkDiv = styled.div`
-    margin-top: 1.5rem;
-    font-size: 14px;
-    color: var(--color-white);
-`;
-
-export const LinkStyle = styled(Link)`
-    transition: opacity 0.3s ease-in-out;
-    color: var(--color-white);
-    opacity: 0.6;
-    &:hover{
-        cursor: pointer;
-        opacity: 1;
-    }
 `;
 
 
-export const Doc = styled.p`
-    font-weight: 350;
-    font-size: .7rem;
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-`
