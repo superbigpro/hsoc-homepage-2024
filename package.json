@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"private": true,
 	"repository": "https://github.com/hsoc-wargame/hsoc-homepage.git",
-	"author": "HanSeo0507 <i.hansu.lee@gmail.com>",
+	"author": "choi138 <kidjustinchoi@gmail.com>",
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
@@ -15,6 +15,8 @@
 		"next-seo": "^5.1.0",
 		"react": "17.0.2",
 		"react-dom": "17.0.2",
+		"react-hook-form": "^7.43.1",
+		"react-toastify": "^9.1.1",
 		"styled-components": "^5.3.3",
 		"styled-normalize": "^8.0.7"
 	},

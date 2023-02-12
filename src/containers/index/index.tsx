@@ -27,9 +27,9 @@ const IndexPage: NextPage = () => {
 							보안관제 동아리반 모집
 						</S.Title>
 						<S.RecruitmentDateText>2023. 3. 12(월) ~ 2023. 3. 17(금)</S.RecruitmentDateText>
-						<Link href="/history" passHref>
+						<Link href="/apply" passHref>
 							<a target="_blank">
-								<Button>관제 일지 &nbsp;{">"}</Button>
+								<Button>지원하러 가기 &nbsp;{">"}</Button>
 							</a>
 						</Link>
 					</div>

@@ -19,9 +19,13 @@ const navMenuList = [
 		text: "관제 일지",
 	},
 	{
-		href: "https://wargame.hsoc.kr",
-		text: "워게임",
+		href: "/apply",
+		text: "지원하기",
 	},
+	// {
+	// 	href: "https://wargame.hsoc.kr",
+	// 	text: "워게임",
+	// },
 ];
 
 export const Navbar: React.FC = () => {
