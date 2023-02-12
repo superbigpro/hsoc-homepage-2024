@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Title = styled.h1`
 	font-size: 45px;
 	font-weight: 700;
-	color: white;
+	color: var(--color-white);
 	margin: 20px 0 10px 0;
 	line-height: 56px;
 

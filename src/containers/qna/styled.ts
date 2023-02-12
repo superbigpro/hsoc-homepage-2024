@@ -18,7 +18,7 @@ export const SectionContentContainer = styled.div`
 `;
 
 export const TitleText = styled.p`
-	color: white;
+	color: var(--color-white);
 	font-size: 40px;
 	font-weight: 200;
 	line-height: 40px;
@@ -63,7 +63,7 @@ export const QuestionButton = styled.button`
 	padding: 25px 30px;
 
 	text-align: left;
-	color: white;
+	color: var(--color-white);
 	font-weight: 500;
 	letter-spacing: -0.055em;
 	background-color: #1b1d26;

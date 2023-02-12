@@ -40,7 +40,7 @@ export const ShortDescriptionTextSecondary = styled(ShortDescriptionText)`
 `;
 
 export const TitleText = styled.p`
-	color: white;
+	color: var(--color-white);
 	font-size: 40px;
 	font-weight: 200;
 	line-height: 50px;

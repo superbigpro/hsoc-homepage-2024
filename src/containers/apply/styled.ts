@@ -74,7 +74,7 @@ export const Username = styled.input`
     z-index: 7;
     width: 100%;
     caret-color: auto; 
-    color: ${(props) => props.theme.white};
+    color: var(--color-white);
     &:focus{
         outline: none;
     }
@@ -120,8 +120,8 @@ export const LoginButton = styled.button`
     padding: 10px;
     font-size: 1rem;
     font-weight: 550;
-    color: ${props => props.theme.white};
-    background-color: #323232;
+    color: var(--color-white);
+    background-color: #6A6A6A;
     transition: all 0.2s ease-in-out;
     &:hover{
         cursor: pointer;
@@ -135,12 +135,12 @@ export const LoginButton = styled.button`
 export const LinkDiv = styled.div`
     margin-top: 1.5rem;
     font-size: 14px;
-    color: ${props => props.theme.white};
+    color: var(--color-white);
 `;
 
 export const LinkStyle = styled(Link)`
     transition: opacity 0.3s ease-in-out;
-    color: #fafafa;
+    color: var(--color-white);
     opacity: 0.6;
     &:hover{
         cursor: pointer;

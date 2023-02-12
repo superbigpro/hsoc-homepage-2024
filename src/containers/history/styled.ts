@@ -4,7 +4,7 @@ import { ImageProps } from "next/image";
 export const Title = styled.h1`
 	font-size: 45px;
 	font-weight: 700;
-	color: white;
+	color: var(--color-white);
 	margin: 20px 0 10px 0;
 	line-height: 56px;
 
@@ -43,7 +43,7 @@ export const SectionContentContainer = styled.div`
 `;
 
 export const TitleText = styled.p`
-	color: white;
+	color: var(--color-white);
 	font-size: 40px;
 	font-weight: 200;
 	line-height: 40px;

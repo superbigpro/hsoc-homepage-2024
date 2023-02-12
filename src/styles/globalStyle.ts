@@ -24,7 +24,7 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         font-family: 'Spoqa Han Sans Neo', sans-serif;
         background: #0E0F13;
-        color: white;
+        color: #fafafa;
         letter-spacing: -0.055em;
     }
 
