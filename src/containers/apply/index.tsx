@@ -26,10 +26,18 @@ const ApplyPage: NextPage = () => {
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<IForm>();
 
-    const onValid = () => {
-        setValue("name", "");
-        setValue("studentId", "");
-        setValue("introduce", "");
+    const onValid = (data: IForm) => {
+        fetch("/api/create", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+        // setValue("name", "");
+        // setValue("studentId", "");
+        // setValue("studentId", "");
+        // setValue("introduce", "");
     };
 
     const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

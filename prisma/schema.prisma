@@ -9,11 +9,11 @@ datasource db {
   relationMode = "prisma"
 }
 
-model User {
+model student {
   id        String      @id @default(uuid())
   createdAt DateTime @default(now())
   name      String
   studentId String     @unique
-  phone     String     @unique
+  phoneNumber     String     @unique
   introduce String?
 }
