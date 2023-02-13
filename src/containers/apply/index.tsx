@@ -50,7 +50,7 @@ const ApplyPage: NextPage = () => {
                     <Input register={register} errors={errors} title="이름" name="name" minValue={2} maxValue={4} />
                     <Input register={register} errors={errors} example="예) 클라우드보안과 1학년 1반 1번 - C1111" title="학번" name="studentId" minValue={5} maxValue={5} />
                     <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} />
-                    <Input register={register} errors={errors} title="자기소개" name="introduce" minValue={5} divStyle={{ marginBottom: "0" }} inputStyle={{ height: "130px" }} />
+                    <Input register={register} errors={errors} title="자기소개" name="introduce" divStyle={{ marginBottom: "0" }} inputStyle={{ height: "130px" }} />
                     <S.Button>제출하기</S.Button>
                 </S.FormDiv>
             </S.Wrap>

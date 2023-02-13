@@ -8,14 +8,14 @@ interface InputProps {
     title: string;
     name: keyof IForm;
     example?: string;
-    minValue: number;
+    minValue?: number;
     maxValue?: number;
     divStyle?: React.CSSProperties;
     inputStyle?: React.CSSProperties;
     onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
 }
 
-export const Input: React.FC<InputProps> = ({register, errors, title, example, name, minValue, maxValue, divStyle, inputStyle, onChange }) => {
+export const Input: React.FC<InputProps> = ({ register, errors, title, example, name, minValue, maxValue, divStyle, inputStyle, onChange }) => {
 
     return (
         <>
@@ -33,7 +33,7 @@ export const Input: React.FC<InputProps> = ({register, errors, title, example, n
                             value: maxValue,
                             message: `${title}${title !== "자기소개" ? "은" : "는"} ${maxValue}자 이하이여야 합니다.`
                         }
-                    })} style={inputStyle} onChange={onChange}/>
+                    })} style={inputStyle} onChange={onChange} />
                 </div>
                 <S.Message>{errors[name]?.message}</S.Message>
             </S.InputDiv>
