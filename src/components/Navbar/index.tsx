@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./styled";
 
 import LogoPNG from "src/assets/png/logo.png";
@@ -29,24 +29,28 @@ const navMenuList = [
 ];
 
 export const Navbar: React.FC = () => {
+
 	return (
-		<S.NavbarWrapper>
-			<S.NavbarContainer className="container">
+		<S.NavbarWrapper expand="md" >
+			<S.NavbarContainer className="container" >
 				<Link href="/" passHref>
 					<a>
 						<Image src={LogoPNG.src} alt="보안관제 동아리 로고" width="55" height="55" />
 					</a>
 				</Link>
-
-				<S.NavbarMenuList>
-					{navMenuList.map((menu, i) => {
-						return (
-							<S.NavbarMenuItem key={i}>
-								<Link href={menu.href}>{menu.text}</Link>
-							</S.NavbarMenuItem>
-						);
-					})}
+				<S.NavTog ><S.TogIcon /></S.NavTog>
+				<S.NavbarMenuList id="basic-navbar-nav">
+					<S.NavbarMenuItemWrap className="me-auto">
+						{navMenuList.map((menu, i) => {
+							return (
+								<S.NavbarMenuItem key={i} href={`${menu.href}`}>
+									{menu.text}
+								</S.NavbarMenuItem>
+							);
+						})}
+					</S.NavbarMenuItemWrap>
 				</S.NavbarMenuList>
+				
 			</S.NavbarContainer>
 		</S.NavbarWrapper>
 	);

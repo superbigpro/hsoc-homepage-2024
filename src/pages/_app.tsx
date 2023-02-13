@@ -5,6 +5,7 @@ import Head from "next/head";
 import { useEffect } from "react";
 import { Navbar } from "src/components";
 import { GlobalStyle } from "src/styles/globalStyle";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import * as ga from "src/lib/ga";
 
 function MyApp({ Component, pageProps }: AppProps) {
