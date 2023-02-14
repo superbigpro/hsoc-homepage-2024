@@ -1,26 +1,23 @@
 import { NextPage } from "next"
+import { Props } from "next/script";
 import { useEffect, useState } from "react";
 import { DashboardContentTitle } from "src/components/DashboardContentTitle";
 import { Instance } from "src/lib/ga/api";
 import * as S from "./styled"
 
-interface DashboardPageProps {
+interface Student {
     name: string,
     studentId: string,
     phoneNumber: string,
     introduce: string;
 }
 
-const DashboardPage: NextPage = () => {
+interface DashboardPageProps {
+    students: [Student]
+}
 
-    const [student, setStudent] = useState<[DashboardPageProps]>()
-    const instance = Instance('/api/get')
 
-    useEffect(() => {
-        instance.get('').then((res) => {
-            setStudent(res.data)
-        });
-    }, [])
+const DashboardPage: NextPage<DashboardPageProps> = ({ students }) => {
 
     return (
         <div className="container">
@@ -34,9 +31,10 @@ const DashboardPage: NextPage = () => {
                         <DashboardContentTitle title="자기소개" />
                     </S.DashboardContentTitleDiv>
                 </S.DashboardContentDiv>
-                {student?.map((index: DashboardPageProps, key) => {
+                {students.map((index: Student) => {
+                    console.log(`${index.name}`, "index.name");
                     <>
-                        <S.DashboardContent key={key}>
+                        <S.DashboardContent key={index.studentId}>
                             <DashboardContentTitle title={index.name} />
                             <DashboardContentTitle style={{ position: "relative", left: "17px" }} title={index.studentId} />
                             <DashboardContentTitle style={{ position: "relative", left: "30px" }} title={index.phoneNumber} />
@@ -45,8 +43,16 @@ const DashboardPage: NextPage = () => {
                     </>
                 })}
             </S.DashboardContainer>
-        </div>
+        </div >
     )
+}
+
+
+
+DashboardPage.getInitialProps = async () => {
+    const instance = Instance('http://localhost:3000/api/get')
+    const { data } = await instance.get('')
+    return { students: data }
 }
 
 export default DashboardPage;
