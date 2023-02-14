@@ -6,7 +6,7 @@ export const LogoBigImage = styled.div<{ src: string }>`
     background-position: center;
     background-attachment: fixed; 
     align-self: center;
-    height: 93%;
+    height: 120%;
     position: absolute;
     background-size: cover;
     width: 100%;
@@ -24,7 +24,7 @@ export const Wrap = styled.div`
 
 export const FormDiv = styled.form`
     display: flex;
-    width: 400px;
+    width: 500px;
     z-index: 10;
     padding: 30px 0;
     flex-direction: column;

@@ -1,8 +1,27 @@
 import { NextPage } from "next"
+import { useEffect, useState } from "react";
 import { DashboardContentTitle } from "src/components/DashboardContentTitle";
+import { Instance } from "src/lib/ga/api";
 import * as S from "./styled"
 
+interface DashboardPageProps {
+    name: string,
+    studentId: string,
+    phoneNumber: string,
+    introduce: string;
+}
+
 const DashboardPage: NextPage = () => {
+
+    const [student, setStudent] = useState<[DashboardPageProps]>()
+    const instance = Instance('/api/get')
+
+    useEffect(() => {
+        instance.get('').then((res) => {
+            setStudent(res.data)
+        });
+    }, [])
+
     return (
         <div className="container">
             <S.DashboardContainer>
@@ -15,12 +34,16 @@ const DashboardPage: NextPage = () => {
                         <DashboardContentTitle title="자기소개" />
                     </S.DashboardContentTitleDiv>
                 </S.DashboardContentDiv>
-                <S.DashboardContent>
-                    <DashboardContentTitle title="최근원" />
-                    <DashboardContentTitle style={{position: "relative", left: "17px"}} title="C1116" />
-                    <DashboardContentTitle style={{position: "relative", left: "30px"}} title="010-4692-7471" />
-                    <DashboardContentTitle style={{width: "48.5%", wordBreak: "break-all"}} title="안녕하세여 최근원입니다. 현재 풀스택 개발자 이고요, choi138.site라는 영화 웹 사이트를 개발 했습니다. 오늘도 너무 아름답네요. sdfgdsfgdsgdfsdfgdsfgdsgdfsertewmbmcvibvcuiyciuzxyvzxewrtbwemtnnebrm" />
-                </S.DashboardContent>
+                {student?.map((index: DashboardPageProps, key) => {
+                    <>
+                        <S.DashboardContent key={key}>
+                            <DashboardContentTitle title={index.name} />
+                            <DashboardContentTitle style={{ position: "relative", left: "17px" }} title={index.studentId} />
+                            <DashboardContentTitle style={{ position: "relative", left: "30px" }} title={index.phoneNumber} />
+                            <DashboardContentTitle style={{ width: "48.5%", wordBreak: "break-all" }} title={index.introduce} />
+                        </S.DashboardContent>
+                    </>
+                })}
             </S.DashboardContainer>
         </div>
     )
