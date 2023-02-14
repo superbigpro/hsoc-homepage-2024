@@ -102,11 +102,11 @@ export const Button = styled.button`
     font-size: 1rem;
     font-weight: 550;
     color: var(--color-white);
-    background-color: #6A6A6A;
-    transition: all 0.2s ease-in-out;
+    background-color: var(--color-primary);
+    transition: all 0.3s ease-in-out;
     &:hover{
         cursor: pointer;
-        background-color: #797474;
+        background-color: #6A6A6A;
     }
 `;
 

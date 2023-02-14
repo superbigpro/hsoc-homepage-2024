@@ -1,12 +1,12 @@
 import { FieldErrors, useForm, UseFormRegister } from "react-hook-form"
-import { IForm } from "src/containers/apply"
+import { FormProps } from "src/containers/apply"
 import * as S from "./styled"
 
 interface InputProps {
-    register: UseFormRegister<IForm>;
+    register: UseFormRegister<FormProps>;
     errors: any;
     title: string;
-    name: keyof IForm;
+    name: keyof FormProps;
     example?: string;
     minValue?: number;
     maxValue?: number;

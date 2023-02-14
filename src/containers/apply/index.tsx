@@ -44,7 +44,15 @@ const ApplyPage: NextPage = () => {
                 phoneNumber: data.phoneNumber,
                 introduce: data.introduce,
             }).then((res) => {
-                res.data.ok ? toast.success(`${res.data.message}`, { position: "bottom-right" }) : toast.error(`${res.data.message}`, { position: "bottom-right" });
+                res.data.ok ? (
+                    toast.success(`${res.data.message}`, { position: "bottom-right" }),
+                    setValue("name", ""),
+                    setValue("studentId", ""),
+                    setValue("phoneNumber", ""),
+                    setValue("introduce", "")
+                ) : (
+                    toast.error(`${res.data.message}`, { position: "bottom-right" })
+                )
             });
         } catch (err) {
             toast.error("Error!", { position: "top-center" });
