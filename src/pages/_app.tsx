@@ -2,6 +2,7 @@ import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import { SessionProvider } from "next-auth/react";
 import { useEffect } from "react";
 import { Navbar } from "src/components";
 import { GlobalStyle } from "src/styles/globalStyle";
@@ -39,7 +40,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 			/>
 			<GlobalStyle />
 			<Navbar />
-			<Component {...pageProps} />
+			<SessionProvider>
+				<Component {...pageProps} />
+			</SessionProvider>
 		</>
 	);
 }

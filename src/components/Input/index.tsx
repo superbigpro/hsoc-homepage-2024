@@ -12,7 +12,7 @@ interface InputProps {
     maxValue?: number;
     divStyle?: React.CSSProperties;
     inputStyle?: React.CSSProperties;
-    onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const Input: React.FC<InputProps> = ({ register, errors, title, example, name, minValue, maxValue, divStyle, inputStyle, onChange }) => {

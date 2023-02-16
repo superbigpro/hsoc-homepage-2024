@@ -17,6 +17,7 @@ export const GlobalStyle = createGlobalStyle`
         
         --color-primary: #5B3CFF;  
         --color-white: #fafafa;
+        --color-button: #6029FF;
     }
 
     html, body, #__next {

@@ -1,6 +1,8 @@
 import { NextPage } from "next"
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 import { Props } from "next/script";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DashboardContentTitle } from "src/components/DashboardContentTitle";
 import { Instance } from "src/lib/ga/api";
 import * as S from "./styled"
@@ -13,7 +15,7 @@ interface Student {
 }
 
 interface DashboardPageProps {
-    students: [Student]
+    students: Student[];
 }
 
 
@@ -32,15 +34,19 @@ const DashboardPage: NextPage<DashboardPageProps> = ({ students }) => {
                     </S.DashboardContentTitleDiv>
                 </S.DashboardContentDiv>
                 {students.map((index: Student) => {
-                    console.log(`${index.name}`, "index.name");
-                    <>
-                        <S.DashboardContent key={index.studentId}>
-                            <DashboardContentTitle title={index.name} />
-                            <DashboardContentTitle style={{ position: "relative", left: "17px" }} title={index.studentId} />
-                            <DashboardContentTitle style={{ position: "relative", left: "30px" }} title={index.phoneNumber} />
-                            <DashboardContentTitle style={{ width: "48.5%", wordBreak: "break-all" }} title={index.introduce} />
-                        </S.DashboardContent>
-                    </>
+                    return (
+                        <>
+
+                            <React.Fragment key={index.studentId}>
+                                <S.DashboardContent>
+                                    <DashboardContentTitle title={index.name} />
+                                    <DashboardContentTitle style={{ position: "relative", left: "17px" }} title={index.studentId} />
+                                    <DashboardContentTitle style={{ position: "relative", left: "30px" }} title={index.phoneNumber} />
+                                    <DashboardContentTitle style={{ width: "48.5%", wordBreak: "break-all" }} title={index.introduce} />
+                                </S.DashboardContent>
+                            </React.Fragment>
+                        </>
+                    )
                 })}
             </S.DashboardContainer>
         </div >
@@ -50,9 +56,12 @@ const DashboardPage: NextPage<DashboardPageProps> = ({ students }) => {
 
 
 DashboardPage.getInitialProps = async () => {
-    const instance = Instance('http://localhost:3000/api/get')
-    const { data } = await instance.get('')
-    return { students: data }
+    // const instance = Instance('http://localhost:3000/api/get')
+    // const { data } = await instance.get('')
+    // return { students: data }
+    const res = await fetch('http://localhost:3000/api/get')
+    const json = await res.json()
+    return { students: json }
 }
 
 export default DashboardPage;

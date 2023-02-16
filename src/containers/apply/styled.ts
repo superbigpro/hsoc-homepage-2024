@@ -6,7 +6,7 @@ export const LogoBigImage = styled.div<{ src: string }>`
     background-position: center;
     background-attachment: fixed; 
     align-self: center;
-    height: 120%;
+    height: 130%;
     position: absolute;
     background-size: cover;
     width: 100%;
@@ -17,96 +17,63 @@ export const Wrap = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    margin: 4rem 0;
+    margin: 4rem 0 ;
     height: 90%;
 `;
 
 export const FormDiv = styled.form`
     display: flex;
-    width: 500px;
+    width: 100%;
     z-index: 10;
-    padding: 30px 0;
-    flex-direction: column;
+    padding: 30px;
+    padding-bottom: 40px;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: flex-start;
     border-radius: 1rem;
-    background-color: #171717;
+    background-color: #171618;
     border: 1px solid #323232;
     @media screen and (max-width: 500px) and (min-width: 300px) {
         width: 380px;
     };
 `;
 
-
-export const InputDiv = styled.div`
+export const InfoDiv = styled.div`
     display: flex;
     flex-direction: column;
-    text-align: left;
-    margin-bottom: 30px;
-    width: 85%;
+    justify-content: center;
+    width: 45%;
 `;
 
-export const Title = styled.h1`
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--color-white);
-    margin: 0;
+export const IntroduceDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
 `;
 
-export const Example = styled.p`
-    color: var(--color-white);
-    font-size: 15px;
-    opacity: 0.5;
-    margin-top: 5px;
-`;
-
-export const Input = styled.textarea`
-    margin-top: 10px;
-    background-color: rgba(0,0,0,0.5);
-    border: 1px solid #323232;
-    border-radius: 10px;
-    padding: 15px 10px;
-    resize: none;
-    height: 50px;
+export const ButtonDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    &::-webkit-scrollbar {
-        display: none;
-    }
-    caret-color: auto;
-    color: var(--color-white);
-    &:focus{
-        outline: none;
-    }
-    &::placeholder{
-        color: #d1cccc;
-    }
-`;
-
-export const Message = styled.p`
-    text-align: left;
-    margin-left: 10px;
-    font-size: 13px;
-    margin-top: 5px;
-    color: red;
 `;
 
 export const Button = styled.button`
     margin-top: 30px;
     text-align: center;
-    width: 85%;
+    width: 100px;
     border-radius: .3rem;
     border: none;
-    padding: 10px;
+    padding: 15px;
     font-size: 1rem;
     font-weight: 550;
     color: var(--color-white);
-    background-color: var(--color-primary);
+    background-color: var(--color-button);
     transition: all 0.3s ease-in-out;
     &:hover{
         cursor: pointer;
-        background-color: #6A6A6A;
+        background-color:  var(--color-primary);
     }
 `;
 

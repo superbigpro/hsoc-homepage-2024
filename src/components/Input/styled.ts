@@ -4,28 +4,29 @@ export const InputDiv = styled.div`
     display: flex;
     flex-direction: column;
     text-align: left;
-    margin-bottom: 30px;
-    width: 85%;
+    width: 100%;
+    margin-top: 30px;
 `;
 
 export const Title = styled.h1`
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--color-white);
+    font-size: 18px;
+    font-weight: 500;
+    color: #E6E1E6;
     margin: 0;
 `;
 
 export const Example = styled.p`
-    color: var(--color-white);
-    font-size: 15px;
-    opacity: 0.5;
+    color: #8D8C8F;
+    font-size: 16px;
+    font-weight: 400;
     margin-top: 5px;
 `;
 
-export const Input = styled.textarea`
-    margin-top: 10px;
-    background-color: rgba(0,0,0,0.5);
-    border: 1px solid #323232;
+export const Input = styled.input`
+    margin-top: 5px;
+    background-color: transparent;
+    /* box-shadow: 1px 3px #2A2830; */
+    border: 1px solid #2A2830;
     border-radius: 10px;
     padding: 15px 10px;
     resize: none;
@@ -49,6 +50,6 @@ export const Message = styled.p`
     margin-left: 10px;
     font-size: 13px;
     margin-top: 5px;
-    color: red;
+    color: #BA1A1A;
 `;
 

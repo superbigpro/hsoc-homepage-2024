@@ -5,8 +5,8 @@
 ### 실행 
     npm i
     npm run dev
-    npx prisma migrate dev
-    npx prisma studio
+    npm run migrate
+    npm run studio
 
 ### 빌드
     npm run build
