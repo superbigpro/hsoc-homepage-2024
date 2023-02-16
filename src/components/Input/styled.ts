@@ -29,7 +29,6 @@ export const Input = styled.input`
     border: 1px solid #2A2830;
     border-radius: 10px;
     padding: 15px 10px;
-    resize: none;
     height: 50px;
     width: 100%;
     &::-webkit-scrollbar {
@@ -41,7 +40,41 @@ export const Input = styled.input`
         outline: none;
     }
     &::placeholder{
-        color: #d1cccc;
+        font-size: 14px;
+        color: #8D8C8F;
+    }
+`;
+
+export const IntroduceInput = styled.textarea`
+    margin-top: 5px;
+    background-color: transparent;
+    box-shadow: 5px 7px rgba(0,0,0,0.15);
+    border: 1px solid #2A2830;
+    border-radius: 10px;
+    padding: 15px 10px;
+    resize: none;
+    height: 600px;
+    width: 100%;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    caret-color: auto;
+    color: var(--color-white);
+    &:focus{
+        outline: none;
+    }
+    &::placeholder{
+        font-size: 14px;
+        color: #8D8C8F;
+    }
+    @media screen and (max-width: 991px) and (min-width: 767px) {
+        height: 500px;
+    }
+    @media screen and (max-width: 767px) and (min-width: 575px) {
+        height: 400px;
+    }
+    @media screen and (max-width: 575px) and (min-width: 300px) {
+        height: 350px;
     }
 `;
 

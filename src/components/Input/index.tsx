@@ -1,21 +1,20 @@
-import { FieldErrors, useForm, UseFormRegister } from "react-hook-form"
+import { FieldErrors, UseFormRegister } from "react-hook-form"
 import { FormProps } from "src/containers/apply"
 import * as S from "./styled"
 
 interface InputProps {
     register: UseFormRegister<FormProps>;
-    errors: any;
+    errors: FieldErrors<FormProps>;
     title: string;
     name: keyof FormProps;
     example?: string;
     minValue?: number;
     maxValue?: number;
     divStyle?: React.CSSProperties;
-    inputStyle?: React.CSSProperties;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input: React.FC<InputProps> = ({ register, errors, title, example, name, minValue, maxValue, divStyle, inputStyle, onChange }) => {
+export const Input: React.FC<InputProps> = ({ register, errors, title, example, name, minValue, maxValue, divStyle, onChange }) => {
 
     return (
         <>
@@ -23,17 +22,31 @@ export const Input: React.FC<InputProps> = ({ register, errors, title, example, 
                 <S.Title>{title}</S.Title>
                 <S.Example>{example}</S.Example>
                 <div>
-                    <S.Input {...register(`${name}`, {
-                        required: `${title}${title !== "자기소개" ? "은" : "는"} 필수 입니다.`,
-                        minLength: {
-                            value: minValue,
-                            message: `${title}${title !== "자기소개" ? "은" : "는"} ${minValue}자 이상이여야 합니다.`
-                        },
-                        maxLength: {
-                            value: maxValue,
-                            message: `${title}${title !== "자기소개" ? "은" : "는"} ${maxValue}자 이하이여야 합니다.`
-                        }
-                    })} style={inputStyle} onChange={onChange} />
+                    {title !== "자기소개" ? (
+                        <S.Input {...register(`${name}`, {
+                            required: `${title}은 필수 입니다.`,
+                            minLength: {
+                                value: minValue,
+                                message: `${title}은 ${minValue}자 이상이여야 합니다.`
+                            },
+                            maxLength: {
+                                value: maxValue,
+                                message: `${title}은 ${maxValue}자 이하이여야 합니다.`
+                            }
+                        })} onChange={onChange} placeholder={`${title}${title === "전화번호" ? `를` : `을`} 입력해주세요...`} />
+                    ) : (
+                        <S.IntroduceInput {...register(`${name}`, {
+                            required: `${title}는 필수 입니다.`,
+                            minLength: {
+                                value: minValue,
+                                message: `${title}는 ${minValue}자 이상이여야 합니다.`
+                            },
+                            maxLength: {
+                                value: maxValue,
+                                message: `${title}는 ${maxValue}자 이하이여야 합니다.`
+                            }
+                        })} placeholder={`${title}를 입력해주세요..`} />
+                    )}
                 </div>
                 <S.Message>{errors[name]?.message}</S.Message>
             </S.InputDiv>

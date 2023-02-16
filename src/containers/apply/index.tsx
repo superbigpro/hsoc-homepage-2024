@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from "react-toastify"
 import axios from "axios";
 import { Instance } from "src/lib/ga/api";
+import { useEffect } from "react";
 
 export interface FormProps {
     errors: {
@@ -28,7 +29,7 @@ export interface FormProps {
 
 const ApplyPage: NextPage = () => {
 
-    const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
+    const { register, handleSubmit, watch, formState: { errors }, setValue } = useForm<FormProps>();
 
     const onValid = async (data: FormProps) => {
         const instance = Instance('/api/create')
@@ -49,7 +50,9 @@ const ApplyPage: NextPage = () => {
                     toast.error(`${res.data.message}`, { position: "bottom-right" })
                 )
             });
+            console.log(Object(data), "data")
         } catch (err) {
+            console.log(Object(data), "data")
             console.log(err)
             toast.error("Error!", { position: "top-center" });
         }
@@ -65,22 +68,22 @@ const ApplyPage: NextPage = () => {
         }
     }
 
+    useEffect(() => {
+        register("introduce", { required: true, minLength: 11 });
+    }, [register]);
+
     return (
         <>
-            {/* <S.LogoBigImage src={LogoBig.src} /> */}
+            <S.LogoBigImage src={LogoBig.src} />
             <S.Wrap>
                 <S.FormDiv onSubmit={handleSubmit(onValid)}>
                     <S.InfoDiv>
                         <Input register={register} errors={errors} title="이름" name="name" minValue={2} maxValue={4} />
                         <Input register={register} errors={errors} example="예) 클라우드보안과 1학년 1반 1번 - C1111" title="학번" name="studentId" minValue={5} maxValue={5} />
                         <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} />
-                        <Input register={register} errors={errors} title="자기소개" name="introduce" divStyle={{ marginBottom: "0" }} inputStyle={{ height: "600px" }} />
+                        <Input register={register} errors={errors} title="자기소개" name="introduce" divStyle={{ marginBottom: "0" }} />
                     </S.InfoDiv>
-                    {/* <S.IntroduceDiv> */}
-                    {/* </S.IntroduceDiv> */}
-                    {/* <S.ButtonDiv> */}
-                        <S.Button>신청하기</S.Button>
-                    {/* </S.ButtonDiv> */}
+                    <S.Button>신청하기</S.Button>
                 </S.FormDiv>
             </S.Wrap>
             <ToastContainer />
