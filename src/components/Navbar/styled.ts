@@ -12,9 +12,9 @@ export const NavbarWrapper = styled(Navbar)`
 	background: linear-gradient(180deg, rgba(21, 21, 23, 0.7) 0%, rgba(21, 21, 23, 0) 100%);
 	padding: 10px 0;
 	z-index: 99;
-	@media (min-width: 768px) {
+	/* @media (min-width: 768px) {
 		border-bottom: 1px solid #6A6A6A;
-	}
+	} */
 `;
 
 export const NavbarContainer = styled(Container)`

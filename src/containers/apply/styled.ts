@@ -23,12 +23,12 @@ export const Wrap = styled.div`
 
 export const FormDiv = styled.form`
     display: flex;
-    width: 100%;
+    width: 50%;
     z-index: 10;
     padding: 30px;
     padding-bottom: 40px;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
     border-radius: 1rem;
     background-color: #171618;
@@ -42,7 +42,7 @@ export const InfoDiv = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 45%;
+    width: 60%;
 `;
 
 export const IntroduceDiv = styled.div`
@@ -62,10 +62,10 @@ export const ButtonDiv = styled.div`
 export const Button = styled.button`
     margin-top: 30px;
     text-align: center;
-    width: 100px;
+    width: 60%;
     border-radius: .3rem;
     border: none;
-    padding: 15px;
+    padding: 20px;
     font-size: 1rem;
     font-weight: 550;
     color: var(--color-white);

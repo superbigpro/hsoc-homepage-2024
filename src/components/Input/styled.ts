@@ -25,7 +25,7 @@ export const Example = styled.p`
 export const Input = styled.input`
     margin-top: 5px;
     background-color: transparent;
-    /* box-shadow: 1px 3px #2A2830; */
+    box-shadow: 5px 7px rgba(0,0,0,0.15);
     border: 1px solid #2A2830;
     border-radius: 10px;
     padding: 15px 10px;
