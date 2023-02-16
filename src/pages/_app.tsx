@@ -1,6 +1,7 @@
 import { DefaultSeo } from "next-seo";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
+import { SessionProvider } from "next-auth/react";
 import Head from "next/head";
 import { useEffect } from "react";
 import { Navbar } from "src/components";
@@ -39,7 +40,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 			/>
 			<GlobalStyle />
 			<Navbar />
+			<SessionProvider session={pageProps.session}>
 				<Component {...pageProps} />
+			</SessionProvider>
 		</>
 	);
 }
