@@ -10,25 +10,21 @@ const authOptions: NextAuthOptions = {
       type: "credentials",
       credentials: {},
       authorize(credentials, req) {
-        const { email, password } = credentials as {
-          email: string;
+        const { id, password } = credentials as {
+          id: string;
           password: string;
         };
-        if (email !== "hansei@hsoc" || password !== "hsocmaster") {
-          throw new Error("invalid credentials");
+        if (id !== "hansei@hsoc" || password !== "hsocmaster") {
+          throw new Error("Login Failed");
         }
-        return {
-          id: "1234",
-          name: "hsoc",
-          email: "hsoc@gmail.com",
-          role: "admin",
-        };
+        return { id: "1", ok: true, message: "Login Success" };
       },
     }),
   ],
   pages: {
     signIn: "/dashboard/login",
     signOut: "/dashboard/logout",
+    error: "/dashboard/",
   },
 };
 

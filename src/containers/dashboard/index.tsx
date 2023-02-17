@@ -1,13 +1,18 @@
 import { NextPage } from "next"
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import { Props } from "next/script";
-import React, { useEffect, useState } from "react";
+import React, { FormEventHandler, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { DashboardContentTitle } from "src/components/DashboardContentTitle";
+import { Input } from "src/components/Input";
 import { Instance } from "src/lib/ga/api";
+import { FormProps } from "../apply";
+import Loading from "./loading";
+import Login from "./login";
+import Main from "./main";
 import * as S from "./styled"
 
-interface Student {
+export interface Student {
     name: string,
     studentId: string,
     phoneNumber: string,
@@ -20,44 +25,23 @@ interface DashboardPageProps {
 
 
 const DashboardPage: NextPage<DashboardPageProps> = ({ students }) => {
-    const { data: session, status } = useSession();
+    const {status } = useSession();
+
     if (status === "authenticated") {
         return (
-            <div className="container">
-                <S.DashboardContainer>
-                    <S.DashboardTitle>지원서 명단</S.DashboardTitle>
-                    <S.DashboardContentDiv>
-                        <S.DashboardContentTitleDiv>
-                            <DashboardContentTitle title="이름" />
-                            <DashboardContentTitle title="학번" />
-                            <DashboardContentTitle title="전화번호" />
-                            <DashboardContentTitle title="자기소개" />
-                        </S.DashboardContentTitleDiv>
-                    </S.DashboardContentDiv>
-                    {students.map((index: Student) => {
-                        return (
-                            <>
-
-                                <React.Fragment key={index.studentId}>
-                                    <S.DashboardContent>
-                                        <DashboardContentTitle title={index.name} />
-                                        <DashboardContentTitle style={{ position: "relative", left: "17px" }} title={index.studentId} />
-                                        <DashboardContentTitle style={{ position: "relative", left: "30px" }} title={index.phoneNumber} />
-                                        <DashboardContentTitle style={{ width: "48.5%", wordBreak: "break-all" }} title={index.introduce} />
-                                    </S.DashboardContent>
-                                </React.Fragment>
-                            </>
-                        )
-                    })}
-                </S.DashboardContainer>
-            </div >
+            <Main students={students} />
+        )
+    } else if (status === "loading") {
+        return (
+            <Loading />
         )
     } else {
         return (
-            <Link href="/dashboard/login">Login</Link>
+            <>
+                <Login />
+            </>
         )
     }
-
 }
 
 

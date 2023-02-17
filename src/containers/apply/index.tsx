@@ -25,11 +25,13 @@ export interface FormProps {
     studentId: string;
     phoneNumber: string;
     introduce: string;
+    id: string;
+    password: string;
 };
 
 const ApplyPage: NextPage = () => {
 
-    const { register, handleSubmit, watch, formState: { errors }, setValue } = useForm<FormProps>();
+    const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
 
     const onValid = async (data: FormProps) => {
         const instance = Instance('/api/create')

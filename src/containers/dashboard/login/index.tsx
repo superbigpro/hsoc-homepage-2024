@@ -1,45 +1,43 @@
-import { NextPage } from "next";
 import { signIn } from "next-auth/react";
-import { FormEventHandler, useState } from "react";
+import { useForm } from "react-hook-form";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import { Input } from "src/components/Input";
+import { FormProps } from "src/containers/apply";
+import * as S from "./styled";
 
-const SignIn: NextPage = () => {
-  const [userInfo, setUserInfo] = useState({ email: "", password: "" });
-  const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
-    // validate your userinfo
-    e.preventDefault();
+const Login: React.FC = () => {
+    const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
 
-    const res = await signIn("credentials", {
-      email: userInfo.email,
-      password: userInfo.password,
-      redirect: false,
-    });
+    const onValid = async (formData: FormProps) => {
+        await signIn("credentials", {
+            id: formData.id,
+            password: formData.password,
+            redirect: false,
+        }).then((res) => {
+            res?.ok ? (
+                toast.success('Login Success', { position: "bottom-right" })
+            ) : (
+                toast.error('Login Failed', { position: "bottom-right" }),
+                setValue("id", ""),
+                setValue("password", "")
+            )
+    })
+}
+return (
+    <>
+        <S.Wrap>
+            <S.FormDiv onSubmit={handleSubmit(onValid)}>
+                <S.InfoDiv>
+                    <Input register={register} errors={errors} title="아이디" name="id" />
+                    <Input register={register} errors={errors} title="비밀번호" name="password" type={"password"} />
+                </S.InfoDiv>
+                <S.Button>로그인</S.Button>
+            </S.FormDiv>
+            <ToastContainer />
+        </S.Wrap>
+    </>
+)
+}
 
-    console.log(res);
-  };
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        <input
-          value={userInfo.email}
-          onChange={({ target }) =>
-            setUserInfo({ ...userInfo, email: target.value })
-          }
-          type="text"
-          placeholder="hsoc"
-        />
-        <input
-          value={userInfo.password}
-          onChange={({ target }) =>
-            setUserInfo({ ...userInfo, password: target.value })
-          }
-          type="text"
-          placeholder="1234"
-        />
-        <input type="submit" value="SignIn" />
-      </form>
-    </div>
-  );
-};
-
-export default SignIn;
+export default Login;

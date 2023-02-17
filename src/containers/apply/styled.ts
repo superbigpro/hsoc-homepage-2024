@@ -70,13 +70,6 @@ export const IntroduceDiv = styled.div`
     width: 70%;
 `;
 
-export const ButtonDiv = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-`;
-
 export const Button = styled.button`
     margin-top: 30px;
     text-align: center;

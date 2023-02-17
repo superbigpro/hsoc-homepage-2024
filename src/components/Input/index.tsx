@@ -1,3 +1,4 @@
+import { HTMLInputTypeAttribute } from "react";
 import { FieldErrors, UseFormRegister } from "react-hook-form"
 import { FormProps } from "src/containers/apply"
 import * as S from "./styled"
@@ -12,9 +13,10 @@ interface InputProps {
     maxValue?: number;
     divStyle?: React.CSSProperties;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    type?: HTMLInputTypeAttribute;
 }
 
-export const Input: React.FC<InputProps> = ({ register, errors, title, example, name, minValue, maxValue, divStyle, onChange }) => {
+export const Input: React.FC<InputProps> = ({ register, errors, title, example, name, minValue, maxValue, divStyle, onChange, type }) => {
 
     return (
         <>
@@ -33,7 +35,7 @@ export const Input: React.FC<InputProps> = ({ register, errors, title, example, 
                                 value: maxValue,
                                 message: `${title}은 ${maxValue}자 이하이여야 합니다.`
                             }
-                        })} onChange={onChange} placeholder={`${title}${title === "전화번호" ? `를` : `을`} 입력해주세요...`} />
+                        })} type={type} onChange={onChange} placeholder={`${title}${title === "전화번호" ? `를` : `을`} 입력해주세요...`} />
                     ) : (
                         <S.IntroduceInput {...register(`${name}`, {
                             required: `${title}는 필수 입니다.`,
