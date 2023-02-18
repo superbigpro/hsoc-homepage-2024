@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from "react-toastify"
 import { Instance } from "src/lib/ga/api";
 import { useEffect } from "react";
-import ApplyButton from "./button";
+import FormButton from "src/components/FormButton";
 
 export interface FormProps {
     errors: {
@@ -74,16 +74,16 @@ const ApplyPage: NextPage = () => {
 
     return (
         <>
-            <S.LogoBigImage src={LogoBig.src} />
+            {/* <S.LogoBigImage src={LogoBig.src} /> */}
             <S.Wrap>
                 <S.FormDiv onSubmit={onSubmit}>
                     <S.InfoDiv>
-                        <Input register={register} errors={errors} title="이름" name="name" minValue={2} maxValue={4} />
+                        <Input register={register} errors={errors} title="이름" name="name" minValue={2} maxValue={4} divStyle={{ marginTop: "0" }} />
                         <Input register={register} errors={errors} example="예) 클라우드보안과 1학년 1반 1번 - C1111" title="학번" name="studentId" minValue={5} maxValue={5} />
                         <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} />
                         <Input register={register} errors={errors} title="자기소개" name="introduce" divStyle={{ marginBottom: "0" }} />
                     </S.InfoDiv>
-                    <ApplyButton />
+                    <FormButton title="신청하기"/>
                 </S.FormDiv>
             </S.Wrap>
             <ToastContainer />

@@ -25,19 +25,22 @@ export const Example = styled.p`
 export const Input = styled.input`
     margin-top: 5px;
     background-color: transparent;
-    box-shadow: 5px 7px rgba(0,0,0,0.15);
+    box-shadow: 2px 2px rgba(0,0,0,0.15);
     border: 1px solid #2A2830;
     border-radius: 10px;
     padding: 15px 10px;
     height: 50px;
     width: 100%;
+    caret-color: auto;
+    color: var(--color-white);
+    transition: all .15s ease-in-out;
     &::-webkit-scrollbar {
         display: none;
     }
-    caret-color: auto;
-    color: var(--color-white);
     &:focus{
         outline: none;
+        background-color: #222026;
+        opacity: 0.8;
     }
     &::placeholder{
         font-size: 14px;
@@ -48,12 +51,13 @@ export const Input = styled.input`
 export const IntroduceInput = styled.textarea`
     margin-top: 5px;
     background-color: transparent;
-    box-shadow: 5px 7px rgba(0,0,0,0.15);
+    box-shadow: 2px 2px rgba(0,0,0,0.15);
     border: 1px solid #2A2830;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 15px 10px;
     resize: none;
     height: 600px;
+    transition: all .15s ease-in-out;
     width: 100%;
     &::-webkit-scrollbar {
         display: none;
@@ -62,6 +66,7 @@ export const IntroduceInput = styled.textarea`
     color: var(--color-white);
     &:focus{
         outline: none;
+        background-color: #222026;
     }
     &::placeholder{
         font-size: 14px;

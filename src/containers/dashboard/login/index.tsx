@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { Input } from "src/components/Input";
 import { FormProps } from "src/containers/apply";
 import * as S from "./styled";
+import FormButton from "src/components/FormButton";
 
 const Login: React.FC = () => {
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
@@ -22,22 +23,22 @@ const Login: React.FC = () => {
                 setValue("id", ""),
                 setValue("password", "")
             )
-    })
-}
-return (
-    <>
-        <S.Wrap>
-            <S.FormDiv onSubmit={handleSubmit(onValid)}>
-                <S.InfoDiv>
-                    <Input register={register} errors={errors} title="아이디" name="id" />
-                    <Input register={register} errors={errors} title="비밀번호" name="password" type={"password"} />
-                </S.InfoDiv>
-                <S.Button>로그인</S.Button>
-            </S.FormDiv>
-            <ToastContainer />
-        </S.Wrap>
-    </>
-)
+        })
+    }
+    return (
+        <>
+            <S.Wrap>
+                <S.FormDiv onSubmit={handleSubmit(onValid)}>
+                    <S.InfoDiv>
+                        <Input register={register} errors={errors} title="아이디" name="id" />
+                        <Input register={register} errors={errors} title="비밀번호" name="password" type={"password"} />
+                    </S.InfoDiv>
+                    <FormButton title="로그인" />
+                </S.FormDiv>
+                <ToastContainer />
+            </S.Wrap>
+        </>
+    )
 }
 
 export default Login;
