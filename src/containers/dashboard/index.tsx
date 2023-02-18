@@ -13,6 +13,7 @@ import Main from "./main";
 import * as S from "./styled"
 
 export interface Student {
+    id: number,
     name: string,
     studentId: string,
     phoneNumber: string,

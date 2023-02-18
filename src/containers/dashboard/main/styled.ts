@@ -15,7 +15,13 @@ export const DashboardTitle = styled.h1`
 export const DashboardLogOutTitle = styled.p`
     margin: 0;
     padding: 0;
+    width: fit-content;
     text-align: left;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    :hover{
+        color: var(--color-primary);
+    }
 `;
 
 export const DashboardContentDiv = styled.div`
@@ -42,6 +48,15 @@ export const DashboardContent = styled.div`
     align-items: flex-start;
     padding: 0 30px;
     border-bottom: 1px solid var(--color-white);
+`;
+
+export const DashboardIntroduceDiv = styled.div`
+    width: 460px;
+    max-height: 100px;
+    margin-bottom: 10px;
+    overflow: scroll;
+    display: block;
+    /* border: 1px solid red; */
 `;
 
 export const DashboardContentTitle = styled.span`
