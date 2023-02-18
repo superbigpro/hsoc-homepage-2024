@@ -14,7 +14,6 @@ interface MainProps {
 const Main: React.FC<MainProps> = ({ students }) => {
     const router = useRouter();
     const id = router.query.id
-    console.log(router.query)
     return (
         <>
             <div className="container">

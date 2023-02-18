@@ -54,6 +54,43 @@ export const FormDiv = styled.form`
     @media screen and (max-width: 500px) and (min-width: 300px) {
         width: 380px;
     };
+    .effect-container {
+        position: relative;
+        overflow: hidden;
+        --effect-name: ripple;
+        --effect-duration: 1000ms;
+        --effect-top: 0px;
+        --effect-left: 0px;
+        --effect-height: 100px;
+        --effect-width: 100px;
+        --effect-color: #fff;
+    }
+    .effect-container::before{
+        content: "";
+        position: absolute;
+        opacity: 0.3;
+        top: var(--effect-top);
+        left: var(--effect-left);
+        height: var(--effect-height);
+        width: var(--effect-width);
+        border-radius: 50%;
+        transform: scale(0);
+        background: var(--effect-color);
+    }
+     .effect-container.active::before{
+        border-radius: 50%;
+        animation: ripple var(--effect-duration) linear forwards;
+    }
+
+    @keyframes ripple {
+        from {
+        transform: scale(0);
+
+        } to {
+            transform: scale(6);
+            opacity: 0;
+        }
+    }
 `;
 
 export const InfoDiv = styled.div`
@@ -81,11 +118,6 @@ export const Button = styled.button`
     font-weight: 550;
     color: var(--color-white);
     background-color: var(--color-button);
-    transition: all 0.3s ease-in-out;
-    &:hover{
-        cursor: pointer;
-        background-color:  var(--color-primary);
-    }
 `;
 
 
