@@ -2,16 +2,11 @@ import type { NextPage } from "next";
 import * as S from "./styled";
 import { Button, HighlightText, Section, SectionTemplate } from "src/components";
 import LogoBig from "src/assets/png/logo-big.png";
-import SixthSecurityContestJPG from "src/assets/png/6th-security-contest.jpg";
-import SeventhSecurityContestJPG from "src/assets/png/7th-security-contest.jpg";
-import ServerRoom1JPG from "src/assets/png/server-room-1.jpg";
-import ServerRoom2JPG from "src/assets/png/server-room-2.jpg";
-import ServerRoom3JPG from "src/assets/png/server-room-3.jpg";
-import ServerRoom4JPG from "src/assets/png/server-room-4.jpg";
-import Contest1PNG from "src/assets/png/contest-1.png";
-import Contest2JPG from "src/assets/png/contest-2.jpg";
-import Contest3JPG from "src/assets/png/contest-3.jpg";
-import MentorJPG from "src/assets/png/mentor.jpg";
+import NetWorkLogo from 'src/assets/png/network-logo.png';
+import ForensicLogo from 'src/assets/png/forensic-logo.png';
+import SystemLogo from 'src/assets/png/system-logo.png';
+import CryptoLogo from 'src/assets/png/crypto-logo.png';
+import WebLogo from 'src/assets/png/web-logo.png';
 import Link from "next/link";
 
 const FieldPage: NextPage = () => {
@@ -50,7 +45,7 @@ const FieldPage: NextPage = () => {
                     </>
                 }
             >
-                <S.SectionImage src={MentorJPG.src} />
+                <S.SectionImage src={NetWorkLogo.src} />
             </SectionTemplate>
             <SectionTemplate
                 shortDescription="보안관제에서는 이런것들이 있어요!"
@@ -75,7 +70,7 @@ const FieldPage: NextPage = () => {
                     </>
                 }
             >
-                <S.TeacherSectionImage src="" images={[Contest1PNG.src, Contest2JPG.src, Contest3JPG.src]} />
+                <S.SectionImage src={ForensicLogo.src} />
             </SectionTemplate>
             <SectionTemplate
                 isSecondary
@@ -101,7 +96,7 @@ const FieldPage: NextPage = () => {
                     </>
                 }
             >
-                <S.TeacherSectionImage src="" images={[Contest1PNG.src, Contest2JPG.src, Contest3JPG.src]} />
+                <S.SectionImage src={SystemLogo.src} />
             </SectionTemplate>
             <SectionTemplate
                 shortDescription="보안관제에서는 이런것들이 있어요!"
@@ -126,9 +121,10 @@ const FieldPage: NextPage = () => {
                     </>
                 }
             >
-                <S.TeacherSectionImage src="" images={[Contest1PNG.src, Contest2JPG.src, Contest3JPG.src]} />
+                <S.SectionImage src={CryptoLogo.src} />
             </SectionTemplate>
             <SectionTemplate
+                isSecondary
                 shortDescription="보안관제에서는 이런것들이 있어요!"
                 ShortDescriptionTextSecondary=" 2022/4/21~2022/6/27"
                 title={
@@ -147,7 +143,7 @@ const FieldPage: NextPage = () => {
                     </>
                 }
             >
-                <S.TeacherSectionImage src="" images={[Contest1PNG.src, Contest2JPG.src, Contest3JPG.src]} />
+                <S.SectionImage src={WebLogo.src} />
             </SectionTemplate>
         </main >
     );
