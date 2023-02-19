@@ -15,7 +15,7 @@ export const ButtonUi = styled(Button)`
     border-radius: 10px;
     border: none;
     padding: 13px 0;
-    font-size: 1rem;
+    font-size: 18px;
     font-weight: 550;
     color: var(--color-white);
     background-color: var(--color-button) !important;

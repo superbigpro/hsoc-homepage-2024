@@ -28,12 +28,12 @@ const Login: React.FC = () => {
     return (
         <>
             <S.Wrap>
-                <S.FormDiv onSubmit={handleSubmit(onValid)}>
+                <S.FormDiv>
                     <S.InfoDiv>
-                        <Input register={register} errors={errors} title="아이디" name="id" />
+                        <Input register={register} errors={errors} title="아이디" name="id" divStyle={{ marginTop: "0" }}/>
                         <Input register={register} errors={errors} title="비밀번호" name="password" type={"password"} />
                     </S.InfoDiv>
-                    <FormButton title="로그인" />
+                    <FormButton handleSubmit={handleSubmit} onValid={onValid} title="로그인" />
                 </S.FormDiv>
                 <ToastContainer />
             </S.Wrap>

@@ -32,31 +32,40 @@ export const DashboardContentDiv = styled.div`
 `;
 
 export const DashboardContentTitleDiv = styled.div`
-    width: 60%;
+    width: 600px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 3px 30px;
 `;
 
-export const DashboardContent = styled.div`
+export const DashboardContentWrapper = styled.div`
     width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--color-white);
+`;
+
+export const DashboardContent = styled.div`
+    width: 500px;
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
     padding: 0 30px;
-    border-bottom: 1px solid var(--color-white);
 `;
 
 export const DashboardIntroduceDiv = styled.div`
-    width: 460px;
+    width: 400px;
     max-height: 100px;
-    margin-bottom: 10px;
+    margin: 10px 0;
+    margin-left: 10px;
     overflow: scroll;
     display: block;
-    /* border: 1px solid red; */
+    @media screen and (min-width: 1300px) {
+    width: 540px;
+    }
 `;
 
 export const DashboardContentTitle = styled.span`

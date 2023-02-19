@@ -12,14 +12,13 @@ export const FormDiv = styled.form`
     display: flex;
     width: 550px;
     z-index: 10;
-    padding: 30px;
+    padding: 46px 80px;
     padding-bottom: 40px;
     flex-wrap: wrap;
     justify-content: center;
     align-items: flex-start;
-    border-radius: 1rem;
+    border-radius: 30px;
     background-color: #171618;
-    border: 1px solid #323232;
     @media screen and (max-width: 1100px) and (min-width: 991px) {
         width: 500px;
     }
@@ -39,25 +38,8 @@ export const InfoDiv = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 85%;
+    width: 100%;
 `;
 
-export const Button = styled.button`
-    margin-top: 30px;
-    text-align: center;
-    width: 60%;
-    border-radius: .3rem;
-    border: none;
-    padding: 15px 0;
-    font-size: 1rem;
-    font-weight: 550;
-    color: var(--color-white);
-    background-color: var(--color-button);
-    transition: all 0.3s ease-in-out;
-    &:hover{
-        cursor: pointer;
-        background-color:  var(--color-primary);
-    }
-`;
 
 

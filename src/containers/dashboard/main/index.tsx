@@ -25,29 +25,28 @@ const Main: React.FC<MainProps> = ({ students }) => {
                     <S.DashboardContentDiv>
                         <S.DashboardContentTitleDiv>
                             <DashboardContentTitle title="아이디" />
-                            <DashboardContentTitle title="이름" />
-                            <DashboardContentTitle title="학번" />
+                            <DashboardContentTitle title="이름"   style={{ position: "relative", right: "15px" }}/>
+                            <DashboardContentTitle title="학번" style={{ marginRight: "20px" }}/>
                             <DashboardContentTitle title="전화번호" />
-                            <DashboardContentTitle title="자기소개" />
+                            <DashboardContentTitle title="자기소개" style={{ marginLeft: "40px" }} />
                         </S.DashboardContentTitleDiv>
                     </S.DashboardContentDiv>
-                    {students.map((index: Student, key: number) => {
+                    {students.map((index: Student, i: number) => {
                         return (
                             <>
-
-                                <React.Fragment key={key}>
-                                    <S.DashboardContent>
-                                        <DashboardContentTitle title={index.id.toString()} />
-                                        <DashboardContentTitle title={index.name} />
-                                        <DashboardContentTitle style={{ position: "relative", left: "17px" }} title={index.studentId} />
-                                        <DashboardContentTitle style={{ position: "relative", left: "30px" }} title={index.phoneNumber} />
-                                        <Link href={`/dashboard/?id=${index.id}`}>
-                                            <S.DashboardIntroduceDiv>
-                                                <DashboardContentTitle style={{ wordBreak: "break-all", zIndex: "100" }} title={index.introduce} />
-                                            </S.DashboardIntroduceDiv>
-                                        </Link>
+                                <S.DashboardContentWrapper>
+                                    <S.DashboardContent key={i}>
+                                        <DashboardContentTitle title={index.id.toString()} style={{ width: "20px" }} />
+                                        <DashboardContentTitle title={index.name} style={{ marginLeft: "10px" }} />
+                                        <DashboardContentTitle title={index.studentId} />
+                                        <DashboardContentTitle title={index.phoneNumber} />
                                     </S.DashboardContent>
-                                </React.Fragment>
+                                    <Link href={`/dashboard/?id=${index.id}`}>
+                                        <S.DashboardIntroduceDiv>
+                                            <DashboardContentTitle style={{ wordBreak: "break-all", zIndex: "100" }} title={index.introduce} />
+                                        </S.DashboardIntroduceDiv>
+                                    </Link>
+                                </S.DashboardContentWrapper>
                             </>
                         )
                     })}
