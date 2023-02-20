@@ -6,7 +6,6 @@
     npm i
     npm run dev
     npm run migrate
-    npm run studio
 
 ### 빌드
     npm run build

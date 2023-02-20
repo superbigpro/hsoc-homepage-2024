@@ -10,7 +10,7 @@ export const Wrap = styled.div`
 
 export const FormDiv = styled.form`
     display: flex;
-    width: 800px;
+    width: 580px;
     z-index: 10;
     padding: 60px 100px;
     flex-wrap: wrap;
@@ -19,16 +19,18 @@ export const FormDiv = styled.form`
     border-radius: 30px;
     background-color: #171618;
     @media screen and (max-width: 1100px) and (min-width: 991px) {
-        width: 700px;
+        width: 560px;
     }
-    @media screen and (max-width: 991px) and (min-width: 575px) {
-        width: 600px;
-    }
-    @media screen and (max-width: 767px) and (min-width: 500px) {
-        width: 500px;
-    }  
-    @media screen and (max-width: 500px) and (min-width: 300px) {
+    @media screen and (max-width: 991px) and (min-width: 767px) {
         padding: 40px 70px;
+        width: 500px;
+    }
+    @media screen and (max-width: 767px) and (min-width: 575px) {
+        padding: 40px 60px;
+        width: 460px;
+    }  
+    @media screen and (max-width: 575px) and (min-width: 300px) {
+        padding: 40px 40px;
         width: 400px;
     };
 `;

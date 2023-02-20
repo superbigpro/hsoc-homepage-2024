@@ -13,6 +13,9 @@ export const Title = styled.h1`
     font-weight: 500;
     color: #E6E1E6;
     margin: 0;
+    @media screen and (max-width: 575px) and (min-width: 300px) {
+        font-size: 16px;
+    };
 `;
 
 export const Example = styled.p`
@@ -20,6 +23,9 @@ export const Example = styled.p`
     font-size: 16px;
     font-weight: 400;
     margin-top: 5px;
+    @media screen and (max-width: 575px) and (min-width: 300px) {
+        font-size: 14px;
+    };
 `;
 
 export const Input = styled.input`
@@ -28,7 +34,7 @@ export const Input = styled.input`
     box-shadow: 2px 2px rgba(0,0,0,0.15);
     border: 1px solid #2A2830;
     border-radius: 10px;
-    padding: 15px 10px;
+    padding: 14px 10px;
     height: 50px;
     width: 100%;
     caret-color: auto;
@@ -45,7 +51,14 @@ export const Input = styled.input`
     &::placeholder{
         font-size: 14px;
         color: #8D8C8F;
+        @media screen and (max-width: 575px) and (min-width: 300px) {
+            font-size: 12px;
+        }
     }
+    @media screen and (max-width: 575px) and (min-width: 300px) {
+        padding: 14px;
+        height: 46px;
+    };
 `;
 
 export const IntroduceInput = styled.textarea`
@@ -53,10 +66,10 @@ export const IntroduceInput = styled.textarea`
     background-color: transparent;
     box-shadow: 2px 2px rgba(0,0,0,0.15);
     border: 1px solid #2A2830;
-    border-radius: 20px;
-    padding: 15px 10px;
+    border-radius: 10px;
+    padding: 14px 10px;
     resize: none;
-    height: 600px;
+    height: 400px;
     transition: all .15s ease-in-out;
     width: 100%;
     &::-webkit-scrollbar {
@@ -67,19 +80,23 @@ export const IntroduceInput = styled.textarea`
     &:focus{
         outline: none;
         background-color: #222026;
+        opacity: 0.8;
     }
     &::placeholder{
         font-size: 14px;
-        color: #8D8C8F;
+        @media screen and (max-width: 575px) and (min-width: 300px) {
+            font-size: 12px;
+        }
     }
     @media screen and (max-width: 991px) and (min-width: 767px) {
-        height: 500px;
+        height: 420px;
     }
     @media screen and (max-width: 767px) and (min-width: 575px) {
-        height: 400px;
+        height: 360px;
     }
     @media screen and (max-width: 575px) and (min-width: 300px) {
-        height: 350px;
+        padding: 14px;
+        height: 300px;
     }
 `;
 

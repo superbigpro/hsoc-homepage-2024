@@ -14,7 +14,7 @@ export const ButtonUi = styled(Button)`
     width: 100%;
     border-radius: 10px;
     border: none;
-    padding: 13px 0;
+    padding: 8px 0;
     font-size: 18px;
     font-weight: 550;
     color: var(--color-white);
@@ -22,4 +22,8 @@ export const ButtonUi = styled(Button)`
     .MuiTouchRipple-root{
         filter: blur(5px);
     }
+    @media screen and (max-width: 575px) and (min-width: 300px) {
+        font-size: 16px;
+        padding: 8px 0;
+    };
 `;
