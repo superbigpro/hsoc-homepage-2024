@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+export const LogoBigImage = styled.div<{ src: string }>`
+    position: fixed;
+	background-image: url(${(props) => props.src});
+    background-position: center;
+    background-attachment: fixed; 
+    align-self: center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    filter: blur(14px) brightness(0.15);
+`;
+
 export const Wrap = styled.div`
     display: flex;
     justify-content: center;

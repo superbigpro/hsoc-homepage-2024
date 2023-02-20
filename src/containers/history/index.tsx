@@ -19,7 +19,7 @@ const HistoryPage: NextPage = () => {
                         보안관제 동아리
                         <br />
                         <br />
-                        <strong>관제 일지</strong>
+                        <strong>2022 관제 일지</strong>
                     </S.TitleText>
                 </S.SectionContentContainer>
             </Section>

@@ -68,22 +68,24 @@ export const IntroduceInput = styled.textarea`
     border: 1px solid #2A2830;
     border-radius: 10px;
     padding: 14px 10px;
-    resize: none;
-    height: 400px;
-    transition: all .15s ease-in-out;
+    height: 50px;
     width: 100%;
-    &::-webkit-scrollbar {
-        display: none;
-    }
     caret-color: auto;
+    height: 400px;
     color: var(--color-white);
+    resize: none;
+    transition: all .15s ease-in-out;
     &:focus{
         outline: none;
         background-color: #222026;
         opacity: 0.8;
     }
+    &::-webkit-scrollbar {
+        display: none;
+    }
     &::placeholder{
         font-size: 14px;
+        color: #8D8C8F;
         @media screen and (max-width: 575px) and (min-width: 300px) {
             font-size: 12px;
         }
@@ -98,7 +100,9 @@ export const IntroduceInput = styled.textarea`
         padding: 14px;
         height: 300px;
     }
+    
 `;
+
 
 export const Message = styled.p`
     text-align: left;

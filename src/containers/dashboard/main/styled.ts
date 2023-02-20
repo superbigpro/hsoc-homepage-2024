@@ -28,6 +28,7 @@ export const DashboardContentDiv = styled.div`
     width: 100%;
     background-color: #252525;
     border: 1px solid #6A6A6A;
+    margin-bottom: 20px;
     border-radius: 10px 10px 0 0;
 `;
 
@@ -44,11 +45,11 @@ export const DashboardContentWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     border-bottom: 1px solid var(--color-white);
+    margin-bottom: 20px;
 `;
 
 export const DashboardContent = styled.div`
     width: 500px;
-    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -59,7 +60,7 @@ export const DashboardContent = styled.div`
 export const DashboardIntroduceDiv = styled.div`
     width: 400px;
     max-height: 100px;
-    margin: 10px 0;
+    margin-bottom: 10px;
     margin-left: 10px;
     overflow: scroll;
     display: block;

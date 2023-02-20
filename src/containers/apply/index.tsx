@@ -60,13 +60,14 @@ const ApplyPage: NextPage = () => {
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;
-        if(inputValue.length === 3 || inputValue.length === 8) {
+        if (inputValue.length === 3 || inputValue.length === 8) {
             setValue("phoneNumber", inputValue + "-");
         }
     }
 
     return (
         <>
+            <S.LogoBigImage src={LogoBig.src} />
             <S.Wrap>
                 <S.FormDiv>
                     <S.InfoDiv>
