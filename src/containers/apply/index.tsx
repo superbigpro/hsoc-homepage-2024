@@ -60,16 +60,9 @@ const ApplyPage: NextPage = () => {
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;
-        if (inputValue.length === 10) {
-            setValue("phoneNumber", inputValue.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
+        if(inputValue.length === 3 || inputValue.length === 8) {
+            setValue("phoneNumber", inputValue + "-");
         }
-        if (inputValue.length === 13) {
-            setValue("phoneNumber", inputValue.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
-        }
-    }
-
-    const onSubmit = (e: any) => {
-        e.preventDefault();
     }
 
     return (

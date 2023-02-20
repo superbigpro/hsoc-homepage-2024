@@ -3,6 +3,15 @@ import apply from "src/lib/ga/apply";
 
 export default async function Create(req: NextApiRequest, res: NextApiResponse) {
     const { name, studentId, phoneNumber, introduce } = req.body;
+
+    if (req.body.studentId[0] !== "C" && req.body.studentId[0] !== "N" && req.body.studentId[0] !== "G") {
+        return res.send({ ok: false, message: "학번 형식이 틀렸습니다." });
+    }
+
+    if (req.body.phoneNumber[0] !== "0" && req.body.phoneNumber[2] !== "0" || req.body.phoneNumber[1] !== "1") {  
+        return res.send({ ok: false, message: "전화번호 형식이 틀렸습니다." });
+    }
+
     const exitsStudentId = await apply.student.findUnique({
         where: {
             studentId,
@@ -15,7 +24,7 @@ export default async function Create(req: NextApiRequest, res: NextApiResponse) 
     })
 
     if (exitsStudentId || exitsPhoneNumber) {
-        return res.send({ok: false, message: "이미 신청하셨습니다."});
+        return res.send({ ok: false, message: "이미 신청하셨습니다." });
     }
 
     await apply.student.create({
@@ -26,5 +35,5 @@ export default async function Create(req: NextApiRequest, res: NextApiResponse) 
             introduce,
         },
     })
-    res.send({ok: true, message: "신청이 완료되었습니다."});
+    res.send({ ok: true, message: "신청이 완료되었습니다." });
 }

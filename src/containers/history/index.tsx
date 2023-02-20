@@ -2,8 +2,8 @@ import type { NextPage } from "next";
 import * as S from "./styled";
 import { Section, SectionTemplate } from "src/components";
 import LogoBig from "src/assets/png/logo-big.png";
-import SixthSecurityContestJPG from "src/assets/png/6th-security-contest.jpg";
-import SeventhSecurityContestJPG from "src/assets/png/7th-security-contest.jpg";
+import EighthSecurityContestJPG from "src/assets/png/8th-security-contest.jpg";
+import Hiscon from "src/assets/png/hiscon.png";
 import Contest1PNG from "src/assets/png/contest-1.png";
 import Contest2JPG from "src/assets/png/contest-2.jpg";
 import Contest3JPG from "src/assets/png/contest-3.jpg";
@@ -83,8 +83,8 @@ const HistoryPage: NextPage = () => {
                 }
             >
                 <S.ContestPosterImagesWrapper>
-                    <S.ContestPosterImage src={SixthSecurityContestJPG.src} />
-                    <S.ContestPosterImage src={SeventhSecurityContestJPG.src} />
+                    <S.ContestPosterImage src={EighthSecurityContestJPG.src} />
+                    <S.ContestPosterImage src={Hiscon.src} />
                 </S.ContestPosterImagesWrapper>
             </SectionTemplate>
         </main >
