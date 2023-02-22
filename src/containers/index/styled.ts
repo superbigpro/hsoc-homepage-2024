@@ -52,34 +52,58 @@ export const SectionContentContainer = styled.div`
 `;
 
 export const ContestPosterImagesWrapper = styled.div`
-	position: relative;
-	top: -280px;
-	left: -250px;
-	z-index: -1;
+	@media screen and (min-width: 767px) {
+		position: relative;
+		top: -280px;
+		left: -250px;
+		z-index: -1;
 
-	div:first-child {
-		position: absolute;
-		width: 209px;
-		height: 332px;
-		left: 304px;
-		top: 132.75px;
+		div:first-child {
+			position: absolute;
+			width: 209px;
+			height: 332px;
+			left: 304px;
+			top: 132.75px;
+			transform: rotate(-8.01deg);
+		}
 
-		transform: rotate(-8.01deg);
+		div:last-child {
+			position: absolute;
+			width: 241px;
+			height: 361px;
+			left: 470px;
+			top: 100px;
+			box-shadow: 10px 23px 21px -2px rgba(0, 0, 0, 0.2);
+			border-radius: 5px;
+			transform: rotate(6.09deg);
+		}
+	}	
+
+	@media screen and (max-width: 1030px) and (min-width: 940px){
+		div:first-child {
+			width: 210px;
+			height: 312px;
+		}
+
+		div:last-child {
+			width: 221px;
+			height: 331px;
+		}
 	}
 
-	div:last-child {
-		position: absolute;
-		width: 241px;
-		height: 361px;
-		left: 470px;
-		top: 100px;
+	@media screen and (max-width: 940px) and (min-width: 900px){
+		div:first-child {
+			width: 200px;
+			height: 270px;
+		}
 
-		box-shadow: 10px 23px 21px -2px rgba(0, 0, 0, 0.2);
-		border-radius: 5px;
-		transform: rotate(6.09deg);
+		div:last-child {
+			width: 190px;
+			height: 291px;
+		}
 	}
-
-	@media screen and (max-width: 767px) {
+	
+	@media screen and (max-width: 900px) and (min-width: 767px) {
 		position: absolute;
 		top: -140px;
 		left: -470px;
@@ -101,19 +125,24 @@ export const ContestPosterImagesWrapper = styled.div`
 		}
 	}
 
-	@media screen and (max-width: 540px) {
-		position: absolute;
-		top: -120px;
-		left: -470px;
-
+	@media screen and (max-width: 767px) {
+		margin-top: 40px;
+		display: flex;
+		div:first-child {
+			position: relative;
+			top: 20px;
+			left: 20px;
+			margin-left: 20px;
+			width: 156px;
+			height: 234px;
+			transform: rotate(-10.01deg);
+		}
 		div:last-child {
-			position: absolute;
+			position: relative;
+			right: 20px;
+			transform: rotate(6.09deg);
 			width: 170px;
 			height: 254px;
-
-			box-shadow: 10px 23px 21px -2px rgba(0, 0, 0, 0.2);
-			border-radius: 5px;
-			transform: rotate(0deg);
 		}
 	}
 `;
@@ -156,7 +185,7 @@ export const SectionImage = styled.div<{ src: string }>`
 	}
 `;
 
-export const TeacherSectionImage = styled(SectionImage)<{ images: string[] }>`
+export const TeacherSectionImage = styled(SectionImage) <{ images: string[] }>`
 	animation: changeTeacherSectionImages 6s infinite;
 	resize: both;
 
@@ -174,7 +203,7 @@ export const TeacherSectionImage = styled(SectionImage)<{ images: string[] }>`
 	}
 `;
 
-export const ServerRoomSectionImage = styled(SectionImage)<{ images: string[] }>`
+export const ServerRoomSectionImage = styled(SectionImage) <{ images: string[] }>`
 	animation: changeServerRoomSectionImages 7s infinite;
 
 	@keyframes changeServerRoomSectionImages {

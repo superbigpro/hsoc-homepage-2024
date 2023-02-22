@@ -13,6 +13,8 @@ import Contest2JPG from "src/assets/png/contest-2.jpg";
 import Contest3JPG from "src/assets/png/contest-3.jpg";
 import MentorJPG from "src/assets/png/mentor.jpg";
 import Link from "next/link";
+import React from "react";
+
 
 const IndexPage: NextPage = () => {
 	return (
@@ -98,8 +100,10 @@ const IndexPage: NextPage = () => {
 				links={[{ text: "관련 뉴스 기사", href: "https://www.boannews.com/media/view.asp?idx=102431" }]}
 			>
 				<S.ContestPosterImagesWrapper>
+				{/* <div style={{ display: "flex" }}> */}
 					<S.ContestPosterImage src={SixthSecurityContestJPG.src} />
 					<S.ContestPosterImage src={SeventhSecurityContestJPG.src} />
+				{/* </div> */}
 				</S.ContestPosterImagesWrapper>
 			</SectionTemplate>
 			<SectionTemplate
