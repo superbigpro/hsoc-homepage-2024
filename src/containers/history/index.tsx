@@ -2,12 +2,16 @@ import type { NextPage } from "next";
 import * as S from "./styled";
 import { Section, SectionTemplate } from "src/components";
 import LogoBig from "src/assets/png/logo-big.png";
-import EighthSecurityContestJPG from "src/assets/png/8th-security-contest.jpg";
-import Hiscon from "src/assets/png/hiscon.png";
-import Contest1PNG from "src/assets/png/contest-1.png";
-import Contest2JPG from "src/assets/png/contest-2.jpg";
-import Contest3JPG from "src/assets/png/contest-3.jpg";
-import MentorJPG from "src/assets/png/mentor.jpg";
+import FieldIntroduce from "src/assets/png/fieldIntroduce.jpg";
+import FieldIntroduce2 from "src/assets/png/fieldIntroduce2.jpg";
+import FieldIntroduce3 from "src/assets/png/fieldIntroduce3.jpg";
+import Ctf from "src/assets/png/ctf1.jpg";
+import Ctf2 from "src/assets/png/ctf2.jpg";
+import Ctf3 from "src/assets/png/ctf3.jpg";
+import Ctf4 from "src/assets/png/ctf4.jpg";
+import Mentoring from "src/assets/png/mentoring.jpg";
+import Mentoring2 from "src/assets/png/mentoring2.jpg";
+import Mentoring3 from "src/assets/png/mentoring3.jpg";
 
 const HistoryPage: NextPage = () => {
     return (
@@ -34,12 +38,12 @@ const HistoryPage: NextPage = () => {
                 }
                 description={
                     <>
-                        네트워크, 디지털 포렌식, 시스템, 암호학, 웹의 멘토들이 자신의 분야를 발표하며 자신의 분야에 대해 알려주었어요. 
+                        네트워크, 디지털 포렌식, 시스템, 암호학, 웹의 멘토들이 자신의 분야를 발표하며 자신의 분야에 대해 알려주었어요.
                         이를 통해 보안에 대한 기본적인 분야들을 습득할 수 있었고, 각 분야가 어떤식으로 운영되는지 알 수 있었어요.
                     </>
                 }
             >
-                <S.SectionImage src={MentorJPG.src} />
+                <S.FieldIntroduceImage src="" images={[FieldIntroduce.src, FieldIntroduce2.src, FieldIntroduce3.src]} />
             </SectionTemplate>
             <SectionTemplate
                 shortDescription="보안관제에서는 이런 걸 해요!"
@@ -51,12 +55,12 @@ const HistoryPage: NextPage = () => {
                 }
                 description={
                     <>
-                        분야별 멘토링을 통해 자신이 선택한 분야에 대해 선배들과 함께 공부하고, 문제를 풀어보며 
+                        분야별 멘토링을 통해 자신이 선택한 분야에 대해 선배들과 함께 공부하고, 문제를 풀어보며
                         실력을 키워나갔어요. 멘토님들의 피드백을 통해 자신의 실력을 더욱 키울 수 있었어요.
                     </>
                 }
             >
-                <S.TeacherSectionImage src="" images={[Contest1PNG.src, Contest2JPG.src, Contest3JPG.src]} />
+                <S.MentoringImage src="" images={[Mentoring.src, Mentoring3.src, Mentoring2.src]} />
             </SectionTemplate>
             <SectionTemplate
                 isSecondary
@@ -69,26 +73,13 @@ const HistoryPage: NextPage = () => {
                 }
                 description={
                     <>
-                        1학기때 쌓아온 실력을 바탕으로 대회에서 실제 
-                        <br />
-                        문제를 출제해보고, 부원들끼리
-                        풀어보는
-                        시간을 가졌어요.
-                        <br />
-                        풀어보면서 서로가 서로의 문제를 봐주고,
-                        피드백을 주고받는 
-                        <br />
-                        시간을 가졌어요.
-                        마지막으로 외부강사님이 오셔서 문제를
-                        <br />
-                        봐주시고, 피드백을 주시는 시간을 가졌어요.
+                        1학기때 쌓아온 실력을 바탕으로 대회에서 실제 문제를 출제해보고, 부원들끼리 풀어보는 시간을 가졌어요.
+                        풀어보면서 서로가 서로의 문제를 봐주고, 피드백을 주고받는 시간을 가졌어요.
+                        마지막으로 외부강사님이 오셔서 문제를 봐주시고, 피드백을 주시는 시간을 가졌어요.
                     </>
                 }
             >
-                <S.ContestPosterImagesWrapper>
-                    <S.ContestPosterImage src={EighthSecurityContestJPG.src} />
-                    <S.ContestPosterImage src={Hiscon.src} />
-                </S.ContestPosterImagesWrapper>
+                <S.ContestImage src="" images={[Ctf.src, Ctf2.src, Ctf3.src, Ctf4.src,]} />
             </SectionTemplate>
         </main >
     );

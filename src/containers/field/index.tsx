@@ -1,13 +1,12 @@
 import type { NextPage } from "next";
 import * as S from "./styled";
-import { Button, HighlightText, Section, SectionTemplate } from "src/components";
+import { Section, SectionTemplate } from "src/components";
 import LogoBig from "src/assets/png/logo-big.png";
 import NetWorkLogo from 'src/assets/png/network-logo.png';
 import ForensicLogo from 'src/assets/png/forensic-logo.png';
 import SystemLogo from 'src/assets/png/system-logo.png';
 import CryptoLogo from 'src/assets/png/crypto-logo.png';
 import WebLogo from 'src/assets/png/web-logo.png';
-import Link from "next/link";
 
 const FieldPage: NextPage = () => {
     return (
