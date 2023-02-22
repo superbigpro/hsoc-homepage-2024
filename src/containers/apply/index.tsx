@@ -6,7 +6,6 @@ import { Input } from "src/components/Input";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from "react-toastify"
 import { Instance } from "src/lib/ga/api";
-import { useEffect } from "react";
 import FormButton from "src/components/FormButton";
 
 export interface FormProps {

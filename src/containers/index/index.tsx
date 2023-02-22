@@ -30,9 +30,7 @@ const IndexPage: NextPage = () => {
 						</S.Title>
 						<S.RecruitmentDateText>2023. 3. 12(월) ~ 2023. 3. 17(금)</S.RecruitmentDateText>
 						<Link href="/apply" passHref>
-							<a target="_blank">
-								<Button>지원하러 가기 &nbsp;{">"}</Button>
-							</a>
+							<Button>지원하러 가기 &nbsp;{">"}</Button>
 						</Link>
 					</div>
 
@@ -100,10 +98,8 @@ const IndexPage: NextPage = () => {
 				links={[{ text: "관련 뉴스 기사", href: "https://www.boannews.com/media/view.asp?idx=102431" }]}
 			>
 				<S.ContestPosterImagesWrapper>
-				{/* <div style={{ display: "flex" }}> */}
 					<S.ContestPosterImage src={SixthSecurityContestJPG.src} />
 					<S.ContestPosterImage src={SeventhSecurityContestJPG.src} />
-				{/* </div> */}
 				</S.ContestPosterImagesWrapper>
 			</SectionTemplate>
 			<SectionTemplate

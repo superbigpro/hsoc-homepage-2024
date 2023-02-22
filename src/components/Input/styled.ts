@@ -34,8 +34,8 @@ export const Input = styled.input`
     box-shadow: 2px 2px rgba(0,0,0,0.15);
     border: 1px solid #2A2830;
     border-radius: 10px;
-    padding: 14px 10px;
-    height: 50px;
+    padding: 14px;
+    height: 46px;
     width: 100%;
     caret-color: auto;
     color: var(--color-white);
@@ -51,9 +51,6 @@ export const Input = styled.input`
     &::placeholder{
         font-size: 14px;
         color: #8D8C8F;
-        @media screen and (max-width: 575px) and (min-width: 300px) {
-            font-size: 12px;
-        }
     }
     @media screen and (max-width: 575px) and (min-width: 300px) {
         padding: 14px;
@@ -68,10 +65,9 @@ export const IntroduceInput = styled.textarea`
     border: 1px solid #2A2830;
     border-radius: 10px;
     padding: 14px 10px;
-    height: 50px;
     width: 100%;
     caret-color: auto;
-    height: 400px;
+    height: 350px;
     color: var(--color-white);
     resize: none;
     transition: all .15s ease-in-out;
@@ -86,9 +82,6 @@ export const IntroduceInput = styled.textarea`
     &::placeholder{
         font-size: 14px;
         color: #8D8C8F;
-        @media screen and (max-width: 575px) and (min-width: 300px) {
-            font-size: 12px;
-        }
     }
     @media screen and (max-width: 991px) and (min-width: 767px) {
         height: 420px;

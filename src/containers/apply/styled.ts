@@ -16,30 +16,37 @@ export const Wrap = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 4rem 0 ;
-    height: 90%;
+    margin: 8rem 0;
+    @media screen and (max-width: 1100px) and (min-width: 991px) {
+        margin: 6rem 0;
+    }
+    @media screen and (max-width: 991px) and (min-width: 767px) {
+        margin: 5rem 0;
+    }
+    @media screen and (max-width: 767px) and (min-width: 300px) {
+        margin: 4rem 0;
+    };
 `;
 
 export const FormDiv = styled.form`
     display: flex;
-    width: 580px;
+    width: 600px;
     z-index: 10;
-    padding: 60px 100px;
+    padding: 50px 60px;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-start;
     border-radius: 30px;
     background-color: #171618;
     @media screen and (max-width: 1100px) and (min-width: 991px) {
-        width: 560px;
+        width: 580px;
     }
     @media screen and (max-width: 991px) and (min-width: 767px) {
         padding: 40px 70px;
-        width: 500px;
+        width: 520px;
     }
     @media screen and (max-width: 767px) and (min-width: 575px) {
         padding: 40px 60px;
-        width: 460px;
+        width: 480px;
     }  
     @media screen and (max-width: 575px) and (min-width: 300px) {
         padding: 40px 40px;

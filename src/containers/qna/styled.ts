@@ -17,6 +17,27 @@ export const SectionContentContainer = styled.div`
 	justify-content: center;
 `;
 
+export const TitleText = styled.p`
+	color: var(--color-white);
+	font-size: 40px;
+	font-weight: 200;
+	line-height: 40px;
+	text-align: center;
+
+	strong {
+		font-weight: 700;
+	}
+
+	@media screen and (max-width: 991px) {
+		font-size: 34px;
+		line-height: 45px;
+	}
+
+	@media screen and (max-width: 575px) {
+		font-size: 30px;
+		line-height: 39px;
+	}
+`;
 
 export const QuestionsContainer = styled.div`
 	& > div:not(:last-child) {
