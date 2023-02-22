@@ -136,6 +136,7 @@ export const ContestPosterImage = styled.div<{ src: string }>`
 	background-size: cover;
 	background-image: url(${(props) => props.src});
 	box-shadow: 10px 23px 21px -2px rgba(0, 0, 0, 0.2);
+	z-index: 50;
 `;
 
 export const SectionImage = styled.div<{ src: string }>`
@@ -147,7 +148,6 @@ export const SectionImage = styled.div<{ src: string }>`
 	background-size: cover;
 	background-position: center;
 	background-image: url(${(props) => props.src});
-
 	@media screen and (max-width: 991px) {
 		width: 300px;
 		height: 180px;
@@ -159,7 +159,7 @@ export const SectionImage = styled.div<{ src: string }>`
 	}
 
 	@media screen and (max-width: 540px) {
-		width: 390px;
+		width: 360px;
 		height: 234px;
 	}
 

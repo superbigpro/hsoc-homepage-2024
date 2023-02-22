@@ -17,9 +17,9 @@ const Login: React.FC = () => {
             redirect: false,
         }).then((res) => {
             res?.ok ? (
-                toast.success('Login Success', { position: "bottom-right" })
+                toast.success('로그인에 성공하셨습니다.', { position: "bottom-right" })
             ) : (
-                toast.error('Login Failed', { position: "bottom-right" }),
+                toast.error('로그인에 실패하셨습니다.', { position: "bottom-right" }),
                 setValue("id", ""),
                 setValue("password", "")
             )

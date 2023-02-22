@@ -73,6 +73,7 @@ export const DescriptionText = styled.p<{ isSecondary?: boolean }>`
 	}
 
 	@media screen and (max-width: 575px) {
+		border: 1px solid red;
 		font-size: 14px;
 	}
 `;

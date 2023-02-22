@@ -26,7 +26,7 @@ const HistoryPage: NextPage = () => {
             <SectionTemplate
                 isSecondary
                 shortDescription="보안관제에서는 이런걸 해요!"
-                ShortDescriptionTextSecondary=" 2022/3/14~2022/4/14"
+                ShortDescriptionTextSecondary=" 2022/3/15~2022/4/19"
                 title={
                     <>
                         <strong>분야별 소개</strong>
@@ -43,7 +43,7 @@ const HistoryPage: NextPage = () => {
             </SectionTemplate>
             <SectionTemplate
                 shortDescription="보안관제에서는 이런 걸 해요!"
-                ShortDescriptionTextSecondary=" 2022/4/21~2022/6/27"
+                ShortDescriptionTextSecondary=" 2022/3/15~2022/8/22"
                 title={
                     <>
                         <strong>분야별 멘토링</strong>
@@ -69,13 +69,16 @@ const HistoryPage: NextPage = () => {
                 }
                 description={
                     <>
-                        1학기때 쌓아온 실력을 바탕으로 대회에서 실제 문제를 출제해보고, 부원들끼리
+                        1학기때 쌓아온 실력을 바탕으로 대회에서 실제 
                         <br />
+                        문제를 출제해보고, 부원들끼리
                         풀어보는
                         시간을 가졌어요.
-                        풀어보면서 서로가 서로의 문제를 봐주고,
                         <br />
-                        피드백을 주고받는 시간을 가졌어요.
+                        풀어보면서 서로가 서로의 문제를 봐주고,
+                        피드백을 주고받는 
+                        <br />
+                        시간을 가졌어요.
                         마지막으로 외부강사님이 오셔서 문제를
                         <br />
                         봐주시고, 피드백을 주시는 시간을 가졌어요.

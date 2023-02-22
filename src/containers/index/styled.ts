@@ -146,7 +146,7 @@ export const SectionImage = styled.div<{ src: string }>`
 	}
 
 	@media screen and (max-width: 540px) {
-		width: 390px;
+		width: 360px;
 		height: 234px;
 	}
 
