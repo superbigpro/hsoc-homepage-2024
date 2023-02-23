@@ -77,6 +77,7 @@ export const AnswerContainer = styled(motion.div) <{ isOpen: boolean }>`
 	background-color: #1b1d26;
 	line-height: 30px;
 	border-radius: 0 0 10px 10px;
+	position: ${(props) => (props.isOpen ? "relative" : "absolute")};
 	height: ${(props) => (props.isOpen ? "auto" : "0")};
 `;
 

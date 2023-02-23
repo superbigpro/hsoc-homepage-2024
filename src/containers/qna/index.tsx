@@ -29,7 +29,7 @@ const questions = [
 ];
 
 const QnAPage: NextPage = () => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [showList, setShowList] = useState(questions.map((v) => false));
 
 	return (
 		<main style={{ width: "100%" }}>
@@ -44,21 +44,20 @@ const QnAPage: NextPage = () => {
 				</S.SectionContentContainer>
 			</Section>
 			<Section isSecondary>
-				<AnimatePresence initial={false}>
 					<S.QuestionsContainer>
 						{questions.map((v, i) => {
 							return (
-								<S.QuestionContainer key={i} onClick={() => { setIsOpen(!isOpen); }} isOpen={isOpen}>
+								<S.QuestionContainer key={i} isOpen={showList[i]} onClick={(e) => setShowList((prev) => ({ ...prev, [i]: !prev[i] }))}>
 									<S.QuestionButton >Q. {v.question}</S.QuestionButton>
 									<S.AnswerContainer
 										initial="closed"
-										animate={isOpen ? "open" : "closed"}
+										animate={showList[i] ? "open" : "closed"}
 										variants={{
 											open: { opacity: 1, },
 											closed: { opacity: 0, },
 										}}
 										transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
-										isOpen={isOpen}
+										isOpen={showList[i]}
 									>
 										<S.Answer>
 											A. {v.answer}
@@ -68,7 +67,6 @@ const QnAPage: NextPage = () => {
 							);
 						})}
 					</S.QuestionsContainer>
-				</AnimatePresence>
 			</Section>
 		</main >
 	);
