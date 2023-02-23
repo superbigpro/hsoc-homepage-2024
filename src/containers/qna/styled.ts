@@ -49,6 +49,7 @@ export const QuestionsContainer = styled.div`
 `;
 
 export const QuestionContainer = styled.div<{ isOpen: boolean }>`
+	position: relative !important;
 	width: 100%;
 	font-size: 20px;
 	border-radius: 10px;
@@ -62,6 +63,7 @@ export const QuestionContainer = styled.div<{ isOpen: boolean }>`
 export const QuestionButton = styled.button`
 	border: none;
 	outline: none;
+	position: relative !important;
 	width: 100%;
 	padding: 25px 30px;
 	text-align: left;
@@ -69,6 +71,7 @@ export const QuestionButton = styled.button`
 	font-weight: 500;
 	letter-spacing: -0.055em;
 	background-color: #1b1d26;
+	z-index: 50;
 `;
 
 export const AnswerContainer = styled(motion.div) <{ isOpen: boolean }>`
@@ -77,8 +80,7 @@ export const AnswerContainer = styled(motion.div) <{ isOpen: boolean }>`
 	background-color: #1b1d26;
 	line-height: 30px;
 	border-radius: 0 0 10px 10px;
-	position: ${(props) => (props.isOpen ? "relative" : "absolute")};
-	height: ${(props) => (props.isOpen ? "auto" : "0")};
+	position: ${(props) => (props.isOpen ? "relative" : "absolute")}; 
 `;
 
 export const Answer = styled(motion.p)`
