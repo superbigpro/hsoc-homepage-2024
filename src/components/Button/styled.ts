@@ -12,4 +12,8 @@ export const ButtonElement = styled.button`
 	border-radius: 7px;
 	letter-spacing: -0.055em;
 	line-height: 23px;
+	@media screen and (max-width: 576px) {
+		font-size: 16px;
+		padding: 8px 18px;
+	}
 `;

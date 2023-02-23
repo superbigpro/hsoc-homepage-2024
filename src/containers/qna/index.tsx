@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import * as S from "./styled";
-
 import LogoBig from "src/assets/png/logo-big.png";
 import { Section } from "src/components";
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 const questions = [
 	{
@@ -29,7 +29,7 @@ const questions = [
 ];
 
 const QnAPage: NextPage = () => {
-	const [showList, setShowList] = useState(questions.map((v) => false));
+	const [isOpen, setIsOpen] = useState(false);
 
 	return (
 		<main style={{ width: "100%" }}>
@@ -44,23 +44,33 @@ const QnAPage: NextPage = () => {
 				</S.SectionContentContainer>
 			</Section>
 			<Section isSecondary>
-				<S.QuestionsContainer>
-					{questions.map((v, i) => {
-						return (
-							<S.QuestionContainer key={i} isOpen={showList[i]} onClick={(e) => setShowList((prev) => ({ ...prev, [i]: !prev[i] }))}>
-								<S.QuestionButton>Q. {v.question}</S.QuestionButton>
-
-								{showList[i] && (
-									<S.AnswerContainer>
-										<p>A. {v.answer}</p>
+				<AnimatePresence initial={false}>
+					<S.QuestionsContainer>
+						{questions.map((v, i) => {
+							return (
+								<S.QuestionContainer key={i} onClick={() => { setIsOpen(!isOpen); }} isOpen={isOpen}>
+									<S.QuestionButton >Q. {v.question}</S.QuestionButton>
+									<S.AnswerContainer
+										initial="closed"
+										animate={isOpen ? "open" : "closed"}
+										variants={{
+											open: { opacity: 1, },
+											closed: { opacity: 0, },
+										}}
+										transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
+										isOpen={isOpen}
+									>
+										<S.Answer>
+											A. {v.answer}
+										</S.Answer>
 									</S.AnswerContainer>
-								)}
-							</S.QuestionContainer>
-						);
-					})}
-				</S.QuestionsContainer>
+								</S.QuestionContainer>
+							);
+						})}
+					</S.QuestionsContainer>
+				</AnimatePresence>
 			</Section>
-		</main>
+		</main >
 	);
 };
 

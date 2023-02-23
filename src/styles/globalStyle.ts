@@ -28,6 +28,9 @@ export const GlobalStyle = createGlobalStyle`
         background: #0E0F13;
         color: #fafafa;
         letter-spacing: -0.055em;
+        ::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     .container {

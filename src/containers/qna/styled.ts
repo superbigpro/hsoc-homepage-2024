@@ -1,4 +1,6 @@
 import styled from "styled-components";
+const { motion } = require("framer-motion");
+
 
 export const LogoBigImage = styled.div<{ src: string }>`
 	width: 150px;
@@ -43,6 +45,7 @@ export const QuestionsContainer = styled.div`
 	& > div:not(:last-child) {
 		margin-bottom: 40px;
 	}
+	transition: all 0.3s ease-in-out;
 `;
 
 export const QuestionContainer = styled.div<{ isOpen: boolean }>`
@@ -61,7 +64,6 @@ export const QuestionButton = styled.button`
 	outline: none;
 	width: 100%;
 	padding: 25px 30px;
-
 	text-align: left;
 	color: var(--color-white);
 	font-weight: 500;
@@ -69,10 +71,14 @@ export const QuestionButton = styled.button`
 	background-color: #1b1d26;
 `;
 
-export const AnswerContainer = styled.div`
+export const AnswerContainer = styled(motion.div) <{ isOpen: boolean }>`
 	font-weight: 400;
 	padding: 30px;
 	background-color: #1b1d26;
 	line-height: 30px;
 	border-radius: 0 0 10px 10px;
+	height: ${(props) => (props.isOpen ? "auto" : "0")};
+`;
+
+export const Answer = styled(motion.p)`
 `;
