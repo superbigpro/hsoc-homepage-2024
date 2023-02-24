@@ -3,7 +3,6 @@ import * as S from "./styled";
 import LogoBig from "src/assets/png/logo-big.png";
 import { Section } from "src/components";
 import { useRef, useState } from "react";
-import { AnimatePresence } from "framer-motion";
 
 const questions = [
 	{
