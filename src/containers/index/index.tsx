@@ -15,6 +15,7 @@ import MentorJPG from "src/assets/png/mentor.jpg";
 import Link from "next/link";
 import React from "react";
 
+const APPLY_DATE = "2023. 3. 13(월) ~ 2023. 3. 17(금)";
 
 const IndexPage: NextPage = () => {
 	return (
@@ -28,7 +29,7 @@ const IndexPage: NextPage = () => {
 							<br />
 							보안관제 동아리반 모집
 						</S.Title>
-						<S.RecruitmentDateText>2023. 3. 12(월) ~ 2023. 3. 17(금)</S.RecruitmentDateText>
+						<S.RecruitmentDateText>{APPLY_DATE}</S.RecruitmentDateText>
 						<Link href="/apply" passHref>
 							<Button>지원하러 가기 &nbsp;{">"}</Button>
 						</Link>

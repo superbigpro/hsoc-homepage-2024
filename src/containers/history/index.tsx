@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import * as S from "./styled";
-import { Section, SectionTemplate } from "src/components";
-import LogoBig from "src/assets/png/logo-big.png";
+import {SectionTemplate } from "src/components";
 import FieldIntroduce from "src/assets/png/fieldIntroduce.jpg";
 import FieldIntroduce2 from "src/assets/png/fieldIntroduce2.jpg";
 import FieldIntroduce3 from "src/assets/png/fieldIntroduce3.jpg";
@@ -12,21 +11,12 @@ import Ctf4 from "src/assets/png/ctf4.jpg";
 import Mentoring from "src/assets/png/mentoring.jpg";
 import Mentoring2 from "src/assets/png/mentoring2.jpg";
 import Mentoring3 from "src/assets/png/mentoring3.jpg";
+import { TitleSection } from "src/components/TitleSection";
 
 const HistoryPage: NextPage = () => {
     return (
         <main style={{ width: "100%" }}>
-            <Section>
-                <S.SectionContentContainer>
-                    <S.LogoBigImage src={LogoBig.src} />
-                    <S.TitleText>
-                        보안관제 동아리
-                        <br />
-                        <br />
-                        <strong>2022 관제 일지</strong>
-                    </S.TitleText>
-                </S.SectionContentContainer>
-            </Section>
+            <TitleSection title="2022 관제 일지" />
             <SectionTemplate
                 isSecondary
                 shortDescription="보안관제에서는 이런걸 해요!"
@@ -64,7 +54,7 @@ const HistoryPage: NextPage = () => {
             </SectionTemplate>
             <SectionTemplate
                 isSecondary
-                shortDescription="보안관제에만 있어요!"
+                shortDescription="보안관제에서는 이런걸 해요!"
                 ShortDescriptionTextSecondary=" 2022/9/21~2022/11/27"
                 title={
                     <>

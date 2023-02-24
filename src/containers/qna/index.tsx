@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import * as S from "./styled";
-import LogoBig from "src/assets/png/logo-big.png";
 import { Section } from "src/components";
 import { useRef, useState } from "react";
+import { TitleSection } from "src/components/TitleSection";
 
 const questions = [
 	{
@@ -34,16 +34,7 @@ const QnAPage: NextPage = () => {
 
 	return (
 		<main style={{ width: "100%" }}>
-			<Section>
-				<S.SectionContentContainer>
-					<S.LogoBigImage src={LogoBig.src} />
-					<S.TitleText>
-						보안관제 동아리
-						<br />
-						<strong>Q & A</strong>
-					</S.TitleText>
-				</S.SectionContentContainer>
-			</Section>
+			<TitleSection title="Q & A" />
 			<Section isSecondary>
 				<S.QuestionsContainer>
 					{questions.map((v, i) => {
