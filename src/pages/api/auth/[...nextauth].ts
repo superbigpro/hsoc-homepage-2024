@@ -29,7 +29,7 @@ const authOptions: NextAuthOptions = {
             nickName: id,
           }
         })
-        console.log(student)
+
         if (callbackUrl === `${baseUrl}/dashboard`) {
           if (student?.role === "OPERATOR") {
             return { id: "1", email: "hsoc" };
@@ -41,7 +41,7 @@ const authOptions: NextAuthOptions = {
           if (student?.role !== "STUDENT") {
             throw new Error("Login Failed");
           }
-          return { id: "1", ok: true, message: "Login Success" };
+          return { id: "1" };
         }
         throw new Error("Login Failed");
       },

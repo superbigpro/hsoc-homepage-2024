@@ -16,7 +16,7 @@ export const GlobalStyle = createGlobalStyle`
         --desktop-breakpoint: 1200px;
         
         --color-primary: #5B3CFF;  
-        --color-white: #fafafa;
+        --color-white: #E6E1E6;
         --color-button: #6029FF;
     }
 

@@ -1,11 +1,9 @@
 import { NextPage } from "next"
 import { useSession } from "next-auth/react";
-import { useEffect } from "react";
 import { Instance } from "src/lib/ga/api";
-import Loading from "./loading";
+import Loading from "../loading";
 import Login from "./login";
 import Main from "./main";
-import * as S from "./styled"
 
 export interface Student {
     id: number,
@@ -14,7 +12,6 @@ export interface Student {
     phoneNumber: string,
     password: string,
     introduce: string;
-    // role: Ro
 }
 
 interface DashboardPageProps {
@@ -24,7 +21,6 @@ interface DashboardPageProps {
 
 const DashboardPage: NextPage<DashboardPageProps> = ({ students }) => {
     const { data, status } = useSession();
-    console.log(data, "data")
 
     if (status === "authenticated" && data.user?.email === "hsoc") {
         return (

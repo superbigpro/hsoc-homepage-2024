@@ -1,1 +1,1 @@
-export { default } from "src/containers/register";
+export { default } from "src/containers/form/register";

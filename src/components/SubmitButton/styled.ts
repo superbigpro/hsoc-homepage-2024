@@ -5,7 +5,7 @@ export const ButtonDiv = styled.div`
     display: block;
     width: 100%;
     border-radius: 10px;
-    margin-top: 30px;
+    margin: 30px 0;
 `;
 
 export const ButtonUi = styled(Button)`

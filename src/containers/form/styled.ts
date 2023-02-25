@@ -13,19 +13,35 @@ export const LogoBigImage = styled.div<{ src: string }>`
 `;
 
 export const Wrap = styled.div`
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 8rem 0;
-    @media screen and (max-width: 1100px) and (min-width: 991px) {
-        margin: 6rem 0;
+    margin: 4rem 0;
+    @media screen and (min-height: 700px){
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
     }
-    @media screen and (max-width: 991px) and (min-width: 767px) {
-        margin: 5rem 0;
+`;
+
+export const RegisterWrap = styled.div`
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem 0;
+    @media screen and (min-height: 1000px){
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
     }
-    @media screen and (max-width: 767px) and (min-width: 300px) {
-        margin: 4rem 0;
-    };
 `;
 
 export const FormDiv = styled.form`
@@ -65,4 +81,17 @@ export const IntroduceDiv = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+`;
+
+export const LinkButton = styled.p`
+    color: var(--color-white);
+    a{
+        text-decoration: none !important;
+        color: #7F69F6 !important;
+        margin-left: 6px;
+        transition: opacity 0.2s ease-in-out;
+        &:hover {
+            opacity: 0.8;
+		}
+    }
 `;

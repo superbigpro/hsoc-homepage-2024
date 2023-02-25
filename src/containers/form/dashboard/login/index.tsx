@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from "react-toastify";
 import { Input } from "src/components/Input";
-import * as S from "./styled";
-import FormButton from "src/components/FormButton";
+import * as S from "../../styled";
+import FormButton from "src/components/SubmitButton";
 import { FormProps } from "src/lib/ga/form-props";
 
 const Login: React.FC = () => {

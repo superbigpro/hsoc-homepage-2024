@@ -19,8 +19,8 @@ const navMenuList = [
 		text: "관제 일지",
 	},
 	{
-		href: "/register",
-		text: "회원가입",
+		href: "/login",
+		text: "로그인",
 	},
 	// {
 	// 	href: "https://wargame.hsoc.kr",
@@ -43,14 +43,14 @@ export const Navbar: React.FC = () => {
 					<S.NavbarMenuItemWrap className="me-auto">
 						{navMenuList.map((menu, i) => {
 							return (
-								<S.NavbarMenuItem key={i} href={`${menu.href}`}>
+								<Link key={i} href={`${menu.href}`}>
 									{menu.text}
-								</S.NavbarMenuItem>
+								</Link>
 							);
 						})}
 					</S.NavbarMenuItemWrap>
 				</S.NavbarMenuList>
-				
+
 			</S.NavbarContainer>
 		</S.NavbarWrapper>
 	);

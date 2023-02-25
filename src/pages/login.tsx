@@ -1,1 +1,1 @@
-export { default } from "src/containers/login";
+export { default } from "src/containers/form/login";

@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { MdDehaze } from "react-icons/md";
+import Link from "next/link";
 
 export const NavbarWrapper = styled(Navbar)`
 	position: sticky;
@@ -12,9 +13,6 @@ export const NavbarWrapper = styled(Navbar)`
 	background: linear-gradient(180deg, rgba(21, 21, 23, 0.7) 0%, rgba(21, 21, 23, 0) 100%);
 	padding: 10px 0;
 	z-index: 99;
-	/* @media (min-width: 768px) {
-		border-bottom: 1px solid #6A6A6A;
-	} */
 `;
 
 export const NavbarContainer = styled(Container)`
@@ -28,22 +26,32 @@ export const NavbarMenuList = styled(Navbar.Collapse)`
 	margin: 0;
 	padding: 0;
 	flex-grow: 0 !important;
+	
 `;
 
 export const NavbarMenuItemWrap = styled(Nav)`
+	a {
+		color: unset !important;
+		text-decoration: none !important;
+		font-size: 18px;
+		font-weight: 400;
+		float: left;
+		&:hover {
+			font-weight: 500;
+			text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.39);
+		}
+	}
+	& > a:not(:last-child) {
+		margin-right: 18px;
+	}
+	@media screen  and (max-width: 767px) {
+		a {
+			margin: 8px 0;
+		}
+	}
 `;
 
-export const NavbarMenuItem = styled(Nav.Link)`
-	font-size: 18px;
-	font-weight: 400;
-	float: left;
-	color: var(--color-white) !important;
-
-	&:hover {
-		font-weight: 500;
-		text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.39);
-	}
-
+export const NavbarMenuItem = styled(Link)`
 `;
 
 export const NavTog = styled(Navbar.Toggle)`

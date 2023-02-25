@@ -4,9 +4,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import LogoBig from "src/assets/png/logo-big.png";
 import { toast, ToastContainer } from "react-toastify";
 import { Input } from "src/components/Input";
-import * as S from "./styled"
-import FormButton from "src/components/FormButton";
+import * as S from "../styled"
+import FormButton from "src/components/SubmitButton";
 import { FormProps } from "src/lib/ga/form-props";
+import Link from "next/link";
 
 const Login: React.FC = () => {
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
@@ -36,6 +37,9 @@ const Login: React.FC = () => {
                         <Input register={register} errors={errors} title="비밀번호" name="dashboardPassword" type={"password"} />
                     </S.InfoDiv>
                     <FormButton handleSubmit={handleSubmit} onValid={onValid} title="로그인" />
+                    <S.LinkButton >아직 계정이 없으신가요?
+                        <Link href="/register">회원가입</Link>
+                    </S.LinkButton>
                 </S.FormDiv>
                 <ToastContainer />
             </S.Wrap>

@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import { Navbar } from "src/components";
 import { GlobalStyle } from "src/styles/globalStyle";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import * as ga from "src/lib/ga/form-props";
+import * as ga from "src/lib/ga/index";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	const router = useRouter();

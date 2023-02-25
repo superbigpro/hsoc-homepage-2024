@@ -1,13 +1,14 @@
 import { NextPage } from "next";
-import * as S from "./styled";
+import * as S from "../styled";
 import LogoBig from "src/assets/png/logo-big.png";
 import { useForm } from "react-hook-form";
 import { Input } from "src/components/Input";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from "react-toastify"
 import { Instance } from "src/lib/ga/api";
-import FormButton from "src/components/FormButton";
-import { FormProps } from "../../lib/ga/form-props";
+import FormButton from "src/components/SubmitButton";
+import { FormProps } from "../../../lib/ga/form-props";
+import Link from "next/link";
 
 const ApplyPage: NextPage = () => {
 
@@ -51,7 +52,7 @@ const ApplyPage: NextPage = () => {
     return (
         <>
             <S.LogoBigImage src={LogoBig.src} />
-            <S.Wrap>
+            <S.RegisterWrap>
                 <S.FormDiv>
                     <S.InfoDiv>
                         <Input register={register} errors={errors} title="아이디" name="nickName" divStyle={{ marginTop: "0" }} />
@@ -62,9 +63,12 @@ const ApplyPage: NextPage = () => {
                         <Input register={register} errors={errors} title="비밀번호 확인" name="passwordCheck" type="password" />
                         {/* <Input register={register} errors={errors} title="자기소개" name="introduce" divStyle={{ marginBottom: "0" }} /> */}
                     </S.InfoDiv>
-                    <FormButton handleSubmit={handleSubmit} onValid={onValid} title="신청하기" />
+                    <FormButton handleSubmit={handleSubmit} onValid={onValid} title="회원가입" />
+                    <S.LinkButton >이미 계정이 있으신가요?
+                        <Link href="/login">로그인</Link>
+                    </S.LinkButton>
                 </S.FormDiv>
-            </S.Wrap>
+            </S.RegisterWrap>
             <ToastContainer />
         </>
     )

@@ -1,1 +1,1 @@
-export { default } from "src/containers/dashboard";
+export { default } from "src/containers/form/dashboard";
