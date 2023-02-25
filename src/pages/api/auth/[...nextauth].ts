@@ -16,6 +16,7 @@ const authOptions: NextAuthOptions = {
       type: "credentials",
       credentials: {},
       async authorize(credentials, req) {
+        console.log(req, "req")
         const { callbackUrl } = credentials as {
           callbackUrl: string;
         };
@@ -31,12 +32,12 @@ const authOptions: NextAuthOptions = {
         console.log(student)
         if (callbackUrl === `${baseUrl}/dashboard`) {
           if (student?.role === "OPERATOR") {
-            return { id: "1", ok: true, message: "Login Success" };
+            return { id: "1", email: "hsoc" };
           } else if (id !== "hansei@hsoc" || password !== "hsocmaster") {
             throw new Error("Login Failed");
           }
-          return { id: "1", ok: true, message: "Login Success" };
-        } else if (callbackUrl === `${baseUrl}/user`) {
+          return { id: "1", email: "hsoc" };
+        } else if (callbackUrl === `${baseUrl}/login`) {
           if (student?.role !== "STUDENT") {
             throw new Error("Login Failed");
           }
