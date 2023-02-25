@@ -1,5 +1,8 @@
 export interface FormProps {
     errors: {
+        nickName: {
+            message: string;
+        }
         name: {
             message: string;
         };
@@ -16,6 +19,7 @@ export interface FormProps {
             message: string;
         };
     };
+    nickName: string;
     name: string;
     studentId: string;
     phoneNumber: string;

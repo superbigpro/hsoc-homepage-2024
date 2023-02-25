@@ -5,7 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { Input } from "src/components/Input";
 import * as S from "./styled";
 import FormButton from "src/components/FormButton";
-import { FormProps } from "src/containers";
+import { FormProps } from "src/lib/ga/form-props";
 
 const Login: React.FC = () => {
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();

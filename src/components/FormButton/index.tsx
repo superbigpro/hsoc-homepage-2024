@@ -1,6 +1,6 @@
 import { BaseSyntheticEvent } from 'react';
 import { SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
-import { FormProps } from 'src/containers';
+import { FormProps } from 'src/lib/ga/form-props';
 import * as S from './styled';
 
 interface FormButtonProps {
@@ -9,7 +9,7 @@ interface FormButtonProps {
     onValid: SubmitHandler<FormProps>;
 }
 
-const FormButton: React.FC<FormButtonProps> = ({title, handleSubmit, onValid}) => {
+const FormButton: React.FC<FormButtonProps> = ({ title, handleSubmit, onValid }) => {
     return (
         <>
             <S.ButtonDiv>

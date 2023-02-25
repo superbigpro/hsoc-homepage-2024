@@ -22,7 +22,8 @@ interface DashboardPageProps {
 
 
 const DashboardPage: NextPage<DashboardPageProps> = ({ students }) => {
-    const { status } = useSession();
+    const { data, status } = useSession();
+    console.log(data, 'data')
 
     if (status === "authenticated") {
         return (
