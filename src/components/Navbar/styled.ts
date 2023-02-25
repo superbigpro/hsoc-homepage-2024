@@ -30,7 +30,7 @@ export const NavbarMenuList = styled(Navbar.Collapse)`
 `;
 
 export const NavbarMenuItemWrap = styled(Nav)`
-	a {
+	a,p {
 		color: unset !important;
 		text-decoration: none !important;
 		font-size: 18px;
@@ -41,17 +41,26 @@ export const NavbarMenuItemWrap = styled(Nav)`
 			text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.39);
 		}
 	}
-	& > a:not(:last-child) {
+	& > a:not(:last-child), p:not(:last-child) {
 		margin-right: 18px;
 	}
 	@media screen  and (max-width: 767px) {
-		a {
+		a,p {
 			margin: 8px 0;
 		}
 	}
 `;
 
-export const NavbarMenuItem = styled(Link)`
+export const LogOutMessage = styled.p`
+	color: unset !important;
+		text-decoration: none !important;
+		font-size: 18px;
+		font-weight: 400;
+		float: left;
+		&:hover {
+			font-weight: 500;
+			text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.39);
+		}
 `;
 
 export const NavTog = styled(Navbar.Toggle)`

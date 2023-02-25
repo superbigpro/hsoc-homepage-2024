@@ -1,11 +1,12 @@
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import 'react-toastify/dist/ReactToastify.css';
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { Input } from "src/components/Input";
 import * as S from "../../styled";
 import FormButton from "src/components/SubmitButton";
 import { FormProps } from "src/lib/ga/form-props";
+import { Success, Error } from "src/lib/ga/notification";
 
 const Login: React.FC = () => {
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
@@ -17,9 +18,9 @@ const Login: React.FC = () => {
             redirect: false,
         }).then((res) => {
             res?.ok ? (
-                toast.success('로그인에 성공하셨습니다.', { position: "bottom-right" })
+                Success('로그인에 성공하셨습니다')
             ) : (
-                toast.error('로그인에 실패하셨습니다.', { position: "bottom-right" }),
+                Error('로그인에 실패하셨습니다'),
                 setValue("dashboardId", ""),
                 setValue("dashboardPassword", "")
             )
@@ -35,8 +36,8 @@ const Login: React.FC = () => {
                     </S.InfoDiv>
                     <FormButton handleSubmit={handleSubmit} onValid={onValid} title="로그인" />
                 </S.FormDiv>
-                <ToastContainer />
             </S.Wrap>
+            <ToastContainer />
         </>
     )
 }

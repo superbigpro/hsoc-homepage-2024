@@ -1,7 +1,6 @@
 import { NextPage } from "next"
 import { useSession } from "next-auth/react";
 import { Instance } from "src/lib/ga/api";
-import Loading from "../loading";
 import Login from "./login";
 import Main from "./main";
 
@@ -25,10 +24,6 @@ const DashboardPage: NextPage<DashboardPageProps> = ({ students }) => {
     if (status === "authenticated" && data.user?.email === "hsoc") {
         return (
             <Main students={students} />
-        )
-    } else if (status === "loading") {
-        return (
-            <Loading />
         )
     } else {
         return (

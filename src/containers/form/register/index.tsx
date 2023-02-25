@@ -4,13 +4,18 @@ import LogoBig from "src/assets/png/logo-big.png";
 import { useForm } from "react-hook-form";
 import { Input } from "src/components/Input";
 import 'react-toastify/dist/ReactToastify.css';
-import { toast, ToastContainer } from "react-toastify"
+import { ToastContainer } from "react-toastify"
 import { Instance } from "src/lib/ga/api";
 import FormButton from "src/components/SubmitButton";
 import { FormProps } from "../../../lib/ga/form-props";
 import Link from "next/link";
+import { Success, Error } from "src/lib/ga/notification";
+import { useEffect } from "react";
+import { useSession } from "next-auth/react";
+import Router from "next/router";
 
 const ApplyPage: NextPage = () => {
+    const { status } = useSession();
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
 
@@ -21,33 +26,37 @@ const ApplyPage: NextPage = () => {
                 nickName: data.nickName,
                 name: data.name,
                 studentId: data.studentId,
-                // phoneNumber: data.phoneNumber,
                 password: data.password,
             }).then((res) => {
                 res.data.ok ? (
-                    toast.success(`${res.data.message}`, { position: "bottom-right" }),
+                    Success(res.data.message),
                     setValue("nickName", ""),
                     setValue("name", ""),
                     setValue("studentId", ""),
-                    // setValue("phoneNumber", ""),
                     setValue("password", ""),
                     setValue("passwordCheck", "")
                 ) : (
-                    toast.error(`${res.data.message}`, { position: "bottom-right" })
+                    Error(res.data.message)
                 )
             });
         } catch (err) {
             console.log(err)
-            toast.error("Error!", { position: "top-center" });
+            Error("Error!")
         }
     };
-
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const inputValue = e.target.value;
-        if (inputValue.length === 3 || inputValue.length === 8) {
-            setValue("phoneNumber", inputValue + "-");
+    
+    useEffect(() => {
+        if (status === "authenticated") {
+            Router.replace("/")
         }
-    }
+    }, [])
+
+    // const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     const inputValue = e.target.value;
+    //     if (inputValue.length === 3 || inputValue.length === 8) {
+    //         setValue("phoneNumber", inputValue + "-");
+    //     }
+    // }
 
     return (
         <>

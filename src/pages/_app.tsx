@@ -39,8 +39,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 				}}
 			/>
 			<GlobalStyle />
-			<Navbar />
 			<SessionProvider session={pageProps.session}>
+				<Navbar />
 				<Component {...pageProps} />
 			</SessionProvider>
 		</>

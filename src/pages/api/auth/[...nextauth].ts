@@ -16,7 +16,6 @@ const authOptions: NextAuthOptions = {
       type: "credentials",
       credentials: {},
       async authorize(credentials, req) {
-        console.log(req, "req")
         const { callbackUrl } = credentials as {
           callbackUrl: string;
         };
@@ -38,7 +37,7 @@ const authOptions: NextAuthOptions = {
           }
           return { id: "1", email: "hsoc" };
         } else if (callbackUrl === `${baseUrl}/login`) {
-          if (student?.role !== "STUDENT") {
+          if (!student) {
             throw new Error("Login Failed");
           }
           return { id: "1" };

@@ -4,6 +4,7 @@ import * as S from "./styled";
 import LogoPNG from "src/assets/png/logo.png";
 import Image from "next/image";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
 
 const navMenuList = [
 	{
@@ -19,8 +20,8 @@ const navMenuList = [
 		text: "관제 일지",
 	},
 	{
-		href: "/login",
-		text: "로그인",
+		href: "/apply",
+		text: "지원하기",
 	},
 	// {
 	// 	href: "https://wargame.hsoc.kr",
@@ -29,6 +30,7 @@ const navMenuList = [
 ];
 
 export const Navbar: React.FC = () => {
+	const { status } = useSession();
 
 	return (
 		<S.NavbarWrapper expand="md" >
@@ -48,6 +50,14 @@ export const Navbar: React.FC = () => {
 								</Link>
 							);
 						})}
+						{status !== "authenticated" ? (
+							<Link href='/login'>
+								로그인
+							</Link>) : (
+							<>
+								<p onClick={() => { signOut() }}>로그아웃</p>
+							</>
+						)}
 					</S.NavbarMenuItemWrap>
 				</S.NavbarMenuList>
 
