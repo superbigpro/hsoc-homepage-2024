@@ -19,8 +19,8 @@ const navMenuList = [
 		text: "관제 일지",
 	},
 	{
-		href: "/apply",
-		text: "지원하기",
+		href: "/register",
+		text: "회원가입",
 	},
 	// {
 	// 	href: "https://wargame.hsoc.kr",

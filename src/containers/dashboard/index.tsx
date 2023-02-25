@@ -1,12 +1,6 @@
 import { NextPage } from "next"
-import { signIn, signOut, useSession } from "next-auth/react";
-import Link from "next/link";
-import React, { FormEventHandler, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import { DashboardContentTitle } from "src/components/DashboardContentTitle";
-import { Input } from "src/components/Input";
+import { useSession } from "next-auth/react";
 import { Instance } from "src/lib/ga/api";
-import { FormProps } from "../apply";
 import Loading from "./loading";
 import Login from "./login";
 import Main from "./main";
@@ -17,7 +11,9 @@ export interface Student {
     name: string,
     studentId: string,
     phoneNumber: string,
+    password: string,
     introduce: string;
+    // role: Ro
 }
 
 interface DashboardPageProps {
@@ -26,7 +22,7 @@ interface DashboardPageProps {
 
 
 const DashboardPage: NextPage<DashboardPageProps> = ({ students }) => {
-    const {status } = useSession();
+    const { status } = useSession();
 
     if (status === "authenticated") {
         return (

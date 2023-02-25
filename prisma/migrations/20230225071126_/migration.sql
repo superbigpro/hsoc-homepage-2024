@@ -1,20 +1,21 @@
 /*
   Warnings:
 
-  - You are about to drop the `User` table. If the table is not empty, all the data it contains will be lost.
+  - You are about to drop the `Student` table. If the table is not empty, all the data it contains will be lost.
 
 */
 -- DropTable
-DROP TABLE `User`;
+DROP TABLE `Student`;
 
 -- CreateTable
 CREATE TABLE `student` (
-    `id` VARCHAR(191) NOT NULL,
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `name` VARCHAR(191) NOT NULL,
     `studentId` VARCHAR(191) NOT NULL,
     `phoneNumber` VARCHAR(191) NOT NULL,
-    `introduce` VARCHAR(191) NULL,
+    `password` VARCHAR(191) NOT NULL,
+    `introduce` MEDIUMTEXT NULL,
 
     UNIQUE INDEX `student_studentId_key`(`studentId`),
     UNIQUE INDEX `student_phoneNumber_key`(`phoneNumber`),

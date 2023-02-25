@@ -1,6 +1,6 @@
 import { BaseSyntheticEvent } from 'react';
 import { SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
-import { FormProps } from 'src/containers/apply';
+import { FormProps } from 'src/containers';
 import * as S from './styled';
 
 interface FormButtonProps {

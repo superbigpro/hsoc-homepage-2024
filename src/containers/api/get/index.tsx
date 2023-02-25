@@ -1,10 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import apply from "src/lib/ga/apply";
+import prisma from "src/lib/ga/apply";
 
 export default async function Get(req: NextApiRequest, res: NextApiResponse) {
-    const students = await apply.student.findMany({
+    const students = await prisma.student.findMany({
         orderBy: {
-            createdAt: "desc",
+            id: "asc",
         },
     })
     return res.send(students);

@@ -1,7 +1,11 @@
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { redirect } from "react-router-dom";
+import apply from "../../../lib/ga/apply";
 
 const authOptions: NextAuthOptions = {
+  adapter: PrismaAdapter(apply),
   session: {
     strategy: "jwt",
   },
@@ -9,7 +13,7 @@ const authOptions: NextAuthOptions = {
     CredentialsProvider({
       type: "credentials",
       credentials: {},
-      authorize(credentials, req) {
+      async authorize(credentials, req) {
         const { id, password } = credentials as {
           id: string;
           password: string;
@@ -20,12 +24,7 @@ const authOptions: NextAuthOptions = {
         return { id: "1", ok: true, message: "Login Success" };
       },
     }),
-  ],
-  pages: {
-    signIn: "/dashboard/login",
-    signOut: "/dashboard/logout",
-    error: "/dashboard/",
-  },
+  ]
 };
 
 export default NextAuth(authOptions);

@@ -7,26 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from "react-toastify"
 import { Instance } from "src/lib/ga/api";
 import FormButton from "src/components/FormButton";
-
-export interface FormProps {
-    errors: {
-        name: {
-            message: string;
-        };
-        studentId: {
-            message: string;
-        };
-        introduce: {
-            message: string;
-        };
-    };
-    name: string;
-    studentId: string;
-    phoneNumber: string;
-    introduce: string;
-    id: string;
-    password: string;
-};
+import { FormProps } from "..";
 
 const ApplyPage: NextPage = () => {
 
@@ -39,14 +20,14 @@ const ApplyPage: NextPage = () => {
                 name: data.name,
                 studentId: data.studentId,
                 phoneNumber: data.phoneNumber,
-                introduce: data.introduce,
+                password: data.password,
             }).then((res) => {
                 res.data.ok ? (
                     toast.success(`${res.data.message}`, { position: "bottom-right" }),
                     setValue("name", ""),
                     setValue("studentId", ""),
                     setValue("phoneNumber", ""),
-                    setValue("introduce", "")
+                    setValue("password", "")
                 ) : (
                     toast.error(`${res.data.message}`, { position: "bottom-right" })
                 )
@@ -73,7 +54,9 @@ const ApplyPage: NextPage = () => {
                         <Input register={register} errors={errors} title="이름" name="name" minValue={2} maxValue={4} divStyle={{ marginTop: "0" }} />
                         <Input register={register} errors={errors} example="예) 클라우드보안과 1학년 1반 1번 - C1111" title="학번" name="studentId" minValue={5} maxValue={5} />
                         <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} />
-                        <Input register={register} errors={errors} title="자기소개" name="introduce" divStyle={{ marginBottom: "0" }} />
+                        <Input register={register} errors={errors} title="비밀번호" name="password" type="password" />
+                        <Input register={register} errors={errors} title="비밀번호 확인" name="passwordCheck" type="password" />
+                        {/* <Input register={register} errors={errors} title="자기소개" name="introduce" divStyle={{ marginBottom: "0" }} /> */}
                     </S.InfoDiv>
                     <FormButton handleSubmit={handleSubmit} onValid={onValid} title="신청하기" />
                 </S.FormDiv>

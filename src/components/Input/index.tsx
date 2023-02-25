@@ -1,6 +1,6 @@
 import { HTMLInputTypeAttribute } from "react";
 import { FieldErrors, UseFormRegister } from "react-hook-form"
-import { FormProps } from "src/containers/apply"
+import { FormProps } from "src/containers";
 import * as S from "./styled"
 
 interface InputProps {
