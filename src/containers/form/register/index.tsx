@@ -14,7 +14,7 @@ import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
 
-const ApplyPage: NextPage = () => {
+const RegisterPage: NextPage = () => {
     const { status } = useSession();
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
@@ -44,19 +44,12 @@ const ApplyPage: NextPage = () => {
             Error("Error!")
         }
     };
-    
+
     useEffect(() => {
         if (status === "authenticated") {
             Router.replace("/")
         }
     }, [])
-
-    // const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     const inputValue = e.target.value;
-    //     if (inputValue.length === 3 || inputValue.length === 8) {
-    //         setValue("phoneNumber", inputValue + "-");
-    //     }
-    // }
 
     return (
         <>
@@ -67,10 +60,8 @@ const ApplyPage: NextPage = () => {
                         <Input register={register} errors={errors} title="아이디" name="nickName" divStyle={{ marginTop: "0" }} />
                         <Input register={register} errors={errors} title="이름" name="name" minValue={2} maxValue={4} />
                         <Input register={register} errors={errors} example="예) 클라우드보안과 1학년 1반 1번 - C1111" title="학번" name="studentId" minValue={5} maxValue={5} />
-                        {/* <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} /> */}
                         <Input register={register} errors={errors} title="비밀번호" name="password" type="password" />
                         <Input register={register} errors={errors} title="비밀번호 확인" name="passwordCheck" type="password" />
-                        {/* <Input register={register} errors={errors} title="자기소개" name="introduce" divStyle={{ marginBottom: "0" }} /> */}
                     </S.InfoDiv>
                     <FormButton handleSubmit={handleSubmit} onValid={onValid} title="회원가입" />
                     <S.LinkButton >이미 계정이 있으신가요?
@@ -83,4 +74,4 @@ const ApplyPage: NextPage = () => {
     )
 }
 
-export default ApplyPage;
+export default RegisterPage;

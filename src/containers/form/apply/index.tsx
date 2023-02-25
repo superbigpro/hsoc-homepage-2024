@@ -13,8 +13,8 @@ import Router from "next/router";
 import { Success, Error } from "src/lib/ga/notification";
 import { NextPage } from "next";
 
-const LoginPage: NextPage = () => {
-    const { data, status } = useSession();
+const ApplyPage: NextPage = () => {
+    const { status } = useSession();
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
 
@@ -34,30 +34,37 @@ const LoginPage: NextPage = () => {
             )
         })
     }
-    useEffect(() => {
-        if (status === "authenticated") {
-            Router.replace("/")
-        }
-    }, [])
 
-    return (
-        <>
-            <S.LogoBigImage src={LogoBig.src} />
-            <S.Wrap>
-                <S.FormDiv>
-                    <S.InfoDiv>
-                        <Input register={register} errors={errors} title="아이디" name="nickName" divStyle={{ marginTop: "0" }} />
-                        <Input register={register} errors={errors} title="비밀번호" name="password" type={"password"} />
-                    </S.InfoDiv>
-                    <FormButton handleSubmit={handleSubmit} onValid={onValid} title="로그인" />
-                    <S.LinkButton >아직 계정이 없으신가요?
-                        <Link href="/register">회원가입</Link>
-                    </S.LinkButton>
-                </S.FormDiv>
-            </S.Wrap>
-            <ToastContainer />
-        </>
-    )
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const inputValue = e.target.value;
+        if (inputValue.length === 3 || inputValue.length === 8) {
+            setValue("phoneNumber", inputValue + "-");
+        }
+    }
+
+    if (status === "authenticated") {
+        return (
+            <>
+                <S.LogoBigImage src={LogoBig.src} />
+                <S.ApplyWrap>
+                    <S.FormDiv>
+                        <S.InfoDiv>
+                            <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} />
+                            <Input register={register} errors={errors} title="자기소개" name="introduce" divStyle={{ marginBottom: "0" }} />
+                        </S.InfoDiv>
+                        <FormButton handleSubmit={handleSubmit} onValid={onValid} title="지원하기" />
+                    </S.FormDiv>
+                </S.ApplyWrap>
+                <ToastContainer />
+            </>
+        )
+    } else {
+        return (
+            <>
+                <h1>로그인이 안되어 있습니다.</h1>
+            </>
+        )
+    }
 }
 
-export default LoginPage;
+export default ApplyPage;

@@ -44,6 +44,22 @@ export const RegisterWrap = styled.div`
     }
 `;
 
+export const ApplyWrap = styled.div`
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem 0;
+    @media screen and (min-height: 900px){
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+`;
+
 export const FormDiv = styled.form`
     display: flex;
     width: 600px;
