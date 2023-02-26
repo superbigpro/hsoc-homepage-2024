@@ -14,9 +14,10 @@ interface InputProps {
     divStyle?: React.CSSProperties;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     type?: HTMLInputTypeAttribute;
+    value?: string;
 }
 
-export const Input: React.FC<InputProps> = ({ register, errors, title, example, name, minValue, maxValue, divStyle, onChange, type }) => {
+export const Input: React.FC<InputProps> = ({ register, errors, title, example, name, minValue, maxValue, divStyle, onChange, type, value }) => {
 
     return (
         <>
@@ -35,7 +36,7 @@ export const Input: React.FC<InputProps> = ({ register, errors, title, example, 
                                 value: maxValue,
                                 message: `${title}은 ${maxValue}자 이하이여야 합니다.`
                             }
-                        })} type={type} onChange={onChange} placeholder={`${title}${title === "전화번호" ? `를` : `을`} 입력해주세요...`} />
+                        })} type={type} onChange={onChange} placeholder={`${title}${title === "전화번호" ? `를` : `을`} 입력해주세요...`} value={value} />
                     ) : (
                         <S.IntroduceInput {...register(`${name}`, {
                             required: `${title}는 필수 입니다.`,
@@ -47,7 +48,7 @@ export const Input: React.FC<InputProps> = ({ register, errors, title, example, 
                                 value: maxValue,
                                 message: `${title}는 ${maxValue}자 이하이여야 합니다.`
                             }
-                        })} placeholder={`${title}를 입력해주세요...`} />
+                        })} placeholder={`${title}를 입력해주세요...`} value={value} />
                     )}
                 </div>
                 <S.Message>{errors[name]?.message}</S.Message>

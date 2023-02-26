@@ -18,15 +18,12 @@ const Main: React.FC<MainProps> = ({ students }) => {
         <>
             <div className="container">
                 <S.DashboardContainer>
-                    <S.DashboardLogOutTitle onClick={() => {
-                        signOut();
-                    }}>로그아웃</S.DashboardLogOutTitle>
                     <S.DashboardTitle>지원서 명단</S.DashboardTitle>
                     <S.DashboardContentDiv>
                         <S.DashboardContentTitleDiv>
                             <DashboardContentTitle title="아이디" />
-                            <DashboardContentTitle title="이름"   style={{ position: "relative", right: "15px" }}/>
-                            <DashboardContentTitle title="학번" style={{ marginRight: "20px" }}/>
+                            <DashboardContentTitle title="이름" style={{ position: "relative", right: "15px" }} />
+                            <DashboardContentTitle title="학번" style={{ marginRight: "20px" }} />
                             <DashboardContentTitle title="전화번호" />
                             <DashboardContentTitle title="자기소개" style={{ marginLeft: "40px" }} />
                         </S.DashboardContentTitleDiv>

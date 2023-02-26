@@ -1,6 +1,5 @@
 import * as S from './styled'
 import { NextPage } from "next";
-import Link from "next/link";
 
 const NonePage: NextPage = () => {
     return (

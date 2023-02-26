@@ -1,5 +1,6 @@
 import { NextPage } from "next"
 import { useSession } from "next-auth/react";
+import NonePage from "src/containers/404";
 import { Instance } from "src/lib/ga/api";
 import Login from "./login";
 import Main from "./main";
@@ -21,14 +22,14 @@ interface DashboardPageProps {
 const DashboardPage: NextPage<DashboardPageProps> = ({ students }) => {
     const { data, status } = useSession();
 
-    if (status === "authenticated" && data.user?.email === "hsoc") {
+    if (status === "authenticated" && data.user?.email === "OPERATOR") {
         return (
             <Main students={students} />
         )
     } else {
         return (
             <>
-                <Login />
+                <NonePage />
             </>
         )
     }

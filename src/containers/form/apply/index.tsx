@@ -17,7 +17,7 @@ import { Instance } from "src/lib/ga/api";
 const ApplyPage: NextPage = () => {
     const { data, status } = useSession();
     const studentId = data?.user?.name;
-    console.log(studentId)
+    console.log(data?.user?.email)
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
 
@@ -65,8 +65,8 @@ const ApplyPage: NextPage = () => {
                 <S.FormDiv>
                     <S.InfoDiv>
                         {/* <Input register={register} errors={errors} title="학번" name="studentId" minValue={5} maxValue={5} divStyle={{ marginTop: "0" }} /> */}
-                        <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "0" }} />
-                        <Input register={register} errors={errors} title="자기소개" name="introduce" />
+                        <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "0" }} value="asdfsadf" />
+                        <Input register={register} errors={errors} title="자기소개" name="introduce" value="asdfsadf" />
                     </S.InfoDiv>
                     <FormButton handleSubmit={handleSubmit} onValid={onValid} title="지원하기" />
                 </S.FormDiv>

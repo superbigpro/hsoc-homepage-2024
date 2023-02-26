@@ -16,6 +16,7 @@ const authOptions: NextAuthOptions = {
       type: "credentials",
       credentials: {},
       async authorize(credentials, req) {
+        console.log(req.body)
         const { callbackUrl } = credentials as {
           callbackUrl: string;
         };
@@ -29,20 +30,10 @@ const authOptions: NextAuthOptions = {
           }
         })
 
-        if (callbackUrl === `${baseUrl}/dashboard`) {
-          if (student?.role === "OPERATOR") {
-            return { id: "1", email: "hsoc" };
-          } else if (id !== "hansei@hsoc" || password !== "hsocmaster") {
-            throw new Error("Login Failed");
-          }
-          return { id: "1", email: "hsoc" };
-        } else if (callbackUrl) {
-          if (!student) {
-            throw new Error("Login Failed");
-          }
-          return { id: "1", name: student.studentId };
+        if (!student) {
+          throw new Error("Login Failed");
         }
-        throw new Error("Login Failed");
+        return { id: "1", name: student.studentId, email: student.role };
       },
     }),
   ]
