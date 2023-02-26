@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import { Input } from "src/components/Input";
 import * as S from "../../styled";
 import FormButton from "src/components/SubmitButton";
-import { FormProps } from "src/lib/ga/form-props";
+import { FormProps } from "src/lib/ga/interface";
 import { Success, Error } from "src/lib/ga/notification";
 
 const Login: React.FC = () => {

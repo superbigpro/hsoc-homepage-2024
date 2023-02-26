@@ -1,11 +1,11 @@
 import React from "react";
 import { signOut } from "next-auth/react";
 import { DashboardContentTitle } from "src/components/DashboardContentTitle";
-import { Student } from "..";
 import * as S from "./styled"
 import { useRouter } from "next/router";
 import Modal from "../modal";
 import Link from "next/link";
+import { Student } from "src/lib/ga/interface";
 
 interface MainProps {
     students: Student[];

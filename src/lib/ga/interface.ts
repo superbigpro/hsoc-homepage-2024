@@ -29,3 +29,12 @@ export interface FormProps {
     dashboardId: string;
     dashboardPassword: string;
 };
+
+export interface Student {
+    id: number,
+    name: string,
+    studentId: string,
+    phoneNumber: string,
+    password: string,
+    introduce: string;
+}

@@ -1,8 +1,4 @@
-import axios, { AxiosInstance } from "axios";
-
-interface InstanceProps {
-    baseURL: string;
-}
+import axios from "axios";
 
 export const Instance = (baseURL: string) => {
     const instance = axios.create({

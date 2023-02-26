@@ -4,8 +4,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { redirect } from "react-router-dom";
 import apply from "../../../lib/ga/apply";
 
-const baseUrl = "http://localhost:3000"
-
 const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(apply),
   session: {
@@ -16,10 +14,6 @@ const authOptions: NextAuthOptions = {
       type: "credentials",
       credentials: {},
       async authorize(credentials, req) {
-        console.log(req.body)
-        const { callbackUrl } = credentials as {
-          callbackUrl: string;
-        };
         const { id, password } = credentials as {
           id: string;
           password: string;
@@ -29,8 +23,10 @@ const authOptions: NextAuthOptions = {
             nickName: id,
           }
         })
-
         if (!student) {
+          throw new Error("Login Failed");
+        }
+        if (student.password !== password) {
           throw new Error("Login Failed");
         }
         return { id: "1", name: student.studentId, email: student.role };

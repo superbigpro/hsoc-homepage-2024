@@ -6,7 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { Input } from "src/components/Input";
 import * as S from "../styled"
 import FormButton from "src/components/SubmitButton";
-import { FormProps } from "src/lib/ga/form-props";
+import { FormProps } from "src/lib/ga/interface";
 import Link from "next/link";
 import { useEffect } from "react";
 import Router, { useRouter } from "next/router";

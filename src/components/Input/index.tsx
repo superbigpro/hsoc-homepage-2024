@@ -1,6 +1,6 @@
 import { HTMLInputTypeAttribute } from "react";
 import { FieldErrors, UseFormRegister } from "react-hook-form"
-import { FormProps } from "src/lib/ga/form-props";
+import { FormProps } from "src/lib/ga/interface";
 import * as S from "./styled"
 
 interface InputProps {

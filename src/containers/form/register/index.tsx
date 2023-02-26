@@ -7,12 +7,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify"
 import { Instance } from "src/lib/ga/api";
 import FormButton from "src/components/SubmitButton";
-import { FormProps } from "../../../lib/ga/form-props";
+import { FormProps } from "../../../lib/ga/interface";
 import Link from "next/link";
 import { Success, Error } from "src/lib/ga/notification";
 import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
+import { baseUrl } from "src/lib/ga/base-url";
 
 const RegisterPage: NextPage = () => {
     const { status } = useSession();
@@ -20,7 +21,7 @@ const RegisterPage: NextPage = () => {
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
 
     const onValid = async (data: FormProps) => {
-        const instance = Instance('/api/create')
+        const instance = Instance(`${baseUrl}/api/create`)
         try {
             await instance.post('', {
                 nickName: data.nickName,
