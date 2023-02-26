@@ -60,18 +60,36 @@ const ApplyPage: NextPage = () => {
 
     return (
         <>
-            <S.LogoBigImage src={LogoBig.src} />
-            <S.ApplyWrap>
-                <S.FormDiv>
-                    <S.InfoDiv>
-                        {/* <Input register={register} errors={errors} title="학번" name="studentId" minValue={5} maxValue={5} divStyle={{ marginTop: "0" }} /> */}
-                        <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "0" }} value="asdfsadf" />
-                        <Input register={register} errors={errors} title="자기소개" name="introduce" value="asdfsadf" />
-                    </S.InfoDiv>
-                    <FormButton handleSubmit={handleSubmit} onValid={onValid} title="지원하기" />
-                </S.FormDiv>
-            </S.ApplyWrap>
-            <ToastContainer />
+            {status === "authenticated" ? (
+                <>
+                    <S.LogoBigImage src={LogoBig.src} />
+                    <S.ApplyWrap>
+                        <S.FormDiv>
+                            <S.InfoDiv>
+                                {/* <Input register={register} errors={errors} title="학번" name="studentId" minValue={5} maxValue={5} divStyle={{ marginTop: "0" }} /> */}
+                                <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "0" }} />
+                                <Input register={register} errors={errors} title="자기소개" name="introduce" />
+                            </S.InfoDiv>
+                            <FormButton handleSubmit={handleSubmit} onValid={onValid} title="지원하기" />
+                        </S.FormDiv>
+                    </S.ApplyWrap>
+                    <ToastContainer />
+                </>
+            ) : (
+                <>
+                    <S.ErrorWrap className="container">
+                        <h1>401</h1>
+                        <S.Line></S.Line>
+                        <S.Message>지원하려면, 먼저
+                            <Link href="/login">
+                                로그인
+                            </Link>
+                            해야 합니다.
+                        </S.Message>
+                    </S.ErrorWrap>
+                </>
+
+            )}
         </>
     )
 }

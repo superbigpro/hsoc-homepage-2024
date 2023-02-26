@@ -6,7 +6,7 @@ const NonePage: NextPage = () => {
         <S.Wrap className="container">
             <h1>404</h1>
             <S.Line></S.Line>
-            <S.Message>This page could not be found.</S.Message>
+            <S.Message>존재하지 않는 페이지 입니다.</S.Message>
         </S.Wrap>
     )
 }

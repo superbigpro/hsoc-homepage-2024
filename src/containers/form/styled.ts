@@ -115,3 +115,40 @@ export const LinkButton = styled.p`
 		}
     }
 `;
+
+
+export const ErrorWrap = styled.div`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const ErrorMessageDiv = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const Line = styled.span`
+    height: 30px;
+    border: 1px solid #fafafa;
+    margin: 0 20px;
+`;
+
+export const Message = styled.p`
+    font-size: 18px;
+    a{
+        text-decoration: none !important;
+        color: #7F69F6 !important;
+        font-size: 18px;
+        margin:0 6px;
+        transition: opacity 0.2s ease-in-out;
+        &:hover {
+            opacity: 0.8;
+		}
+    }
+`;
