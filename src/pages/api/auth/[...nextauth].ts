@@ -36,11 +36,11 @@ const authOptions: NextAuthOptions = {
             throw new Error("Login Failed");
           }
           return { id: "1", email: "hsoc" };
-        } else if (callbackUrl === `${baseUrl}/login`) {
+        } else if (callbackUrl) {
           if (!student) {
             throw new Error("Login Failed");
           }
-          return { id: "1" };
+          return { id: "1", name: student.studentId };
         }
         throw new Error("Login Failed");
       },

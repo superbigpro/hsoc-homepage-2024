@@ -47,7 +47,7 @@ export const Input: React.FC<InputProps> = ({ register, errors, title, example, 
                                 value: maxValue,
                                 message: `${title}는 ${maxValue}자 이하이여야 합니다.`
                             }
-                        })} placeholder={`${title}를 입력해주세요..`} />
+                        })} placeholder={`${title}를 입력해주세요...`} />
                     )}
                 </div>
                 <S.Message>{errors[name]?.message}</S.Message>

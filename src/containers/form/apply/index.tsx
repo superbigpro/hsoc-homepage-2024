@@ -12,28 +12,38 @@ import { useEffect } from "react";
 import Router from "next/router";
 import { Success, Error } from "src/lib/ga/notification";
 import { NextPage } from "next";
+import { Instance } from "src/lib/ga/api";
 
 const ApplyPage: NextPage = () => {
-    const { status } = useSession();
+    const { data, status } = useSession();
+    const studentId = data?.user?.name;
+    console.log(studentId)
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
 
-    const onValid = async (formData: FormProps) => {
-        await signIn("credentials", {
-            id: formData.nickName,
-            password: formData.password,
-            redirect: false,
-        }).then((res) => {
-            res?.ok ? (
-                Success('로그인에 성공하셨습니다'),
-                Router.replace("/")
-            ) : (
-                Error('로그인에 실패하셨습니다'),
-                setValue("nickName", ""),
-                setValue("password", "")
-            )
-        })
-    }
+    const onValid = async (data: FormProps) => {
+        const instance = Instance('/api/update')
+        try {
+            await instance.post('', {
+                studentId: studentId,
+                phoneNumber: data.phoneNumber,
+                introduce: data.introduce,
+            }).then((res) => {
+                res.data.ok ? (
+                    Success(res.data.message),
+                    setValue("studentId", ""),
+                    setValue("phoneNumber", ""),
+                    setValue("introduce", "")
+                ) : (
+                    Error(res.data.message)
+                )
+            });
+        } catch (err) {
+            console.log(err)
+            Error("Error!")
+        }
+    };
+
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value;
@@ -42,29 +52,28 @@ const ApplyPage: NextPage = () => {
         }
     }
 
-    if (status === "authenticated") {
-        return (
-            <>
-                <S.LogoBigImage src={LogoBig.src} />
-                <S.ApplyWrap>
-                    <S.FormDiv>
-                        <S.InfoDiv>
-                            <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} />
-                            <Input register={register} errors={errors} title="자기소개" name="introduce" divStyle={{ marginBottom: "0" }} />
-                        </S.InfoDiv>
-                        <FormButton handleSubmit={handleSubmit} onValid={onValid} title="지원하기" />
-                    </S.FormDiv>
-                </S.ApplyWrap>
-                <ToastContainer />
-            </>
-        )
-    } else {
-        return (
-            <>
-                <h1>로그인이 안되어 있습니다.</h1>
-            </>
-        )
-    }
+    // useEffect(() => {
+    //     if (status !== "authenticated") {
+    //         Router.replace("/login/?redirect=/form/apply");
+    //     }
+    // }, [])
+
+    return (
+        <>
+            <S.LogoBigImage src={LogoBig.src} />
+            <S.ApplyWrap>
+                <S.FormDiv>
+                    <S.InfoDiv>
+                        {/* <Input register={register} errors={errors} title="학번" name="studentId" minValue={5} maxValue={5} divStyle={{ marginTop: "0" }} /> */}
+                        <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "0" }} />
+                        <Input register={register} errors={errors} title="자기소개" name="introduce" />
+                    </S.InfoDiv>
+                    <FormButton handleSubmit={handleSubmit} onValid={onValid} title="지원하기" />
+                </S.FormDiv>
+            </S.ApplyWrap>
+            <ToastContainer />
+        </>
+    )
 }
 
 export default ApplyPage;

@@ -10,6 +10,9 @@ export const LogoBigImage = styled.div<{ src: string }>`
     height: 100%;
     width: 100%;
     filter: blur(14px) brightness(0.15);
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
 `;
 
 export const Wrap = styled.div`
@@ -100,6 +103,7 @@ export const IntroduceDiv = styled.div`
 `;
 
 export const LinkButton = styled.p`
+    margin-top: 30px;
     color: var(--color-white);
     a{
         text-decoration: none !important;

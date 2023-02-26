@@ -9,12 +9,16 @@ import FormButton from "src/components/SubmitButton";
 import { FormProps } from "src/lib/ga/form-props";
 import Link from "next/link";
 import { useEffect } from "react";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import { Success, Error } from "src/lib/ga/notification";
 import { NextPage } from "next";
 
 const LoginPage: NextPage = () => {
-    const { data, status } = useSession();
+
+    const router = useRouter();
+    const redirect = router.query.redirect;
+
+    const { status } = useSession();
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
 
@@ -25,7 +29,6 @@ const LoginPage: NextPage = () => {
             redirect: false,
         }).then((res) => {
             res?.ok ? (
-                Success('로그인에 성공하셨습니다'),
                 Router.replace("/")
             ) : (
                 Error('로그인에 실패하셨습니다'),
@@ -34,16 +37,38 @@ const LoginPage: NextPage = () => {
             )
         })
     }
+
     useEffect(() => {
+        if (redirect) {
+            toast.info("지원하려면, 먼저 로그인 해야 합니다", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        }
         if (status === "authenticated") {
             Router.replace("/")
         }
-    }, [])
+        console.log(redirect)
+    }, [
+        // call once when component is mounted
+    ])
 
     return (
         <>
             <S.LogoBigImage src={LogoBig.src} />
             <S.Wrap>
+                {/* {redirect && (
+                    <S.RedirectBox>
+                        <S.RedirectMessage>
+                            지원하려면, 먼저 로그인 해야 합니다
+                        </S.RedirectMessage>
+                    </S.RedirectBox>
+                )} */}
                 <S.FormDiv>
                     <S.InfoDiv>
                         <Input register={register} errors={errors} title="아이디" name="nickName" divStyle={{ marginTop: "0" }} />
@@ -52,10 +77,11 @@ const LoginPage: NextPage = () => {
                     <FormButton handleSubmit={handleSubmit} onValid={onValid} title="로그인" />
                     <S.LinkButton >아직 계정이 없으신가요?
                         <Link href="/register">회원가입</Link>
-                    </S.LinkButton>
+                    </S.LinkButton >
                 </S.FormDiv>
             </S.Wrap>
-            <ToastContainer />
+            {/*  call ToastContainer one time */}
+            <ToastContainer limit={1} />
         </>
     )
 }
