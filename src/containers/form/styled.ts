@@ -160,7 +160,9 @@ export const GetMyInfoMessageDiv = styled.div`
 
 export const GetMyInfoMessage = styled.p`
     cursor: pointer;
-    color: #7F69F6;
+    /* color: #7F69F6; */
+    align-self: center;
+    color: var(--color-primary);
     font-size: 14px;
     width: 100%;
     text-align: right;

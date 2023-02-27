@@ -19,35 +19,12 @@ const Main: React.FC<MainProps> = ({ students }) => {
             <div className="container">
                 <S.DashboardContainer>
                     <S.DashboardTitle>지원서 명단</S.DashboardTitle>
-                    <S.DashboardContentDiv>
-                        <S.DashboardContentTitleDiv>
-                            <DashboardContentTitle title="아이디" />
-                            <DashboardContentTitle title="이름" style={{ position: "relative", right: "15px" }} />
-                            <DashboardContentTitle title="학번" style={{ marginRight: "20px" }} />
-                            <DashboardContentTitle title="전화번호" />
-                            <DashboardContentTitle title="자기소개" style={{ marginLeft: "40px" }} />
-                        </S.DashboardContentTitleDiv>
-                    </S.DashboardContentDiv>
-                    {students.map((index: Student, i: number) => {
-                        return (
-                            <>
-                                <S.DashboardContentWrapper>
-                                    <S.DashboardContent key={i}>
-                                        <DashboardContentTitle title={index.id.toString()} style={{ width: "20px" }} />
-                                        <DashboardContentTitle title={index.name} style={{ marginLeft: "10px" }} />
-                                        <DashboardContentTitle title={index.studentId} />
-                                        <DashboardContentTitle title={index.phoneNumber} />
-                                    </S.DashboardContent>
-                                    <Link href={`/dashboard/?id=${index.id}`}>
-                                        <S.DashboardIntroduceDiv>
-                                            <DashboardContentTitle style={{ wordBreak: "break-all", zIndex: "100" }} title={index.introduce} />
-                                        </S.DashboardIntroduceDiv>
-                                    </Link>
-                                </S.DashboardContentWrapper>
-                            </>
-                        )
-                    })}
-                    {router.query.id && (
+                    <S.DashboardContentTitleWrap>
+                        <S.DashboardContentTitle>번호</S.DashboardContentTitle>
+                        <S.DashboardContentTitle>아이디</S.DashboardContentTitle>
+                        <S.DashboardContentTitle>비밀번호</S.DashboardContentTitle>
+                    </S.DashboardContentTitleWrap>
+                    {/* {router.query.id && (
                         students.filter((student) => student.id.toString() === id).map((student) => {
                             return (
                                 <>
@@ -55,7 +32,7 @@ const Main: React.FC<MainProps> = ({ students }) => {
                                 </>
                             )
                         })
-                    )}
+                    )} */}
                 </S.DashboardContainer>
             </div >
         </>

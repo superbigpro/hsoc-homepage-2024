@@ -12,66 +12,15 @@ export const DashboardTitle = styled.h1`
     text-align: center;
 `;
 
-export const DashboardLogOutTitle = styled.p`
+export const DashboardContentTitleWrap = styled.div`
+    display: flex;
+    padding: 0 30px;
+    border-bottom: 1px solid white;
+`;
+
+export const DashboardContentTitle = styled.h2`
+    border: 1px solid red;
     margin: 0;
     padding: 0;
-    width: fit-content;
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.25s ease-in-out;
-    :hover{
-        color: var(--color-primary);
-    }
+    font-size: 22px;
 `;
-
-export const DashboardContentDiv = styled.div`
-    width: 100%;
-    background-color: #252525;
-    border: 1px solid #6A6A6A;
-    margin-bottom: 20px;
-    border-radius: 10px 10px 0 0;
-`;
-
-export const DashboardContentTitleDiv = styled.div`
-    width: 600px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 3px 30px;
-`;
-
-export const DashboardContentWrapper = styled.div`
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    border-bottom: 1px solid var(--color-white);
-    margin-bottom: 20px;
-`;
-
-export const DashboardContent = styled.div`
-    width: 500px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 0 30px;
-`;
-
-export const DashboardIntroduceDiv = styled.div`
-    width: 400px;
-    max-height: 100px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    overflow: scroll;
-    display: block;
-    @media screen and (min-width: 1300px) {
-    width: 540px;
-    }
-`;
-
-export const DashboardContentTitle = styled.span`
-    font-size: 18px;
-    font-weight: 400;
-`;
-
-

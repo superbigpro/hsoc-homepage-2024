@@ -10,6 +10,7 @@ import { FormProps } from "src/lib/ga/interface";
 import Link from "next/link";
 import { Success, Error } from "src/lib/ga/notification";
 import { NextPage } from "next";
+import RightArrowSVG from "src/assets/svg/right-arrow.svg";
 import { Instance } from "src/lib/ga/api";
 import { baseUrl } from "src/lib/ga/base-url";
 
@@ -79,6 +80,7 @@ const ApplyPage: NextPage = () => {
                         <S.FormDiv>
                             <S.GetMyInfoMessage onClick={getMyInfo}>
                                 내 정보 불러오기
+                                <RightArrowSVG style={{ marginBottom: "4px" }} />
                             </S.GetMyInfoMessage>
                             <S.InfoDiv>
                                 <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "10px" }} />

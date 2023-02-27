@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import * as bcrypt from 'bcrypt'
 import prisma from "src/lib/ga/apply";
 
 export default async function Create(req: NextApiRequest, res: NextApiResponse) {
@@ -9,38 +10,35 @@ export default async function Create(req: NextApiRequest, res: NextApiResponse) 
         return res.send({ ok: false, message: "학번 형식이 틀렸습니다." });
     }
 
-    // if (req.body.phoneNumber[0] !== "0" && req.body.phoneNumber[2] !== "0" || req.body.phoneNumber[1] !== "1") {
-    //     return res.send({ ok: false, message: "전화번호 형식이 틀렸습니다." });
-    // }
-
     const exitsStudentId = await student.findUnique({
         where: {
             studentId,
         },
     })
-    // const exitsPhoneNumber = await student.findUnique({
-    //     where: {
-    //         phoneNumber,
-    //     },
-    // })
 
     const exitsNickName = await student.findUnique({
-            where: {
-                nickName,
-            },
-        })
+        where: {
+            nickName,
+        },
+    })
 
     if (exitsStudentId || exitsNickName) {
         return res.send({ ok: false, message: "이미 신청하셨습니다." });
     }
+
+    async function hashPassword() {
+        const salt = await bcrypt.genSalt(10);
+        return await bcrypt.hash(password, salt);
+    }
+
+    const hashedPassword = await hashPassword();
 
     await student.create({
         data: {
             nickName,
             name,
             studentId,
-            // phoneNumber,
-            password,
+            password: hashedPassword,
         },
     })
     res.send({ ok: true, message: "신청이 완료되었습니다." });

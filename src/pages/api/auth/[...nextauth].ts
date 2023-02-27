@@ -1,7 +1,7 @@
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { redirect } from "react-router-dom";
+import * as bcrypt from 'bcrypt';
 import apply from "../../../lib/ga/apply";
 
 const authOptions: NextAuthOptions = {
@@ -23,13 +23,22 @@ const authOptions: NextAuthOptions = {
             nickName: id,
           }
         })
-        if (!student) {
-          throw new Error("Login Failed");
+
+        async function checkPassword(password: string) {
+          try {
+            const hashedPassword = await bcrypt.hash(password, 10);
+            const ok = await bcrypt.compare(password, hashedPassword);
+            return ok;
+          } catch (err) {
+            console.log(err, "checkPassword error");
+          }
         }
-        if (student.password !== password) {
-          throw new Error("Login Failed");
+
+        if (student && await checkPassword(password)) {
+          return { id: "1", name: student.studentId, email: student.role };
+        } else {
+          return null;
         }
-        return { id: "1", name: student.studentId, email: student.role };
       },
     }),
   ]
