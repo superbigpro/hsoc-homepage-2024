@@ -23,7 +23,7 @@ export default async function Create(req: NextApiRequest, res: NextApiResponse) 
     })
 
     if (exitsStudentId || exitsNickName) {
-        return res.send({ ok: false, message: "이미 신청하셨습니다." });
+        return res.send({ ok: false, message: "이미 존재하는 학생입니다." });
     }
 
     async function hashPassword() {
@@ -41,5 +41,5 @@ export default async function Create(req: NextApiRequest, res: NextApiResponse) 
             password: hashedPassword,
         },
     })
-    res.send({ ok: true, message: "신청이 완료되었습니다." });
+    res.send({ ok: true, message: "회원가입이 완료되었습니다." });
 }

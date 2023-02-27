@@ -8,15 +8,18 @@ import * as S from "../styled"
 import FormButton from "src/components/SubmitButton";
 import { FormProps } from "src/lib/ga/interface";
 import Link from "next/link";
-import { Success, Error } from "src/lib/ga/notification";
+import { Success, Error, CatchError } from "src/lib/ga/notification";
 import { NextPage } from "next";
 import RightArrowSVG from "src/assets/svg/right-arrow.svg";
 import { Instance } from "src/lib/ga/api";
 import { baseUrl } from "src/lib/ga/base-url";
+import { useState } from "react";
 
 const ApplyPage: NextPage = () => {
     const { data, status } = useSession();
     const studentId = data?.user?.name;
+
+    const [info, setInfo] = useState(false)
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
 
@@ -39,7 +42,7 @@ const ApplyPage: NextPage = () => {
             });
         } catch (err) {
             console.log(err)
-            Error("Error!")
+            CatchError("Error!")
         }
     };
 
@@ -60,14 +63,15 @@ const ApplyPage: NextPage = () => {
                 console.log(res)
                 res.data.ok ? (
                     setValue("phoneNumber", res.data.student.phoneNumber),
-                    setValue("introduce", res.data.student.introduce)
+                    setValue("introduce", res.data.student.introduce),
+                    setInfo(true)
                 ) : (
                     Error(res.data.message)
                 )
             });
         } catch (err) {
             console.log(err)
-            Error("Error!")
+            CatchError("Error!")
         }
     }
 
@@ -86,7 +90,7 @@ const ApplyPage: NextPage = () => {
                                 <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "10px" }} />
                                 <Input register={register} errors={errors} title="자기소개" name="introduce" />
                             </S.InfoDiv>
-                            <FormButton handleSubmit={handleSubmit} onValid={onValid} title="지원하기" />
+                            <FormButton handleSubmit={handleSubmit} onValid={onValid} title={info ? "수정하기" : "지원하기"} />
                         </S.FormDiv>
                     </S.ApplyWrap>
                     <ToastContainer />

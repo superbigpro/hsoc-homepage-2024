@@ -34,7 +34,8 @@ export interface Student {
     id: number,
     name: string,
     studentId: string,
+    nickName: string,
     phoneNumber: string,
-    password: string,
     introduce: string;
+    role: string;
 }

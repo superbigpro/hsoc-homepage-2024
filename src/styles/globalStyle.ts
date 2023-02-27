@@ -7,6 +7,9 @@ export const GlobalStyle = createGlobalStyle`
     * {
         box-sizing: border-box;
         outline: none;
+        ::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     :root {
@@ -28,9 +31,6 @@ export const GlobalStyle = createGlobalStyle`
         background: #0E0F13;
         color: #fafafa;
         letter-spacing: -0.055em;
-        ::-webkit-scrollbar {
-            display: none;
-        }
     }
 
     .container {

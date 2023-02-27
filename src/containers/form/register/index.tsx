@@ -9,7 +9,7 @@ import { Instance } from "src/lib/ga/api";
 import FormButton from "src/components/SubmitButton";
 import { FormProps } from "../../../lib/ga/interface";
 import Link from "next/link";
-import { Success, Error } from "src/lib/ga/notification";
+import { Success, Error, CatchError } from "src/lib/ga/notification";
 import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
@@ -42,7 +42,7 @@ const RegisterPage: NextPage = () => {
             });
         } catch (err) {
             console.log(err)
-            Error("Error!")
+            CatchError("Error!")
         }
     };
 

@@ -11,20 +11,18 @@ datasource db {
 
 enum Role {
   STUDENT
-  OPERATOR
+  ADMIN
 }
 
 model student {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
   // updateAt DateTime @default(now()) @updatedAt
-  nickName    String
+  nickName    String   @unique 
   name        String
-  studentId   String
-  phoneNumber String?
+  studentId   String   @unique
+  phoneNumber String?  @unique
   password    String
   introduce   String?  @db.MediumText
   role        Role     @default(STUDENT)
-
-  @@unique([nickName, studentId, phoneNumber])
 }
