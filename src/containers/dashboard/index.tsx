@@ -4,7 +4,6 @@ import NonePage from "src/containers/404";
 import { Instance } from "src/lib/ga/api";
 import { baseUrl } from "src/lib/ga/base-url";
 import { Student } from "src/lib/ga/interface";
-import Login from "./login";
 import Main from "./main";
 
 interface DashboardPageProps {
@@ -16,7 +15,6 @@ const DashboardPage: NextPage<DashboardPageProps> = ({ students }) => {
     const { data, status } = useSession();
 
     if (status === "authenticated" && data.user?.email === "ADMIN") {
-        console.log(data.user?.email)
         return (
             <Main students={students} />
         )

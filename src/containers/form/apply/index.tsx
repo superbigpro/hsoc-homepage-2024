@@ -60,7 +60,6 @@ const ApplyPage: NextPage = () => {
             await instance.post('', {
                 studentId: studentId,
             }).then((res) => {
-                console.log(res)
                 res.data.ok ? (
                     setValue("phoneNumber", res.data.student.phoneNumber),
                     setValue("introduce", res.data.student.introduce),

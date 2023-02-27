@@ -29,7 +29,6 @@ const questions = [
 
 const QnAPage: NextPage = () => {
 	const ref = useRef<any>();
-	console.log(ref);
 	const [showList, setShowList] = useState(questions.map((v) => false));
 
 	return (

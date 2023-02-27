@@ -7,6 +7,8 @@ import { baseUrl } from "src/lib/ga/base-url";
 import { Instance } from "src/lib/ga/api";
 import { CatchError, Error, Success } from "src/lib/ga/notification";
 import { ToastContainer } from "react-toastify";
+import Link from "next/link";
+import Modal from "../modal";
 
 interface MainProps {
     students: Student[];
@@ -19,7 +21,6 @@ const Main: React.FC<MainProps> = ({ students }) => {
     const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const studentId = e.target.parentElement?.children[3].textContent;
         const role = e.target.value;
-        console.log(role);
         const instance = Instance(`${baseUrl}/api/role-update`);
         try {
             instance.post('', {
@@ -60,7 +61,9 @@ const Main: React.FC<MainProps> = ({ students }) => {
                                     <S.DashboardContentTitle>{index.nickName}</S.DashboardContentTitle>
                                     <S.DashboardContentTitle>{index.studentId}</S.DashboardContentTitle>
                                     <S.DashboardContentTitle>{index.phoneNumber || "NULL"}</S.DashboardContentTitle>
-                                    <S.DashboardContentTitle style={{ marginRight: "20px" }}>{index.introduce || "NULL"}</S.DashboardContentTitle>
+                                    <Link href={`/dashboard/?id=${index.id}`}>
+                                        <S.DashboardContentTitle style={{ marginRight: "20px" }}>{index.introduce || "NULL"}</S.DashboardContentTitle>
+                                    </Link>
                                     <S.DashboardContentRole onChange={onChange}>
                                         <option>{index.role}</option>
                                         <option>{index.role === "ADMIN" ? "STUDENT" : "ADMIN"}</option>
@@ -69,7 +72,7 @@ const Main: React.FC<MainProps> = ({ students }) => {
                             </>
                         )
                     })}
-                    {/* {router.query.id && (
+                    {router.query.id && (
                         students.filter((student) => student.id.toString() === id).map((student) => {
                             return (
                                 <>
@@ -77,7 +80,7 @@ const Main: React.FC<MainProps> = ({ students }) => {
                                 </>
                             )
                         })
-                    )} */}
+                    )}
                 </S.DashboardContainer>
             </div >
             <ToastContainer />

@@ -12,8 +12,8 @@ export const Wrap = styled.div`
 
 export const ModalDiv = styled.div`
     margin-top: 30px;
-    height: 87%;
-    width: 80%;
+    height: 60%;
+    width: 50%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -44,6 +44,6 @@ export const IntroduceDiv = styled.div`
 
 export const IntroduceContent = styled.p`
     font-size: 20px;
-    text-align: center;
+    text-align: left;
     word-break: break-all;
 `;

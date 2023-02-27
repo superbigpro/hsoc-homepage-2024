@@ -25,13 +25,9 @@ const authOptions: NextAuthOptions = {
         })
 
         async function checkPassword(password: string) {
-          try {
-            const hashedPassword = await bcrypt.hash(password, 10);
-            const ok = await bcrypt.compare(password, hashedPassword);
-            return ok;
-          } catch (err) {
-            console.log(err, "checkPassword error");
-          }
+          const hashedPassword = await bcrypt.hash(password, 10);
+          const ok = await bcrypt.compare(password, hashedPassword);
+          return ok;
         }
 
         if (student && await checkPassword(password)) {

@@ -10,8 +10,6 @@ export default async function User(req: NextApiRequest, res: NextApiResponse) {
         },
     })
 
-    console.log(student);
-
     if (student?.introduce === null) {
         return res.send({ ok: false, message: "불러올 정보가 없습니다." });
     }

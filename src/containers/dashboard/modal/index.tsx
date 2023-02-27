@@ -1,22 +1,14 @@
-import { NextPage } from "next";
 import * as S from "./styled";
 import { useRouter } from "next/router";
-import { Student } from "..";
 import Link from "next/link";
 import { student } from "@prisma/client";
+import { Student } from "src/lib/ga/interface";
 
 interface ModalProps {
-    student: Student
+    student: Student;
 }
 
 const Modal: React.FC<ModalProps> = ({ student }) => {
-    const router = useRouter();
-    const onClick = () => {
-        router.push('/dashboard')
-    }
-    const onBoxClick = (id: student) => {
-        router.push(`/dashboard/?id=${id}`)
-    }
     return (
         <>
             <Link href={`/dashboard`}>
