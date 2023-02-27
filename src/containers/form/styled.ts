@@ -152,3 +152,20 @@ export const Message = styled.p`
 		}
     }
 `;
+
+export const GetMyInfoMessageDiv = styled.div`
+    border: 1px solid red;
+    width: 100%;
+`;
+
+export const GetMyInfoMessage = styled.p`
+    cursor: pointer;
+    color: #7F69F6;
+    font-size: 14px;
+    width: 100%;
+    text-align: right;
+    transition: opacity 0.2s ease-in-out;
+    &:hover {
+            opacity: 0.8;
+	}
+`;

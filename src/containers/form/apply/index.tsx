@@ -6,9 +6,8 @@ import { ToastContainer } from "react-toastify";
 import { Input } from "src/components/Input";
 import * as S from "../styled"
 import FormButton from "src/components/SubmitButton";
-import { FormProps, Student } from "src/lib/ga/interface";
+import { FormProps } from "src/lib/ga/interface";
 import Link from "next/link";
-import { useEffect } from "react";
 import { Success, Error } from "src/lib/ga/notification";
 import { NextPage } from "next";
 import { Instance } from "src/lib/ga/api";
@@ -17,7 +16,6 @@ import { baseUrl } from "src/lib/ga/base-url";
 const ApplyPage: NextPage = () => {
     const { data, status } = useSession();
     const studentId = data?.user?.name;
-    console.log(studentId)
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
 
@@ -33,7 +31,7 @@ const ApplyPage: NextPage = () => {
                     Success(res.data.message),
                     setValue("studentId", ""),
                     setValue("phoneNumber", ""),
-                    setValue("introduce", "asdf")
+                    setValue("introduce", "")
                 ) : (
                     Error(res.data.message)
                 )
@@ -52,6 +50,26 @@ const ApplyPage: NextPage = () => {
         }
     }
 
+    const getMyInfo = async () => {
+        const instance = Instance(`${baseUrl}/api/user`)
+        try {
+            await instance.post('', {
+                studentId: studentId,
+            }).then((res) => {
+                console.log(res)
+                res.data.ok ? (
+                    setValue("phoneNumber", res.data.student.phoneNumber),
+                    setValue("introduce", res.data.student.introduce)
+                ) : (
+                    Error(res.data.message)
+                )
+            });
+        } catch (err) {
+            console.log(err)
+            Error("Error!")
+        }
+    }
+
     return (
         <>
             {status === "authenticated" ? (
@@ -59,8 +77,11 @@ const ApplyPage: NextPage = () => {
                     <S.LogoBigImage src={LogoBig.src} />
                     <S.ApplyWrap>
                         <S.FormDiv>
+                            <S.GetMyInfoMessage onClick={getMyInfo}>
+                                내 정보 불러오기
+                            </S.GetMyInfoMessage>
                             <S.InfoDiv>
-                                <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "0" }} />
+                                <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "10px" }} />
                                 <Input register={register} errors={errors} title="자기소개" name="introduce" />
                             </S.InfoDiv>
                             <FormButton handleSubmit={handleSubmit} onValid={onValid} title="지원하기" />

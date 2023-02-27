@@ -31,6 +31,7 @@ export const NavbarMenuList = styled(Navbar.Collapse)`
 
 export const NavbarMenuItemWrap = styled(Nav)`
 	a,p {
+		cursor: default;
 		color: unset !important;
 		text-decoration: none !important;
 		font-size: 18px;

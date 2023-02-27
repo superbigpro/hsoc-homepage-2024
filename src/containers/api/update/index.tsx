@@ -23,9 +23,9 @@ export default async function Update(req: NextApiRequest, res: NextApiResponse) 
         return res.send({ ok: false, message: "존재하지 않는 학생입니다." });
     }
 
-    // if (new Date().getTime() < new Date("2021-08-01 00:00:00").getTime() || new Date().getTime() > new Date("2021-08-31 23:59:59").getTime()) {
-    //     return res.send({ ok: false, message: "신청 기간이 아닙니다." });
-    // }
+    if (new Date().getTime() < new Date("2022-02-27 00:00:00").getTime() || new Date().getTime() > new Date("2022-03-17 23:59:59").getTime()) {
+        return res.send({ ok: false, message: "신청 기간이 아닙니다." });
+    }
 
     await student.update({
         where: {
