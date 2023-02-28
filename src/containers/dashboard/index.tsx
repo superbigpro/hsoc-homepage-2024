@@ -10,11 +10,10 @@ interface DashboardPageProps {
     students: Student[];
 }
 
-
 const DashboardPage: NextPage<DashboardPageProps> = ({ students }) => {
     const { data, status } = useSession();
 
-    if (status === "authenticated" && data.user?.email === "ADMIN") {
+    if (status === "authenticated" && data.user?.email === "ADMIN" || data?.user?.name === "C0000") {
         return (
             <Main students={students} />
         )
