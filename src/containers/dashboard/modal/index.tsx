@@ -1,7 +1,5 @@
 import * as S from "./styled";
-import { useRouter } from "next/router";
 import Link from "next/link";
-import { student } from "@prisma/client";
 import { Student } from "src/lib/ga/interface";
 
 interface ModalProps {

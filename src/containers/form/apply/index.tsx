@@ -12,9 +12,7 @@ import { Success, Error, CatchError } from "src/lib/ga/notification";
 import { NextPage } from "next";
 import RightArrowSVG from "src/assets/svg/right-arrow.svg";
 import { Instance } from "src/lib/ga/api";
-import { baseUrl } from "src/lib/ga/base-url";
 import { useEffect, useState } from "react";
-import Router from "next/router";
 
 const ApplyPage: NextPage = () => {
     const { data, status } = useSession();

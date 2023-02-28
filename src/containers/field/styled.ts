@@ -1,4 +1,3 @@
-import { ImageProps } from "next/image";
 import styled from "styled-components";
 
 export const SectionImage = styled.div<{ src: string }>`

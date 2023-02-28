@@ -1,6 +1,6 @@
 import * as S from "./styled";
 import type { NextPage } from "next";
-import { Section, SectionTemplate } from "src/components";
+import { SectionTemplate } from "src/components";
 import NetWorkLogo from 'src/assets/png/network-logo.png';
 import ForensicLogo from 'src/assets/png/forensic-logo.png';
 import SystemLogo from 'src/assets/png/system-logo.png';

@@ -59,7 +59,6 @@ export const Navbar: React.FC = () => {
 						)}
 					</S.NavbarMenuItemWrap>
 				</S.NavbarMenuList>
-
 			</S.NavbarContainer>
 		</S.NavbarWrapper>
 	);

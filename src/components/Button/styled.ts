@@ -9,7 +9,7 @@ export const ButtonElement = styled.button`
 	background-color: var(--color-primary);
 	box-shadow: 0px 0px 5px rgba(78, 51, 220, 0.2);
 	padding: 10px 20px;
-	border-radius: 7px;
+	border-radius: 10px;
 	letter-spacing: -0.055em;
 	line-height: 23px;
 	@media screen and (max-width: 576px) {
