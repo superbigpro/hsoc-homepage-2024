@@ -41,5 +41,6 @@ export default async function Create(req: NextApiRequest, res: NextApiResponse) 
             password: hashedPassword,
         },
     })
+
     res.send({ ok: true, message: "회원가입이 완료되었습니다." });
 }

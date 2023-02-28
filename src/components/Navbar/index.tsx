@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./styled";
-
 import LogoPNG from "src/assets/png/logo.png";
 import Image from "next/image";
 import Link from "next/link";
@@ -55,7 +54,7 @@ export const Navbar: React.FC = () => {
 								로그인
 							</Link>) : (
 							<>
-								<p onClick={() => { signOut() }}>로그아웃</p>
+								<p onClick={() => { signOut({ redirect: false }) }}>로그아웃</p>
 							</>
 						)}
 					</S.NavbarMenuItemWrap>

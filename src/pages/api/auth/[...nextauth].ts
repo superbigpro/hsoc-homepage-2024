@@ -3,6 +3,7 @@ import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import * as bcrypt from 'bcrypt';
 import apply from "../../../lib/ga/apply";
+import { signOut } from "next-auth/react";
 
 const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(apply),

@@ -21,7 +21,7 @@ const RegisterPage: NextPage = () => {
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
 
     const onValid = async (data: FormProps) => {
-        const instance = Instance(`${baseUrl}/api/create`)
+        const instance = Instance(`/api/create`)
         try {
             await instance.post('', {
                 nickName: data.nickName,
@@ -47,10 +47,11 @@ const RegisterPage: NextPage = () => {
     };
 
     useEffect(() => {
+        console.log(status)
         if (status === "authenticated") {
             Router.replace("/")
         }
-    }, [])
+    }, [status])
 
     return (
         <>
