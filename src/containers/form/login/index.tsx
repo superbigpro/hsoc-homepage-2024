@@ -9,12 +9,13 @@ import FormButton from "src/components/SubmitButton";
 import { FormProps } from "src/lib/ga/interface";
 import Link from "next/link";
 import { useEffect } from "react";
-import Router from "next/router";
-import { Error } from "src/lib/ga/notification";
+import Router, { useRouter } from "next/router";
+import { Error, Info } from "src/lib/ga/notification";
 import { NextPage } from "next";
 
 const LoginPage: NextPage = () => {
     const { status } = useSession();
+    const router = useRouter();
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
 
@@ -38,7 +39,10 @@ const LoginPage: NextPage = () => {
         if (status === "authenticated") {
             Router.replace("/")
         }
-    }, [])
+        if (router.query.redirect) {
+            Info("지원하려면, 먼저 로그인을 하셔야 합니다.")
+        }
+    }, [status])
 
     return (
         <>

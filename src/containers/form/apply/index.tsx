@@ -7,12 +7,12 @@ import { Input } from "src/components/Input";
 import * as S from "../styled"
 import FormButton from "src/components/SubmitButton";
 import { FormProps } from "src/lib/ga/interface";
-import Link from "next/link";
 import { Success, Error, CatchError } from "src/lib/ga/notification";
 import { NextPage } from "next";
 import RightArrowSVG from "src/assets/svg/right-arrow.svg";
 import { Instance } from "src/lib/ga/api";
 import { useEffect, useState } from "react";
+import Router from "next/router";
 
 const ApplyPage: NextPage = () => {
     const { data, status } = useSession();
@@ -31,12 +31,10 @@ const ApplyPage: NextPage = () => {
                 introduce: data.introduce,
             }).then((res) => {
                 res.data.ok ? (
-                    !info && (
-                        Success(res.data.message),
-                        setValue("studentId", ""),
-                        setValue("phoneNumber", ""),
-                        setValue("introduce", "")
-                    )
+                    Success(res.data.message),
+                    setValue("studentId", ""),
+                    setValue("phoneNumber", ""),
+                    setValue("introduce", "")
                 ) : (
                     Error(res.data.message)
                 )
@@ -75,18 +73,35 @@ const ApplyPage: NextPage = () => {
         }
     }
 
+    const autoSave = async (data: FormProps) => {
+        const instance = Instance(`/api/update`)
+        try {
+            await instance.post('', {
+                studentId: studentId,
+                phoneNumber: data.phoneNumber,
+                introduce: data.introduce,
+            })
+        } catch (err) {
+            console.log(err)
+            CatchError("Error!")
+        }
+    };
+
     useEffect(() => {
+        if (status === "unauthenticated") {
+            Router.replace("/login?redirect=/apply")
+        }
         const interval = setInterval(() => {
             if (info) {
-                handleSubmit(onValid)();
+                handleSubmit(autoSave)();
             }
         }, 5000);
         return () => clearInterval(interval);
-    }, [info]);
+    }, [status, info]);
 
     return (
         <>
-            {status === "authenticated" ? (
+            {status === "authenticated" && (
                 <>
                     <S.LogoBigImage src={LogoBig.src} />
                     <S.ApplyWrap>
@@ -104,20 +119,6 @@ const ApplyPage: NextPage = () => {
                     </S.ApplyWrap>
                     <ToastContainer />
                 </>
-            ) : (
-                <>
-                    <S.ErrorWrap className="container">
-                        <h1>401</h1>
-                        <S.Line></S.Line>
-                        <S.Message>지원하려면, 먼저
-                            <Link href="/login">
-                                로그인
-                            </Link>
-                            해야 합니다.
-                        </S.Message>
-                    </S.ErrorWrap>
-                </>
-
             )}
         </>
     )

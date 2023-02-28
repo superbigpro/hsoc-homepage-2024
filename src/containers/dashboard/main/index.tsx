@@ -62,7 +62,7 @@ const Main: React.FC<MainProps> = ({ students }) => {
                                     <S.DashboardContentTitle>{index.studentId}</S.DashboardContentTitle>
                                     <S.DashboardContentTitle>{index.phoneNumber || "NULL"}</S.DashboardContentTitle>
                                     <Link href={`/dashboard/?id=${index.id}`}>
-                                        <S.DashboardContentTitle style={{ marginRight: "20px" }}>{index.introduce || "NULL"}</S.DashboardContentTitle>
+                                        <S.DashboardContentTitle style={{ marginRight: "20px", cursor: "pointer" }}>{index.introduce || "NULL"}</S.DashboardContentTitle>
                                     </Link>
                                     <S.DashboardContentRole onChange={onChange}>
                                         <option>{index.role}</option>

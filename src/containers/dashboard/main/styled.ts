@@ -30,6 +30,8 @@ export const DashboardContentItemWrap = styled(DashboardContentTitleWrap)`
 export const DashboardContentTitle = styled.h2`
     margin: 0;
     padding: 0;
+    display: flex;
+    height: 20px;
     overflow: scroll;
     font-size: 18px;
 `;

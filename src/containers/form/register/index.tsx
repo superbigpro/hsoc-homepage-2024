@@ -29,12 +29,7 @@ const RegisterPage: NextPage = () => {
                 password: data.password,
             }).then((res) => {
                 res.data.ok ? (
-                    Success(res.data.message),
-                    setValue("nickName", ""),
-                    setValue("name", ""),
-                    setValue("studentId", ""),
-                    setValue("password", ""),
-                    setValue("passwordCheck", "")
+                    Router.replace("/login")
                 ) : (
                     Error(res.data.message)
                 )
