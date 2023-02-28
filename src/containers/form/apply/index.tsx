@@ -13,7 +13,8 @@ import { NextPage } from "next";
 import RightArrowSVG from "src/assets/svg/right-arrow.svg";
 import { Instance } from "src/lib/ga/api";
 import { baseUrl } from "src/lib/ga/base-url";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Router from "next/router";
 
 const ApplyPage: NextPage = () => {
     const { data, status } = useSession();
@@ -24,7 +25,7 @@ const ApplyPage: NextPage = () => {
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
 
     const onValid = async (data: FormProps) => {
-        const instance = Instance(`${baseUrl}/api/update`)
+        const instance = Instance(`/api/update`)
         try {
             await instance.post('', {
                 studentId: studentId,
@@ -32,10 +33,12 @@ const ApplyPage: NextPage = () => {
                 introduce: data.introduce,
             }).then((res) => {
                 res.data.ok ? (
-                    Success(res.data.message),
-                    setValue("studentId", ""),
-                    setValue("phoneNumber", ""),
-                    setValue("introduce", "")
+                    !info && (
+                        Success(res.data.message),
+                        setValue("studentId", ""),
+                        setValue("phoneNumber", ""),
+                        setValue("introduce", "")
+                    )
                 ) : (
                     Error(res.data.message)
                 )
@@ -55,7 +58,7 @@ const ApplyPage: NextPage = () => {
     }
 
     const getMyInfo = async () => {
-        const instance = Instance(`${baseUrl}/api/user`)
+        const instance = Instance(`/api/user`)
         try {
             await instance.post('', {
                 studentId: studentId,
@@ -73,6 +76,15 @@ const ApplyPage: NextPage = () => {
             CatchError("Error!")
         }
     }
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (info) {
+                handleSubmit(onValid)();
+            }
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [info]);
 
     return (
         <>

@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "src/lib/ga/apply";
+import prisma from "src/lib/ga/prisma";
 
 export default async function User(req: NextApiRequest, res: NextApiResponse) {
     const { studentId } = req.body;

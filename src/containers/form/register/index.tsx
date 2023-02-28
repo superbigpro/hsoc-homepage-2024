@@ -13,7 +13,6 @@ import { Success, Error, CatchError } from "src/lib/ga/notification";
 import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
-import { baseUrl } from "src/lib/ga/base-url";
 
 const RegisterPage: NextPage = () => {
     const { status } = useSession();
@@ -47,7 +46,6 @@ const RegisterPage: NextPage = () => {
     };
 
     useEffect(() => {
-        console.log(status)
         if (status === "authenticated") {
             Router.replace("/")
         }
