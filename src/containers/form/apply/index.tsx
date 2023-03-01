@@ -1,0 +1,127 @@
+import { useSession } from "next-auth/react";
+import { useForm } from "react-hook-form";
+import 'react-toastify/dist/ReactToastify.css';
+import LogoBig from "src/assets/png/logo-big.png";
+import { ToastContainer } from "react-toastify";
+import { Input } from "src/components/Input";
+import * as S from "../styled"
+import FormButton from "src/components/SubmitButton";
+import { FormProps } from "src/lib/ga/interface";
+import { Success, Error, CatchError } from "src/lib/ga/notification";
+import { NextPage } from "next";
+import RightArrowSVG from "src/assets/svg/right-arrow.svg";
+import { Instance } from "src/lib/ga/api";
+import { useEffect, useState } from "react";
+import Router from "next/router";
+
+const ApplyPage: NextPage = () => {
+    const { data, status } = useSession();
+    const studentId = data?.user?.name;
+
+    const [info, setInfo] = useState(false)
+
+    const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
+
+    const onValid = async (data: FormProps) => {
+        const instance = Instance(`/api/update`)
+        try {
+            await instance.post('', {
+                studentId: studentId,
+                phoneNumber: data.phoneNumber,
+                introduce: data.introduce,
+            }).then((res) => {
+                res.data.ok ? (
+                    Success(res.data.message),
+                    setValue("studentId", ""),
+                    setValue("phoneNumber", ""),
+                    setValue("introduce", "")
+                ) : (
+                    Error(res.data.message)
+                )
+            });
+        } catch (err) {
+            console.log(err)
+            CatchError("Error!")
+        }
+    };
+
+
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const inputValue = e.target.value;
+        if (inputValue.length === 3 || inputValue.length === 8) {
+            setValue("phoneNumber", inputValue + "-");
+        }
+    }
+
+    const getMyInfo = async () => {
+        const instance = Instance(`/api/user`)
+        try {
+            await instance.post('', {
+                studentId: studentId,
+            }).then((res) => {
+                res.data.ok ? (
+                    setValue("phoneNumber", res.data.student.phoneNumber),
+                    setValue("introduce", res.data.student.introduce),
+                    setInfo(true)
+                ) : (
+                    Error(res.data.message)
+                )
+            });
+        } catch (err) {
+            console.log(err)
+            CatchError("Error!")
+        }
+    }
+
+    const autoSave = async (data: FormProps) => {
+        const instance = Instance(`/api/update`)
+        try {
+            await instance.post('', {
+                studentId: studentId,
+                phoneNumber: data.phoneNumber,
+                introduce: data.introduce,
+            })
+        } catch (err) {
+            console.log(err)
+            CatchError("Error!")
+        }
+    };
+
+    useEffect(() => {
+        if (status === "unauthenticated") {
+            Router.replace("/login?redirect=/apply")
+        }
+        const interval = setInterval(() => {
+            if (info) {
+                handleSubmit(autoSave)();
+            }
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [status, info]);
+
+    return (
+        <>
+            {status === "authenticated" && (
+                <>
+                    <S.LogoBigImage src={LogoBig.src} />
+                    <S.ApplyWrap>
+                        <S.FormDiv>
+                            <S.GetMyInfoMessage onClick={getMyInfo}>
+                                내 정보 불러오기
+                                <RightArrowSVG style={{ marginBottom: "4px" }} />
+                            </S.GetMyInfoMessage>
+                            <S.InfoDiv>
+                                <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "10px" }} />
+                                <Input register={register} errors={errors} title="자기소개" name="introduce" />
+                            </S.InfoDiv>
+                            <FormButton handleSubmit={handleSubmit} onValid={onValid} title={info ? "수정하기" : "지원하기"} />
+                        </S.FormDiv>
+                    </S.ApplyWrap>
+                    <ToastContainer />
+                </>
+            )}
+        </>
+    )
+}
+
+export default ApplyPage;
