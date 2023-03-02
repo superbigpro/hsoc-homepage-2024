@@ -63,13 +63,13 @@ export const IntroduceInput = styled.textarea`
     background-color: transparent;
     box-shadow: 2px 2px rgba(0,0,0,0.15);
     border: 1px solid #2A2830;
-    border-radius: 10px;
-    padding: 14px 10px;
+    border-radius: 16px;
+    padding: 14px;
+    height: 350px;
+    resize: none;
     width: 100%;
     caret-color: auto;
-    height: 350px;
     color: var(--color-white);
-    resize: none;
     transition: all .15s ease-in-out;
     &:focus{
         outline: none;

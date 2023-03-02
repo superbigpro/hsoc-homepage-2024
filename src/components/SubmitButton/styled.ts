@@ -4,7 +4,6 @@ import Button from '@mui/material/Button';
 export const ButtonDiv = styled.div`
     display: block;
     width: 100%;
-    border-radius: 10px;
     margin-top: 30px;
 `;
 
@@ -15,6 +14,7 @@ export const ButtonUi = styled(Button)`
     border-radius: 8px;
     border: none;
     padding: 6px 0;
+    border-radius: 10px !important;
     font-size: 18px !important;
     font-weight: 550 !important;
     color: var(--color-white);
