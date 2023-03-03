@@ -23,7 +23,7 @@ export const Wrap = styled.div`
     margin: 4rem 0;
     width: 100%;
     @media screen and (max-width: 575px) {
-        margin: 1rem;
+        margin: 1rem 0;
     }
 `;
 

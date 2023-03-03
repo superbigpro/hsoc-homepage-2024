@@ -44,6 +44,11 @@ export const NavbarMenuItemWrap = styled(Nav)`
 	& > a:not(:last-child), p:not(:last-child) {
 		margin-right: 18px;
 	}
+	@media screen  and (min-width: 767px) {
+		& > div:not(:last-child), a:not(:last-child), p:not(:last-child) {
+		margin-right: 18px;
+	}
+	}
 	@media screen  and (max-width: 767px) {
 		a,p {
 			margin: 8px 0;

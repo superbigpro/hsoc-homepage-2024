@@ -1,6 +1,6 @@
 import * as S from "./styled";
 import Link from "next/link";
-import { Student } from "src/lib/ga/interface";
+import { Student } from "src/utils/interface";
 
 interface ModalProps {
     student: Student;

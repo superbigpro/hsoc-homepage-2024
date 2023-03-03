@@ -1,5 +1,5 @@
 import Document, { DocumentContext, Head, Html, Main, NextScript } from "next/document";
-import { GOOGLE_ANALYTICS } from "src/lib/ga/index";
+import { GOOGLE_ANALYTICS } from "src/utils/ga/index";
 import { ServerStyleSheet } from "styled-components";
 
 class MyDocument extends Document {

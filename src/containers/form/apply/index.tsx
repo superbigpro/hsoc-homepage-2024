@@ -4,11 +4,11 @@ import LogoBig from "src/assets/png/logo-big.png";
 import { Input } from "src/components/Input/input";
 import * as S from "../styled"
 import FormButton from "src/components/FormButton";
-import { FormProps } from "src/lib/interface";
-import { Success, Error, CatchError } from "src/lib/notification";
+import { FormProps } from "src/utils/interface";
+import { Success, Error, CatchError } from "src/utils/notification";
 import { NextPage } from "next";
 import RightArrowSVG from "src/assets/svg/right-arrow.svg";
-import { Instance } from "src/lib/api";
+import { Instance } from "src/utils/api";
 import { useEffect, useState } from "react";
 import Router from "next/router";
 import { ValueInput } from "src/components/Input/input-value";

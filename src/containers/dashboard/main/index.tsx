@@ -1,10 +1,10 @@
 import React from "react";
 import * as S from "./styled"
 import { useRouter } from "next/router";
-import { Student } from "src/lib/interface";
-import { baseUrl } from "src/lib/base-url";
-import { Instance } from "src/lib/api";
-import { CatchError, Error, Success } from "src/lib/notification";
+import { Student } from "src/utils/interface";
+import { baseUrl } from "src/utils/base-url";
+import { Instance } from "src/utils/api";
+import { CatchError, Error, Success } from "src/utils/notification";
 import Link from "next/link";
 import Modal from "../modal";
 

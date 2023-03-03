@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "src/lib/prisma";
+import prisma from "src/utils/prisma";
 
 export default async function Update(req: NextApiRequest, res: NextApiResponse) {
     const { studentId, phoneNumber, introduce } = req.body;

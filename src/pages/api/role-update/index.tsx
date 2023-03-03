@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "src/lib/prisma";
+import prisma from "src/utils/prisma";
 
 export default async function RoleUpdate(req: NextApiRequest, res: NextApiResponse) {
     const { nickName, role } = req.body;
