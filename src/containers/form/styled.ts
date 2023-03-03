@@ -68,7 +68,7 @@ export const ApplyWrap = styled.div`
         transform: translate(-50%, -50%);
     }
     @media screen and (max-width: 575px) {
-        margin: 2rem 0;
+        margin: 0;
     }
 `;
 
