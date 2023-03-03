@@ -11,7 +11,7 @@ export const ButtonUi = styled(Button)`
     display: block;
     text-align: center;
     width: 100%;
-    border-radius: 8px;
+    height: 46px;
     border: none;
     padding: 6px 0;
     border-radius: 10px !important;
@@ -24,7 +24,6 @@ export const ButtonUi = styled(Button)`
     }
     @media screen and (max-width: 575px) and (min-width: 300px) {
         font-size: 16px !important;
-        border-radius: 8px !important;
-        padding: 8px 0;
+        padding: 6px 0;
     };
 `;

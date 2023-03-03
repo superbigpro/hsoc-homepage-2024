@@ -54,7 +54,6 @@ export const Input = styled.input`
     }
     @media screen and (max-width: 575px) and (min-width: 300px) {
         padding: 14px;
-        height: 46px;
     };
 `;
 
