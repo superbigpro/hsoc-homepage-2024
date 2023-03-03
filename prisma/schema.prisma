@@ -20,7 +20,7 @@ model student {
   // updateAt DateTime @default(now()) @updatedAt
   nickName    String   @unique 
   name        String
-  studentId   String   @unique
+  studentId   String   
   phoneNumber String?  @unique
   password    String
   introduce   String?  @db.MediumText

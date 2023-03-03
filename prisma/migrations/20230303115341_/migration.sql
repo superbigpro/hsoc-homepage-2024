@@ -11,7 +11,6 @@ CREATE TABLE `student` (
     `role` ENUM('STUDENT', 'ADMIN') NOT NULL DEFAULT 'STUDENT',
 
     UNIQUE INDEX `student_nickName_key`(`nickName`),
-    UNIQUE INDEX `student_studentId_key`(`studentId`),
     UNIQUE INDEX `student_phoneNumber_key`(`phoneNumber`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

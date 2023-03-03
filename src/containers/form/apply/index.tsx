@@ -15,7 +15,7 @@ import { ValueInput } from "src/components/Input/input-value";
 
 const ApplyPage: NextPage = () => {
     const { data, status } = useSession();
-    const studentId = data?.user?.name;
+    const nickName = data?.user?.name;
 
     const [info, setInfo] = useState(false)
 
@@ -25,7 +25,7 @@ const ApplyPage: NextPage = () => {
         const instance = Instance(`/api/update`)
         try {
             await instance.post('', {
-                studentId: studentId,
+                nickName: nickName,
                 phoneNumber: data.phoneNumber,
                 introduce: data.introduce,
             }).then((res) => {
@@ -59,7 +59,7 @@ const ApplyPage: NextPage = () => {
         const instance = Instance(`/api/user`)
         try {
             await instance.post('', {
-                studentId: studentId,
+                nickName: nickName,
             }).then((res) => {
                 res.data.ok ? (
                     setValue("phoneNumber", res.data.student.phoneNumber),
@@ -94,7 +94,7 @@ const ApplyPage: NextPage = () => {
                             </S.GetMyInfoMessage>
                             <S.InfoDiv>
                                 <ValueInput register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "10px" }} />
-                                <ValueInput register={register} errors={errors} title="자기소개" name="introduce" minValue={1} maxValue={1} />
+                                <ValueInput register={register} errors={errors} title="자기소개" name="introduce" minValue={1} maxValue={3000} />
                             </S.InfoDiv>
                             <FormButton handleSubmit={handleSubmit} onValid={onValid} title={info ? "수정하기" : "지원하기"} />
                         </S.FormDiv>

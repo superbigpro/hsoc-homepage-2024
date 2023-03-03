@@ -5,10 +5,6 @@ export default async function Update(req: NextApiRequest, res: NextApiResponse) 
     const { studentId, phoneNumber, introduce } = req.body;
     const student = prisma.student
 
-    if (req.body.studentId[0] !== "C" && req.body.studentId[0] !== "N" && req.body.studentId[0] !== "G") {
-        return res.send({ ok: false, message: "학번 형식이 틀렸습니다." });
-    }
-
     if (req.body.phoneNumber[0] !== "0" && req.body.phoneNumber[2] !== "0" || req.body.phoneNumber[1] !== "1") {
         return res.send({ ok: false, message: "전화번호 형식이 틀렸습니다." });
     }
@@ -29,9 +25,19 @@ export default async function Update(req: NextApiRequest, res: NextApiResponse) 
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
 
-    if (year === 2023 && month === 3 && day >= 6 && day <= 8) {
-        return res.send({ ok: false, message: "신청 기간이 아닙니다." });
-    }
+    // if (year === 2023 && month === 3 && day >= 6 && day <= 8) {
+    //     await student.update({
+    //         where: {
+    //             studentId,
+    //         },
+    //         data: {
+    //             phoneNumber,
+    //             introduce,
+    //         },
+    //     })
+    // } else {
+    //     return res.send({ ok: false, message: "신청 기간이 아닙니다." });
+    // }
 
     await student.update({
         where: {

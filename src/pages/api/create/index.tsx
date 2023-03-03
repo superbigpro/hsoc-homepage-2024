@@ -4,11 +4,7 @@ import prisma from "src/lib/prisma";
 
 export default async function Create(req: NextApiRequest, res: NextApiResponse) {
     const { nickName, name, studentId, password } = req.body;
-    const student = prisma.student
-
-    if (req.body.studentId[0] !== "C" && req.body.studentId[0] !== "N" && req.body.studentId[0] !== "G") {
-        return res.send({ ok: false, message: "학번 형식이 틀렸습니다." });
-    }
+    const student = prisma.student;
 
     const exitsNickName = await student.findUnique({
         where: {

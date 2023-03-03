@@ -2,12 +2,12 @@ import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "src/lib/prisma";
 
 export default async function RoleUpdate(req: NextApiRequest, res: NextApiResponse) {
-    const { studentId, role } = req.body;
+    const { nickName, role } = req.body;
     const student = prisma.student
 
     await student.update({
         where: {
-            studentId,
+            nickName,
         },
         data: {
             role,

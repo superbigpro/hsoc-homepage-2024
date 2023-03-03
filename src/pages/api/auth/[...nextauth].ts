@@ -32,7 +32,7 @@ const authOptions: NextAuthOptions = {
         }
 
         if (student && await checkPassword(password)) {
-          return { id: "1", name: student.studentId, email: student.role };
+          return { id: "1", name: student.nickName, email: student.role };
         } else {
           return null;
         }

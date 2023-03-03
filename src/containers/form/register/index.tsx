@@ -25,25 +25,27 @@ const RegisterPage: NextPage = () => {
                 { message: '비밀번호가 일치하지 않습니다.' }, // 에러 메세지
                 { shouldFocus: true }, // 에러가 발생한 input으로 focus 이동
             );
+        } else {
+            const instance = Instance(`/api/create`)
+            try {
+                await instance.post('', {
+                    nickName: data.nickName,
+                    name: data.name,
+                    studentId: data.studentId,
+                    password: data.password,
+                }).then((res) => {
+                    res.data.ok ? (
+                        Router.replace("/login")
+                    ) : (
+                        Error(res.data.message)
+                    )
+                });
+            } catch (err) {
+                console.log(err)
+                CatchError("Error!")
+            }
         }
-        const instance = Instance(`/api/create`)
-        try {
-            await instance.post('', {
-                nickName: data.nickName,
-                name: data.name,
-                studentId: data.studentId,
-                password: data.password,
-            }).then((res) => {
-                res.data.ok ? (
-                    Router.replace("/login")
-                ) : (
-                    Error(res.data.message)
-                )
-            });
-        } catch (err) {
-            console.log(err)
-            CatchError("Error!")
-        }
+
     };
 
     useEffect(() => {
@@ -60,7 +62,7 @@ const RegisterPage: NextPage = () => {
                     <S.InfoDiv>
                         <Input register={register} errors={errors} title="아이디" name="nickName" divStyle={{ marginTop: "0" }} />
                         <ValueInput register={register} errors={errors} title="이름" name="name" minValue={2} maxValue={4} />
-                        <ValueInput register={register} errors={errors} example="예) 클라우드보안과 1학년 1반 1번 - C1111" title="학번" name="studentId" minValue={5} maxValue={5} />
+                        <ValueInput register={register} errors={errors} title="학번" example="예) 클라우드보안과 1학년 1반 1번 - C1111" name="studentId" minValue={5} maxValue={5} />
                         <Input register={register} errors={errors} title="비밀번호" name="password" type="password" example="비밀번호는 영문, 숫자를 포함한 8자 이상이어야 합니다." />
                         <Input register={register} errors={errors} title="비밀번호 확인" name="passwordCheck" type="password" />
                     </S.InfoDiv>

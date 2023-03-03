@@ -17,12 +17,12 @@ const Main: React.FC<MainProps> = ({ students }) => {
     const id = router.query.id
 
     const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const studentId = e.target.parentElement?.children[3].textContent;
+        const nickName = e.target.parentElement?.children[2].textContent;
         const role = e.target.value;
         const instance = Instance(`${baseUrl}/api/role-update`);
         try {
             instance.post('', {
-                studentId,
+                nickName,
                 role
             }).then((res) => {
                 res.data.ok ? (
