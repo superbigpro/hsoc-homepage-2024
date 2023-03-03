@@ -13,12 +13,11 @@ interface InputProps {
     maxValue?: number;
     divStyle?: React.CSSProperties;
     type?: HTMLInputTypeAttribute;
-    value?: string;
 }
 
-export const Input: React.FC<InputProps> = ({ register, errors, title, example, name, divStyle, type, value }) => {
+export const Input: React.FC<InputProps> = ({ register, errors, title, example, name, divStyle, type }) => {
 
-    const check = `${title === "전화번호" || title === "아이디" || title === "비밀번호" ? `는` : `은`}`
+    const check = `${title === "아이디" || title === "비밀번호" ? `는` : `은`}`
 
     return (
         <>
@@ -26,14 +25,18 @@ export const Input: React.FC<InputProps> = ({ register, errors, title, example, 
                 <S.Title>{title}</S.Title>
                 <S.Example>{example}</S.Example>
                 <div>
-                    {title !== "자기소개" ? (
+                    {title !== "비밀번호" ? (
                         <S.Input {...register(`${name}`, {
                             required: `${title}${check} 필수 입니다.`,
-                        })} type={type} placeholder={`${title}${check} 입력해주세요...`} value={value} />
+                        })} type={type} placeholder={`${title}${check} 입력해주세요...`} />
                     ) : (
-                        <S.IntroduceInput {...register(`${name}`, {
-                            required: `${title}는 필수 입니다.`,
-                        })} placeholder={`${title}를 입력해주세요...`} value={value} />
+                        <S.Input {...register(`${name}`, {
+                            required: `${title}${check} 필수 입니다.`,
+                            pattern: {
+                                value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
+                                message: "비밀번호는 영문, 숫자를 포함한 8자 이상이어야 합니다."
+                            }
+                        })} type={type} placeholder={`${title}${check} 입력해주세요...`} />
                     )}
                 </div>
                 <S.Message>{errors[name]?.message}</S.Message>

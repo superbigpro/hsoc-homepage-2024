@@ -21,6 +21,13 @@ export const Wrap = styled.div`
     justify-content: center;
     align-items: center;
     margin: 4rem 0;
+    width: 100%;
+    @media screen and (max-width: 575px) {
+        margin: 1rem;
+    }
+`;
+
+export const LoginWrap = styled(Wrap)`
     @media screen and (min-height: 700px){
         margin: 0;
         position: absolute;
@@ -29,17 +36,9 @@ export const Wrap = styled.div`
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
-    @media screen and (max-width: 575px) {
-        margin: 0;
-    }
 `;
 
-export const RegisterWrap = styled.div`
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 4rem 0;
+export const RegisterWrap = styled(Wrap)`
     @media screen and (min-height: 1000px){
         margin: 0;
         position: absolute;
@@ -48,17 +47,9 @@ export const RegisterWrap = styled.div`
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
-    @media screen and (max-width: 575px) {
-        margin: 0;
-    }
 `;
 
-export const ApplyWrap = styled.div`
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 4rem 0;
+export const ApplyWrap = styled(Wrap)`
     @media screen and (min-height: 900px){
         margin: 0;
         position: absolute;
@@ -66,9 +57,6 @@ export const ApplyWrap = styled.div`
         left: 50%;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
-    }
-    @media screen and (max-width: 575px) {
-        margin: 0;
     }
 `;
 

@@ -11,7 +11,7 @@ import RightArrowSVG from "src/assets/svg/right-arrow.svg";
 import { Instance } from "src/lib/api";
 import { useEffect, useState } from "react";
 import Router from "next/router";
-import { ValueInput } from "src/components/Input/value-input";
+import { ValueInput } from "src/components/Input/input-value";
 
 const ApplyPage: NextPage = () => {
     const { data, status } = useSession();
@@ -94,7 +94,7 @@ const ApplyPage: NextPage = () => {
                             </S.GetMyInfoMessage>
                             <S.InfoDiv>
                                 <ValueInput register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "10px" }} />
-                                <Input register={register} errors={errors} title="자기소개" name="introduce" />
+                                <ValueInput register={register} errors={errors} title="자기소개" name="introduce" minValue={1} maxValue={1} />
                             </S.InfoDiv>
                             <FormButton handleSubmit={handleSubmit} onValid={onValid} title={info ? "수정하기" : "지원하기"} />
                         </S.FormDiv>

@@ -23,7 +23,8 @@ export const ButtonUi = styled(Button)`
         filter: blur(5px) !important;
     }
     @media screen and (max-width: 575px) and (min-width: 300px) {
-        font-size: 14px !important;
+        font-size: 16px !important;
+        border-radius: 8px !important;
         padding: 8px 0;
     };
 `;

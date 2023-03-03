@@ -46,7 +46,7 @@ const LoginPage: NextPage = () => {
     return (
         <>
             <S.LogoBigImage src={LogoBig.src} />
-            <S.Wrap>
+            <S.LoginWrap>
                 <S.FormDiv>
                     <S.InfoDiv>
                         <Input register={register} errors={errors} title="아이디" name="nickName" divStyle={{ marginTop: "0" }} />
@@ -57,7 +57,7 @@ const LoginPage: NextPage = () => {
                         <Link href="/register">회원가입</Link>
                     </S.LinkButton >
                 </S.FormDiv>
-            </S.Wrap>
+            </S.LoginWrap>
         </>
     )
 }
