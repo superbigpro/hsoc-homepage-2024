@@ -1,8 +1,6 @@
 import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
-import 'react-toastify/dist/ReactToastify.css';
 import LogoBig from "src/assets/png/logo-big.png";
-import { ToastContainer } from "react-toastify";
 import { Input } from "src/components/Input/input";
 import * as S from "../styled"
 import FormButton from "src/components/FormButton";
@@ -101,7 +99,6 @@ const ApplyPage: NextPage = () => {
                             <FormButton handleSubmit={handleSubmit} onValid={onValid} title={info ? "수정하기" : "지원하기"} />
                         </S.FormDiv>
                     </S.ApplyWrap>
-                    <ToastContainer />
                 </>
             )}
         </>

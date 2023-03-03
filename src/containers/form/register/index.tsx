@@ -3,8 +3,6 @@ import * as S from "../styled";
 import LogoBig from "src/assets/png/logo-big.png";
 import { useForm } from "react-hook-form";
 import { Input } from "src/components/Input/input";
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from "react-toastify"
 import { Instance } from "src/lib/api";
 import FormButton from "src/components/FormButton";
 import { FormProps } from "../../../lib/interface";
@@ -65,7 +63,6 @@ const RegisterPage: NextPage = () => {
                     </S.LinkButton>
                 </S.FormDiv>
             </S.RegisterWrap>
-            <ToastContainer />
         </>
     )
 }

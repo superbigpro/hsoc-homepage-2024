@@ -1,8 +1,6 @@
 import { signIn, useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
-import 'react-toastify/dist/ReactToastify.css';
 import LogoBig from "src/assets/png/logo-big.png";
-import { ToastContainer } from "react-toastify";
 import { Input } from "src/components/Input/input";
 import * as S from "../styled"
 import FormButton from "src/components/FormButton";
@@ -42,7 +40,8 @@ const LoginPage: NextPage = () => {
         if (router.query.redirect) {
             Info("지원하려면, 먼저 로그인을 하셔야 합니다.")
         }
-    }, [status])
+        console.log(router.query.redirect)
+    }, [])
 
     return (
         <>
@@ -59,7 +58,6 @@ const LoginPage: NextPage = () => {
                     </S.LinkButton >
                 </S.FormDiv>
             </S.Wrap>
-            <ToastContainer />
         </>
     )
 }

@@ -94,13 +94,13 @@ export const FormDiv = styled.form`
     }  
     @media screen and (max-width: 575px) and (min-width: 500px) {
         background-color: transparent;
-        padding: 40px 40px;
+        padding: 40px;
         width: 400px;
     };
     @media screen and (max-width: 500px) and (min-width: 300px) {
         background-color: transparent;
-        padding: 40px 40px;
-        width: 370px;
+        padding: 20px;
+        width: 100%;
     };
 `;
 
