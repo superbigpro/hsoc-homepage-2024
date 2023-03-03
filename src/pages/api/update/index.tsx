@@ -2,16 +2,13 @@ import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "src/utils/prisma";
 
 export default async function Update(req: NextApiRequest, res: NextApiResponse) {
-    const { studentId, phoneNumber, introduce } = req.body;
+    const { nickName, phoneNumber, introduce, field } = req.body;
+    console.log(field)
     const student = prisma.student
-
-    if (req.body.phoneNumber[0] !== "0" && req.body.phoneNumber[2] !== "0" || req.body.phoneNumber[1] !== "1") {
-        return res.send({ ok: false, message: "전화번호 형식이 틀렸습니다." });
-    }
 
     const exitsStudentId = await student.findUnique({
         where: {
-            studentId,
+            nickName,
         },
     })
 
@@ -41,11 +38,12 @@ export default async function Update(req: NextApiRequest, res: NextApiResponse) 
 
     await student.update({
         where: {
-            studentId,
+            nickName,
         },
         data: {
             phoneNumber,
             introduce,
+            field,
         },
     })
 

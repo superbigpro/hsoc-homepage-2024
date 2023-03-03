@@ -28,12 +28,13 @@ const ApplyPage: NextPage = () => {
                 nickName: nickName,
                 phoneNumber: data.phoneNumber,
                 introduce: data.introduce,
+                field: data.field,
             }).then((res) => {
                 res.data.ok ? (
                     Success(res.data.message),
-                    setValue("studentId", ""),
                     setValue("phoneNumber", ""),
-                    setValue("introduce", "")
+                    setValue("introduce", ""),
+                    setValue("field", "")
                 ) : (
                     Error(res.data.message)
                 )
@@ -64,6 +65,7 @@ const ApplyPage: NextPage = () => {
                 res.data.ok ? (
                     setValue("phoneNumber", res.data.student.phoneNumber),
                     setValue("introduce", res.data.student.introduce),
+                    setValue("field", res.data.student.field),
                     setInfo(true)
                 ) : (
                     Error(res.data.message)
@@ -95,7 +97,7 @@ const ApplyPage: NextPage = () => {
                             <S.InfoDiv>
                                 <ValueInput register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "10px" }} />
                                 <ValueInput register={register} errors={errors} title="자기소개" name="introduce" minValue={1} maxValue={3000} />
-                                <Input register={register} errors={errors} title="분야선택" name="field" />
+                                <Input register={register} errors={errors} title="배우고싶은 분야" name="field" />
                             </S.InfoDiv>
                             <FormButton handleSubmit={handleSubmit} onValid={onValid} title={info ? "수정하기" : "지원하기"} />
                         </S.FormDiv>

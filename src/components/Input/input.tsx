@@ -34,15 +34,16 @@ export const Input: React.FC<InputProps> = ({ register, errors, title, example, 
                                 message: "비밀번호는 영문, 숫자를 포함한 8자 이상이어야 합니다."
                             }
                         })} type={type} placeholder={`${title}${check} 입력해주세요...`} />
-                    ) : title === "분야선택" ? (
+                    ) : title === "배우고싶은 분야" ? (
                         <>
-                            <S.FieldSelect>
+                            <S.FieldSelect {...register(`${name}`, {
+                                required: `${title}${check} 필수 입니다.`,
+                            })}>
                                 <option>웹</option>
                                 <option>포렌식</option>
                                 <option>네트워크</option>
                                 <option>암호학</option>
                                 <option>시스템</option>
-                                <FaAngleDown size={30} />
                             </S.FieldSelect>
                         </>
                     ) : (
