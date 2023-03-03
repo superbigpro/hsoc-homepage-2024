@@ -8,6 +8,8 @@ CREATE TABLE `student` (
     `phoneNumber` VARCHAR(191) NULL,
     `password` VARCHAR(191) NOT NULL,
     `introduce` MEDIUMTEXT NULL,
+    `field` VARCHAR(191) NULL,
+    `portfolio` MEDIUMTEXT NULL,
     `role` ENUM('STUDENT', 'ADMIN') NOT NULL DEFAULT 'STUDENT',
 
     UNIQUE INDEX `student_nickName_key`(`nickName`),

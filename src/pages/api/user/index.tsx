@@ -2,11 +2,11 @@ import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "src/utils/prisma";
 
 export default async function User(req: NextApiRequest, res: NextApiResponse) {
-    const { studentId } = req.body;
+    const { nickName } = req.body;
 
     const student = await prisma.student.findUnique({
         where: {
-            studentId: studentId,
+            nickName: nickName,
         },
     })
 

@@ -13,7 +13,8 @@ interface DashboardPageProps {
 const DashboardPage: NextPage<DashboardPageProps> = ({ students }) => {
     const { data, status } = useSession();
 
-    if (status === "authenticated" && data?.user?.email === "ADMIN" || data?.user?.name === "엄준식") {
+    console.log(data?.user?.email)
+    if (status === "authenticated" && data?.user?.email === "ADMIN") {
         return (
             <Main students={students} />
         )

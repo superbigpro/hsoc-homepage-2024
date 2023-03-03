@@ -95,6 +95,25 @@ export const IntroduceInput = styled.textarea`
 `;
 
 
+export const FieldSelect = styled.select`
+    margin-top: 5px;
+    background-color: transparent;
+    box-shadow: 2px 2px rgba(0,0,0,0.15);
+    border: 1px solid #2A2830;
+    border-radius: 10px;
+    padding: 0 8px;
+    height: 46px;
+    width: 100%;
+    caret-color: auto;
+    appearance: none;
+    outline: none;
+    color: var(--color-white);
+    option{
+        font-size: 16px;
+        color: var(--color-white) !important;
+    }
+`;
+
 export const Message = styled.p`
     text-align: left;
     margin-left: 10px;

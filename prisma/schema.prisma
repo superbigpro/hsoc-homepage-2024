@@ -18,11 +18,13 @@ model student {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
   // updateAt DateTime @default(now()) @updatedAt
-  nickName    String   @unique 
+  nickName    String   @unique
   name        String
-  studentId   String   
+  studentId   String
   phoneNumber String?  @unique
   password    String
   introduce   String?  @db.MediumText
+  field       String?
+  portfolio   String?  @db.MediumText
   role        Role     @default(STUDENT)
 }

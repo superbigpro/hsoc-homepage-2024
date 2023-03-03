@@ -1,4 +1,3 @@
-import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import LogoBig from "src/assets/png/logo-big.png";
 import { Input } from "src/components/Input/input";
@@ -12,6 +11,7 @@ import { Instance } from "src/utils/api";
 import { useEffect, useState } from "react";
 import Router from "next/router";
 import { ValueInput } from "src/components/Input/input-value";
+import { useSession } from "next-auth/react";
 
 const ApplyPage: NextPage = () => {
     const { data, status } = useSession();
@@ -95,6 +95,7 @@ const ApplyPage: NextPage = () => {
                             <S.InfoDiv>
                                 <ValueInput register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "10px" }} />
                                 <ValueInput register={register} errors={errors} title="자기소개" name="introduce" minValue={1} maxValue={3000} />
+                                <Input register={register} errors={errors} title="분야선택" name="field" />
                             </S.InfoDiv>
                             <FormButton handleSubmit={handleSubmit} onValid={onValid} title={info ? "수정하기" : "지원하기"} />
                         </S.FormDiv>

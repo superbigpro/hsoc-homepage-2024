@@ -18,6 +18,12 @@ export interface FormProps {
         passwordCheck: {
             message: string;
         };
+        field: {
+            message: string;
+        };
+        portfolio: {
+            message: string;
+        };
     };
     nickName: string;
     name: string;
@@ -26,6 +32,8 @@ export interface FormProps {
     introduce: string;
     password: string;
     passwordCheck: string;
+    field: string;
+    portfolio: string;
     dashboardId: string;
     dashboardPassword: string;
 };
@@ -38,4 +46,6 @@ export interface Student {
     phoneNumber: string,
     introduce: string;
     role: string;
+    field: string;
+    portfolio: string;
 }
