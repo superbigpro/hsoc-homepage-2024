@@ -93,7 +93,6 @@ export const IntroduceInput = styled.textarea`
         padding: 14px;
         height: 300px;
     }
-    
 `;
 
 

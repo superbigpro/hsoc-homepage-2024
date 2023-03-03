@@ -10,19 +10,13 @@ export default async function Create(req: NextApiRequest, res: NextApiResponse) 
         return res.send({ ok: false, message: "학번 형식이 틀렸습니다." });
     }
 
-    const exitsStudentId = await student.findUnique({
-        where: {
-            studentId,
-        },
-    })
-
     const exitsNickName = await student.findUnique({
         where: {
             nickName,
         },
     })
 
-    if (exitsStudentId || exitsNickName) {
+    if (exitsNickName) {
         return res.send({ ok: false, message: "이미 존재하는 학생입니다." });
     }
 

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import 'react-toastify/dist/ReactToastify.css';
 import LogoBig from "src/assets/png/logo-big.png";
 import { ToastContainer } from "react-toastify";
-import { Input } from "src/components/Input";
+import { Input } from "src/components/Input/input";
 import * as S from "../styled"
 import FormButton from "src/components/FormButton";
 import { FormProps } from "src/lib/interface";

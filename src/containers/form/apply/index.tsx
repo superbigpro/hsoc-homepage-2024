@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import 'react-toastify/dist/ReactToastify.css';
 import LogoBig from "src/assets/png/logo-big.png";
 import { ToastContainer } from "react-toastify";
-import { Input } from "src/components/Input";
+import { Input } from "src/components/Input/input";
 import * as S from "../styled"
 import FormButton from "src/components/FormButton";
 import { FormProps } from "src/lib/interface";
@@ -13,6 +13,7 @@ import RightArrowSVG from "src/assets/svg/right-arrow.svg";
 import { Instance } from "src/lib/api";
 import { useEffect, useState } from "react";
 import Router from "next/router";
+import { ValueInput } from "src/components/Input/value-input";
 
 const ApplyPage: NextPage = () => {
     const { data, status } = useSession();
@@ -94,7 +95,7 @@ const ApplyPage: NextPage = () => {
                                 <RightArrowSVG style={{ marginBottom: "4px" }} />
                             </S.GetMyInfoMessage>
                             <S.InfoDiv>
-                                <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "10px" }} />
+                                <ValueInput register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "10px" }} />
                                 <Input register={register} errors={errors} title="자기소개" name="introduce" />
                             </S.InfoDiv>
                             <FormButton handleSubmit={handleSubmit} onValid={onValid} title={info ? "수정하기" : "지원하기"} />

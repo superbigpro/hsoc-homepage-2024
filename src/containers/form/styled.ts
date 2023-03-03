@@ -83,9 +83,13 @@ export const FormDiv = styled.form`
         padding: 40px 60px;
         width: 480px;
     }  
-    @media screen and (max-width: 575px) and (min-width: 300px) {
+    @media screen and (max-width: 575px) and (min-width: 500px) {
         padding: 40px 40px;
         width: 400px;
+    };
+    @media screen and (max-width: 500px) and (min-width: 300px) {
+        padding: 40px 40px;
+        width: 370px;
     };
 `;
 
