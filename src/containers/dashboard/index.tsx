@@ -1,9 +1,9 @@
 import { NextPage } from "next"
 import { useSession } from "next-auth/react";
 import NonePage from "src/containers/404";
-import { Instance } from "src/lib/ga/api";
-import { baseUrl } from "src/lib/ga/base-url";
-import { Student } from "src/lib/ga/interface";
+import { Instance } from "src/lib/api";
+import { baseUrl } from "src/lib/base-url";
+import { Student } from "src/lib/interface";
 import Main from "./main";
 
 interface DashboardPageProps {

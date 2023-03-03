@@ -5,12 +5,12 @@ import LogoBig from "src/assets/png/logo-big.png";
 import { ToastContainer } from "react-toastify";
 import { Input } from "src/components/Input";
 import * as S from "../styled"
-import FormButton from "src/components/SubmitButton";
-import { FormProps } from "src/lib/ga/interface";
-import { Success, Error, CatchError } from "src/lib/ga/notification";
+import FormButton from "src/components/FormButton";
+import { FormProps } from "src/lib/interface";
+import { Success, Error, CatchError } from "src/lib/notification";
 import { NextPage } from "next";
 import RightArrowSVG from "src/assets/svg/right-arrow.svg";
-import { Instance } from "src/lib/ga/api";
+import { Instance } from "src/lib/api";
 import { useEffect, useState } from "react";
 import Router from "next/router";
 
@@ -76,30 +76,10 @@ const ApplyPage: NextPage = () => {
         }
     }
 
-    const autoSave = async (data: FormProps) => {
-        const instance = Instance(`/api/update`)
-        try {
-            await instance.post('', {
-                studentId: studentId,
-                phoneNumber: data.phoneNumber,
-                introduce: data.introduce,
-            })
-        } catch (err) {
-            console.log(err)
-            CatchError("Error!")
-        }
-    };
-
     useEffect(() => {
         if (status === "unauthenticated") {
             Router.replace("/login?redirect=/apply")
         }
-        const interval = setInterval(() => {
-            if (info) {
-                handleSubmit(autoSave)();
-            }
-        }, 15000);
-        return () => clearInterval(interval);
     }, [status, info]);
 
     return (

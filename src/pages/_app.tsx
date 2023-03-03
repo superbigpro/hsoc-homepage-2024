@@ -8,7 +8,7 @@ import { Navbar } from "src/components";
 import { GlobalStyle } from "src/styles/globalStyle";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as ga from "src/lib/ga/index";
-import { baseUrl } from "src/lib/ga/base-url";
+import { ToastContainer } from "react-toastify";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	const router = useRouter();
@@ -43,6 +43,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 			<SessionProvider session={pageProps.session} basePath={`/api/auth`}>
 				<Navbar />
 				<Component {...pageProps} />
+				<ToastContainer autoClose={2000} position={"top-right"} />
 			</SessionProvider>
 		</>
 	);

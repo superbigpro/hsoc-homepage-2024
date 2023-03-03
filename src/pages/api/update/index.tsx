@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "src/lib/ga/prisma";
+import prisma from "src/lib/prisma";
 
 export default async function Update(req: NextApiRequest, res: NextApiResponse) {
     const { studentId, phoneNumber, introduce } = req.body;
@@ -29,7 +29,7 @@ export default async function Update(req: NextApiRequest, res: NextApiResponse) 
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
 
-    if (day + ":" + month + ":" + year === "2023:3:15") {
+    if (year === 2023 && month === 3 && day >= 10 && day <= 15) {
         return res.send({ ok: false, message: "신청 기간이 아닙니다." });
     }
 

@@ -5,11 +5,11 @@ import { useForm } from "react-hook-form";
 import { Input } from "src/components/Input";
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify"
-import { Instance } from "src/lib/ga/api";
-import FormButton from "src/components/SubmitButton";
-import { FormProps } from "../../../lib/ga/interface";
+import { Instance } from "src/lib/api";
+import FormButton from "src/components/FormButton";
+import { FormProps } from "../../../lib/interface";
 import Link from "next/link";
-import { Success, Error, CatchError } from "src/lib/ga/notification";
+import { Success, Error, CatchError } from "src/lib/notification";
 import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
@@ -17,7 +17,7 @@ import Router from "next/router";
 const RegisterPage: NextPage = () => {
     const { status } = useSession();
 
-    const { register, handleSubmit, formState: { errors }} = useForm<FormProps>();
+    const { register, handleSubmit, formState: { errors } } = useForm<FormProps>();
 
     const onValid = async (data: FormProps) => {
         const instance = Instance(`/api/create`)

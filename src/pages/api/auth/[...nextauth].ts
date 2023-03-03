@@ -2,7 +2,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import * as bcrypt from 'bcrypt';
-import apply from "../../../lib/ga/prisma";
+import apply from "../../../lib/prisma";
 import { signOut } from "next-auth/react";
 
 const authOptions: NextAuthOptions = {

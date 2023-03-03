@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import * as S from "./styled";
 import LogoPNG from "src/assets/png/logo.png";
 import Image from "next/image";
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 import { signOut, useSession } from "next-auth/react";
 
-const navMenuList = [
+const navMenuList: { href: string; text: string; }[] = [
 	{
 		href: "/qna",
 		text: "Q&A",

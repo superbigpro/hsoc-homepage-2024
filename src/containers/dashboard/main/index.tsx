@@ -2,10 +2,10 @@ import React from "react";
 import 'react-toastify/dist/ReactToastify.css';
 import * as S from "./styled"
 import { useRouter } from "next/router";
-import { Student } from "src/lib/ga/interface";
-import { baseUrl } from "src/lib/ga/base-url";
-import { Instance } from "src/lib/ga/api";
-import { CatchError, Error, Success } from "src/lib/ga/notification";
+import { Student } from "src/lib/interface";
+import { baseUrl } from "src/lib/base-url";
+import { Instance } from "src/lib/api";
+import { CatchError, Error, Success } from "src/lib/notification";
 import { ToastContainer } from "react-toastify";
 import Link from "next/link";
 import Modal from "../modal";
