@@ -29,6 +29,9 @@ export const Wrap = styled.div`
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
+    @media screen and (max-width: 575px) {
+        margin: 2rem 0;
+    }
 `;
 
 export const RegisterWrap = styled.div`
@@ -45,6 +48,9 @@ export const RegisterWrap = styled.div`
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
     }
+    @media screen and (max-width: 575px) {
+        margin: 2rem 0;
+    }
 `;
 
 export const ApplyWrap = styled.div`
@@ -60,6 +66,9 @@ export const ApplyWrap = styled.div`
         left: 50%;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
+    }
+    @media screen and (max-width: 575px) {
+        margin: 2rem 0;
     }
 `;
 
@@ -84,10 +93,12 @@ export const FormDiv = styled.form`
         width: 480px;
     }  
     @media screen and (max-width: 575px) and (min-width: 500px) {
+        background-color: transparent;
         padding: 40px 40px;
         width: 400px;
     };
     @media screen and (max-width: 500px) and (min-width: 300px) {
+        background-color: transparent;
         padding: 40px 40px;
         width: 370px;
     };
