@@ -1,15 +1,15 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import base85 from 'base85';
+import { getServerSession } from 'next-auth/next'
 import prisma from "src/utils/prisma";
+import { authOptions } from "../auth/[...nextauth]";
 
-export default async function User(req: NextApiRequest, res: NextApiResponse) {
-    const { nickName } = req.body;
-    const decodedNickname = base85.decode(`${nickName}`);
-    console.log(decodedNickname, 'decodedNickname');
+export default async function User(req: NextApiRequest, res: NextApiResponse): Promise<void> {
+    const session = await getServerSession(req, res, authOptions)
+    const nickName = session?.user?.name;
 
     const student = await prisma.student.findUnique({
         where: {
-            nickName: decodedNickname || nickName,
+            nickName: nickName || "",
         }, select: {
             phoneNumber: true,
             introduce: true,

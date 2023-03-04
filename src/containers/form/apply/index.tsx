@@ -12,15 +12,10 @@ import { useEffect, useState } from "react";
 import Router from "next/router";
 import { ValueInput } from "src/components/Input/input-value";
 import { useSession } from "next-auth/react";
-import base85 from 'base85';
 
 const ApplyPage: NextPage = () => {
     const { data, status } = useSession();
     const nickName = data?.user?.name;
-
-    const encoder = new TextEncoder();
-    const encodedName = encoder.encode(nickName?.toString());
-    const binaryData = base85.encode(`${encodedName}`);
 
     const [info, setInfo] = useState(false)
 
@@ -29,13 +24,7 @@ const ApplyPage: NextPage = () => {
     const onValid = async (data: FormProps) => {
         const instance = Instance(`/api/update`)
         try {
-            await instance.post('', {
-                nickName: binaryData,
-                phoneNumber: data.phoneNumber,
-                introduce: data.introduce,
-                field: data.field,
-                portfolio: data.portfolio,
-            }).then((res) => {
+            await instance.post('').then((res) => {
                 res.data.ok ? (
                     Success(res.data.message),
                     setValue("phoneNumber", ""),
@@ -63,13 +52,9 @@ const ApplyPage: NextPage = () => {
     }
 
     const getMyInfo = async () => {
-        console.log(encodedName, 'encodedName');
-        console.log(binaryData, 'binaryData');
         const instance = Instance(`/api/user`)
         try {
-            await instance.post('', {
-                nickName: binaryData,
-            }).then((res) => {
+            await instance.post('').then((res) => {
                 res.data.ok ? (
                     setValue("phoneNumber", res.data.student.phoneNumber),
                     setValue("introduce", res.data.student.introduce),
