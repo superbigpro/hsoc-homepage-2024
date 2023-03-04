@@ -7,6 +7,7 @@ import { Instance } from "src/utils/api";
 import { CatchError, Error, Success } from "src/utils/notification";
 import Link from "next/link";
 import Modal from "../modal";
+import { Button } from "src/components";
 
 interface MainProps {
     students: Student[];
@@ -14,7 +15,8 @@ interface MainProps {
 
 const Main: React.FC<MainProps> = ({ students }) => {
     const router = useRouter();
-    const id = router.query.id
+    const intro = router.query.intro;
+    const folio = router.query.folio;
 
     const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const nickName = e.target.parentElement?.children[2].textContent;
@@ -48,6 +50,8 @@ const Main: React.FC<MainProps> = ({ students }) => {
                         <S.DashboardContentTitle>학번</S.DashboardContentTitle>
                         <S.DashboardContentTitle>전화번호</S.DashboardContentTitle>
                         <S.DashboardContentTitle>자기소개서</S.DashboardContentTitle>
+                        <S.DashboardContentTitle>선택 분야</S.DashboardContentTitle>
+                        <S.DashboardContentTitle>자기 역량</S.DashboardContentTitle>
                         <S.DashboardContentTitle>권한</S.DashboardContentTitle>
                     </S.DashboardContentTitleWrap>
                     {students.map((index: Student, i: number) => {
@@ -59,10 +63,18 @@ const Main: React.FC<MainProps> = ({ students }) => {
                                     <S.DashboardContentTitle>{index.nickName}</S.DashboardContentTitle>
                                     <S.DashboardContentTitle>{index.studentId}</S.DashboardContentTitle>
                                     <S.DashboardContentTitle>{index.phoneNumber || "NULL"}</S.DashboardContentTitle>
-                                    <Link href={`/dashboard/?id=${index.id}`}>
-                                        <S.DashboardContentTitle style={{ marginRight: "20px", cursor: "pointer" }}>{index.introduce || "NULL"}</S.DashboardContentTitle>
+                                    <Link href={`/dashboard/?intro=${index.id}`}>
+                                        <Button style={{ padding: "6px 10px" }}>
+                                            상세보기 &nbsp;{">"}
+                                        </Button>
                                     </Link>
-                                    <S.DashboardContentRole onChange={onChange}>
+                                    <S.DashboardContentTitle style={{ margin: "0 10px" }}>{index.field || "NULL"}</S.DashboardContentTitle>
+                                    <Link href={`/dashboard/?folio=${index.id}`}>
+                                        <Button style={{ padding: "6px 10px" }}>
+                                            상세보기 &nbsp;{">"}
+                                        </Button>
+                                    </Link>
+                                    <S.DashboardContentRole onChange={onChange} style={{ marginLeft: "10px" }}>
                                         <option>{index.role}</option>
                                         <option>{index.role === "ADMIN" ? "STUDENT" : "ADMIN"}</option>
                                     </S.DashboardContentRole>
@@ -70,15 +82,22 @@ const Main: React.FC<MainProps> = ({ students }) => {
                             </>
                         )
                     })}
-                    {router.query.id && (
-                        students.filter((student) => student.id.toString() === id).map((student) => {
+                    {router.query.intro ? (
+                        students.filter((student) => student.id.toString() === intro).map((student) => {
                             return (
                                 <>
-                                    <Modal student={student} />
+                                    <Modal student={student} query={router.query} />
                                 </>
                             )
                         })
-                    )}
+                    ) : router.query.folio && (
+                        students.filter((student) => student.id.toString() === folio).map((student) => {
+                            return (
+                                <>
+                                    <Modal student={student} query={router.query} />
+                                </>
+                            )
+                        }))}
                 </S.DashboardContainer>
             </div >
         </>

@@ -14,8 +14,9 @@ export const DashboardTitle = styled.h1`
 
 export const DashboardContentTitleWrap = styled.div`
     display: grid;
-    grid-template-columns: 0.3fr 0.4fr 0.5fr 0.6fr 0.7fr 1fr 0.6fr;
+    grid-template-columns: 0.15fr 0.3fr 0.4fr 0.3fr 0.7fr 0.4fr 0.4fr 0.4fr 0.4fr;
     padding: 4px 30px;
+    align-items: center;
     border-radius: 6px 6px 0 0;
     background-color: #6A6A6A;
 `;
@@ -30,6 +31,7 @@ export const DashboardContentItemWrap = styled(DashboardContentTitleWrap)`
 export const DashboardContentTitle = styled.h2`
     margin: 0;
     padding: 0;
+    margin-right: 10px;
     display: flex;
     height: 20px;
     overflow: scroll;
@@ -39,6 +41,7 @@ export const DashboardContentTitle = styled.h2`
 export const DashboardContentRole = styled.select`
     margin: 0;
     padding: 0;
+    appearance: none;
     border: none;
     font-size: 18px;
     background-color: transparent;
