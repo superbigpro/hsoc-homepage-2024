@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "src/utils/prisma";
 
 export default async function Update(req: NextApiRequest, res: NextApiResponse) {
-    const { nickName, phoneNumber, introduce, field } = req.body;
+    const { nickName, phoneNumber, introduce, field, portfolio } = req.body;
     const student = prisma.student
 
     const exitsStudentId = await student.findUnique({
@@ -43,6 +43,7 @@ export default async function Update(req: NextApiRequest, res: NextApiResponse) 
             phoneNumber,
             introduce,
             field,
+            portfolio
         },
     })
 

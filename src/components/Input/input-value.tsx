@@ -15,35 +15,46 @@ interface InputProps {
     divStyle?: React.CSSProperties;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     type?: HTMLInputTypeAttribute;
-    value?: string;
 }
 
-export const ValueInput: React.FC<InputProps> = ({ register, errors, title, example, name, minValue, maxValue, divStyle, onChange, type, value }) => {
+export const ValueInput: React.FC<InputProps> = ({ register, errors, title, example, name, minValue, maxValue, divStyle, onChange, type }) => {
+
+    const check = `${title === "이름" || title === "학번" || title === "자기 역량" ? `은` : `는`}`
+
+    const otherCheck = `${title === "이름" || title === "학번" || title === "자기 역량" ? `을` : `를`}`
 
     return (
         <>
             <S.InputDiv style={divStyle}>
-                <S.Title>{title}</S.Title>
+                <S.Title>{title === "자기 역량" ? `${title} (선택사항)` : title}</S.Title>
                 <S.Example>{example}</S.Example>
                 <div>
                     {title === "자기소개" ? (
                         <S.IntroduceInput {...register(`${name}`, {
-                            required: `${title}는 필수 입니다.`,
+                            required: `${title}${check} 필수 입니다.`,
                             maxLength: {
                                 value: maxValue,
-                                message: `${title}은 ${maxValue}자 이하이여야 합니다.`
+                                message: `${title}${check} ${maxValue}자 이하이여야 합니다.`
                             }
-                        })} placeholder={`${title}를 입력해주세요...`} />
+                        })} placeholder={`${title}${otherCheck} 입력해주세요...`} />
+                    ) : title === "자기 역량" ? (
+                        <S.portfolioInput{...register(`${name}`, {
+                            required: `${title}${check} 필수 입니다.`,
+                            maxLength: {
+                                value: maxValue,
+                                message: `${title}${check} ${maxValue}자 이하이여야 합니다.`
+                            }
+                        })} placeholder={`${title}${otherCheck} 입력해주세요...`} />
                     ) : (
                         <S.Input {...register(`${name}`, {
-                            required: `${title}은 필수 입니다.`,
+                            required: `${title}${check} 필수 입니다.`,
                             minLength: {
                                 value: minValue,
-                                message: `${title}은 ${minValue}자 이상이여야 합니다.`
+                                message: `${title}${check} ${minValue}자 이상이여야 합니다.`
                             },
                             maxLength: {
                                 value: maxValue,
-                                message: `${title}은 ${maxValue}자 이하이여야 합니다.`
+                                message: `${title}${check} ${maxValue}자 이하이여야 합니다.`
                             },
                             pattern: title === "전화번호" ? {
                                 value: phoneNumberPattern,
@@ -55,7 +66,7 @@ export const ValueInput: React.FC<InputProps> = ({ register, errors, title, exam
                                 value: studentNumberPattern,
                                 message: "학번 형식이 올바르지 않습니다."
                             }
-                        })} type={type} onChange={onChange} placeholder={`${title}은 입력해주세요...`} />
+                        })} type={type} onChange={onChange} placeholder={`${title}${otherCheck} 입력해주세요...`} />
                     )}
                 </div>
                 <S.Message>{errors[name]?.message}</S.Message>

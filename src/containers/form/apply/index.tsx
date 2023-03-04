@@ -34,7 +34,7 @@ const ApplyPage: NextPage = () => {
                     Success(res.data.message),
                     setValue("phoneNumber", ""),
                     setValue("introduce", ""),
-                    setValue("field", "")
+                    setValue("portfolio", "")
                 ) : (
                     Error(res.data.message)
                 )
@@ -66,6 +66,7 @@ const ApplyPage: NextPage = () => {
                     setValue("phoneNumber", res.data.student.phoneNumber),
                     setValue("introduce", res.data.student.introduce),
                     setValue("field", res.data.student.field),
+                    setValue("portfolio", res.data.student.portfolio),
                     setInfo(true)
                 ) : (
                     Error(res.data.message)
@@ -98,6 +99,7 @@ const ApplyPage: NextPage = () => {
                                 <ValueInput register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "10px" }} />
                                 <ValueInput register={register} errors={errors} title="자기소개" name="introduce" minValue={1} maxValue={3000} />
                                 <Input register={register} errors={errors} title="배우고싶은 분야" name="field" />
+                                <ValueInput register={register} errors={errors} title="자기 역량" name="portfolio" minValue={1} maxValue={3000} example="다룰 줄 아는 프로그래밍 언어나, 진행해본 프로젝트 같은것이 있다면 자유롭게 적어주세요." />
                             </S.InfoDiv>
                             <FormButton handleSubmit={handleSubmit} onValid={onValid} title={info ? "수정하기" : "지원하기"} />
                         </S.FormDiv>

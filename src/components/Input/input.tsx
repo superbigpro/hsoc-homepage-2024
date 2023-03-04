@@ -39,6 +39,7 @@ export const Input: React.FC<InputProps> = ({ register, errors, title, example, 
                             <S.FieldSelect {...register(`${name}`, {
                                 required: `${title}${check} 필수 입니다.`,
                             })}>
+                                <option>미정</option>
                                 <option>웹</option>
                                 <option>포렌식</option>
                                 <option>네트워크</option>

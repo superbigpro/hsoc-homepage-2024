@@ -95,6 +95,21 @@ export const IntroduceInput = styled.textarea`
 `;
 
 
+export const portfolioInput = styled(IntroduceInput)`
+    height: 200px;
+    @media screen and (max-width: 991px) and (min-width: 767px) {
+        height: 250px;
+    }
+    @media screen and (max-width: 767px) and (min-width: 575px) {
+        height: 200px;
+    }
+    @media screen and (max-width: 575px) and (min-width: 300px) {
+        height: 150px;
+    }
+`;
+
+
+
 export const FieldSelect = styled.select`
     margin-top: 5px;
     background-color: transparent;
@@ -109,7 +124,7 @@ export const FieldSelect = styled.select`
     outline: none;
     color: var(--color-white);
     option{
-        font-size: 16px;
+        font-size: 16px !important;
         color: var(--color-white) !important;
     }
 `;
