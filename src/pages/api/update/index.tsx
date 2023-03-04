@@ -3,7 +3,6 @@ import prisma from "src/utils/prisma";
 
 export default async function Update(req: NextApiRequest, res: NextApiResponse) {
     const { nickName, phoneNumber, introduce, field } = req.body;
-    console.log(field)
     const student = prisma.student
 
     const exitsStudentId = await student.findUnique({

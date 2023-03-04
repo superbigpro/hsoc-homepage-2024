@@ -39,11 +39,11 @@ export interface FormProps {
 };
 
 export interface Student {
-    id: number,
-    name: string,
-    studentId: string,
-    nickName: string,
-    phoneNumber: string,
+    id: number;
+    name: string;
+    studentId: string;
+    nickName: string;
+    phoneNumber: string;
     introduce: string;
     role: string;
     field: string;
