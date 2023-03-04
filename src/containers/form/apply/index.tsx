@@ -12,10 +12,15 @@ import { useEffect, useState } from "react";
 import Router from "next/router";
 import { ValueInput } from "src/components/Input/input-value";
 import { useSession } from "next-auth/react";
+import base85 from 'base85';
 
 const ApplyPage: NextPage = () => {
     const { data, status } = useSession();
     const nickName = data?.user?.name;
+
+    const encoder = new TextEncoder();
+    const encodedName = encoder.encode(nickName?.toString());
+    const binaryData = base85.encode(`${encodedName}`);
 
     const [info, setInfo] = useState(false)
 
@@ -25,10 +30,11 @@ const ApplyPage: NextPage = () => {
         const instance = Instance(`/api/update`)
         try {
             await instance.post('', {
-                nickName: nickName,
+                nickName: binaryData,
                 phoneNumber: data.phoneNumber,
                 introduce: data.introduce,
                 field: data.field,
+                portfolio: data.portfolio,
             }).then((res) => {
                 res.data.ok ? (
                     Success(res.data.message),
@@ -57,10 +63,12 @@ const ApplyPage: NextPage = () => {
     }
 
     const getMyInfo = async () => {
+        console.log(encodedName, 'encodedName');
+        console.log(binaryData, 'binaryData');
         const instance = Instance(`/api/user`)
         try {
             await instance.post('', {
-                nickName: nickName,
+                nickName: binaryData,
             }).then((res) => {
                 res.data.ok ? (
                     setValue("phoneNumber", res.data.student.phoneNumber),
@@ -98,8 +106,8 @@ const ApplyPage: NextPage = () => {
                             <S.InfoDiv>
                                 <ValueInput register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "10px" }} />
                                 <ValueInput register={register} errors={errors} title="자기소개" name="introduce" minValue={1} maxValue={3000} />
-                                <Input register={register} errors={errors} title="배우고싶은 분야" name="field" />
                                 <ValueInput register={register} errors={errors} title="자기 역량" name="portfolio" minValue={1} maxValue={3000} example="다룰 줄 아는 프로그래밍 언어나 진행해본 프로젝트 같은 것이 있다면 자유롭게 적어주세요." />
+                                <Input register={register} errors={errors} title="배우고싶은 분야" name="field" />
                             </S.InfoDiv>
                             <FormButton handleSubmit={handleSubmit} onValid={onValid} title={info ? "수정하기" : "지원하기"} />
                         </S.FormDiv>

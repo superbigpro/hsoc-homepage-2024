@@ -37,5 +37,4 @@ yarn-error.log*
 *.tsbuildinfo
 
 yarn.lock
-
 /prisma/migrations

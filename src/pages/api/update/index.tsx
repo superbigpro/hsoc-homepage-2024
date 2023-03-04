@@ -1,13 +1,16 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import base85 from 'base85';
 import prisma from "src/utils/prisma";
 
 export default async function Update(req: NextApiRequest, res: NextApiResponse) {
     const { nickName, phoneNumber, introduce, field, portfolio } = req.body;
+    const decodedNickname = base85.decode(`${nickName}`);
+
     const student = prisma.student
 
     const exitsStudentId = await student.findUnique({
         where: {
-            nickName,
+            nickName: decodedNickname || nickName,
         },
     })
 

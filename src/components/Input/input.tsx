@@ -19,6 +19,7 @@ interface InputProps {
 export const Input: React.FC<InputProps> = ({ register, errors, title, example, name, divStyle, type }) => {
 
     const check = `${title === "아이디" || title === "비밀번호" ? `는` : `은`}`
+    const otherCheck = `${title === "아이디" || title === "비밀번호" ? `를` : `을`}`
 
     return (
         <>
@@ -33,7 +34,7 @@ export const Input: React.FC<InputProps> = ({ register, errors, title, example, 
                                 value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/,
                                 message: "비밀번호는 영문, 숫자를 포함한 8자 이상이어야 합니다."
                             }
-                        })} type={type} placeholder={`${title}${check} 입력해주세요...`} />
+                        })} type={type} placeholder={`${title}${otherCheck} 입력해주세요...`} />
                     ) : title === "배우고싶은 분야" ? (
                         <>
                             <S.FieldSelect {...register(`${name}`, {
@@ -50,7 +51,7 @@ export const Input: React.FC<InputProps> = ({ register, errors, title, example, 
                     ) : (
                         <S.Input {...register(`${name}`, {
                             required: `${title}${check} 필수 입니다.`,
-                        })} type={type} placeholder={`${title}${check} 입력해주세요...`} />
+                        })} type={type} placeholder={`${title}${otherCheck} 입력해주세요...`} />
                     )}
                 </div>
                 <S.Message>{errors[name]?.message}</S.Message>

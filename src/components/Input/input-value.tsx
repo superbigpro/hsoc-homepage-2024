@@ -39,7 +39,6 @@ export const ValueInput: React.FC<InputProps> = ({ register, errors, title, exam
                         })} placeholder={`${title}${otherCheck} 입력해주세요...`} />
                     ) : title === "자기 역량" ? (
                         <S.portfolioInput{...register(`${name}`, {
-                            required: `${title}${check} 필수 입니다.`,
                             maxLength: {
                                 value: maxValue,
                                 message: `${title}${check} ${maxValue}자 이하이여야 합니다.`
