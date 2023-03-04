@@ -60,9 +60,9 @@ const RegisterPage: NextPage = () => {
             <S.RegisterWrap>
                 <S.FormDiv>
                     <S.InfoDiv>
-                        <Input register={register} errors={errors} title="아이디" name="nickName" divStyle={{ marginTop: "0" }} />
-                        <ValueInput register={register} errors={errors} title="이름" name="name" minValue={2} maxValue={5} />
-                        <ValueInput register={register} errors={errors} title="학번" example="예) 클라우드보안과 1학년 1반 1번 - C1111" name="studentId" minValue={5} maxValue={5} />
+                        <Input register={register} errors={errors} title="아이디" name="nickName" divStyle={{ marginTop: "0" }} type="username" />
+                        <ValueInput register={register} errors={errors} title="이름" name="name" minValue={2} maxValue={5} type="text" />
+                        <ValueInput register={register} errors={errors} title="학번" example="예) 클라우드보안과 1학년 1반 1번 - C1111" name="studentId" minValue={5} maxValue={5} type="text" />
                         <Input register={register} errors={errors} title="비밀번호" name="password" type="password" example="비밀번호는 영문, 숫자를 포함한 8자 이상이어야 합니다." />
                         <Input register={register} errors={errors} title="비밀번호 확인" name="passwordCheck" type="password" />
                     </S.InfoDiv>

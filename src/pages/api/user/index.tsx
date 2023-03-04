@@ -6,10 +6,11 @@ import { authOptions } from "../auth/[...nextauth]";
 export default async function User(req: NextApiRequest, res: NextApiResponse): Promise<void> {
     const session = await getServerSession(req, res, authOptions)
     const nickName = session?.user?.name;
+    console.log(nickName)
 
     const student = await prisma.student.findUnique({
         where: {
-            nickName: nickName || "",
+            nickName: nickName || undefined,
         }, select: {
             phoneNumber: true,
             introduce: true,

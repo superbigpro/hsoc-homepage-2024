@@ -1,18 +1,18 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 import prisma from "src/utils/prisma";
+import { student } from "src/utils/student";
 import { authOptions } from "../auth/[...nextauth]";
 
 export default async function Update(req: NextApiRequest, res: NextApiResponse) {
     const { phoneNumber, introduce, field, portfolio } = req.body;
     const session = await getServerSession(req, res, authOptions)
-    const student = prisma.student
 
     const nickName = session?.user?.name;
 
     const exitsStudentId = await student.findUnique({
         where: {
-            nickName: nickName || "",
+            nickName: nickName || undefined,
         },
     })
 

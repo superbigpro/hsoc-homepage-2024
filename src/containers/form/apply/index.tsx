@@ -24,7 +24,12 @@ const ApplyPage: NextPage = () => {
     const onValid = async (data: FormProps) => {
         const instance = Instance(`/api/update`)
         try {
-            await instance.post('').then((res) => {
+            await instance.post('', {
+                phoneNumber: data.phoneNumber,
+                introduce: data.introduce,
+                field: data.field,
+                portfolio: data.portfolio
+            }).then((res) => {
                 res.data.ok ? (
                     Success(res.data.message),
                     setValue("phoneNumber", ""),

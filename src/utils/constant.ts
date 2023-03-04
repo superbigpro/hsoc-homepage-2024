@@ -46,3 +46,4 @@ export const nameNumberPattern = /^[가-힣]{2,4}$/; //
 
 export const studentNumberPattern = /^[CN][0-9]{4}$/; 
 
+

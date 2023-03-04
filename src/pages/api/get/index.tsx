@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "src/utils/prisma";
+import { student } from "src/utils/student";
 
 // Exclude keys from student
 function exclude<Student, Key extends keyof Student>(
@@ -13,7 +14,7 @@ function exclude<Student, Key extends keyof Student>(
 }
 
 export default async function Get(req: NextApiRequest, res: NextApiResponse) {
-    const students = await prisma.student.findMany({
+    const students = await student.findMany({
         orderBy: {
             id: "asc",
         },
