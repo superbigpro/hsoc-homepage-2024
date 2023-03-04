@@ -1,0 +1,30 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+enum Role {
+  STUDENT
+  ADMIN
+}
+
+model student {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  // updateAt DateTime @default(now()) @updatedAt
+  nickName    String   @unique
+  name        String
+  studentId   String
+  phoneNumber String?  @unique
+  password    String
+  introduce   String?  @db.MediumText
+  field       String?
+  portfolio   String?  @db.MediumText
+  role        Role     @default(STUDENT)
+}

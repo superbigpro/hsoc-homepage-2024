@@ -1,0 +1,19 @@
+import styled from "styled-components";
+
+export const ButtonElement = styled.button`
+	outline: none;
+	border: none;
+	font-size: 18px;
+	font-weight: 500;
+	color: var(--color-white);
+	background-color: var(--color-primary);
+	box-shadow: 0px 0px 5px rgba(78, 51, 220, 0.2);
+	padding: 10px 20px;
+	border-radius: 10px;
+	letter-spacing: -0.055em;
+	line-height: 23px;
+	@media screen and (max-width: 576px) {
+		font-size: 16px;
+		padding: 8px 18px;
+	}
+`;
