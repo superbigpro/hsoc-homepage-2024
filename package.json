@@ -5,7 +5,7 @@
 	"repository": "https://github.com/hsoc-wargame/hsoc-homepage.git",
 	"author": "choi138 <kidjustinchoi@gmail.com>",
 	"scripts": {
-		"dev": "next dev -p 3001",
+		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
