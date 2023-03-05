@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
+import Image from "next/image";
 import Navbar from 'react-bootstrap/Navbar';
 import { MdDehaze } from "react-icons/md";
 
@@ -89,4 +90,13 @@ export const TogIcon = styled(MdDehaze)`
     width: 30px;
     height: 30px;
     color: var(--color-white);
+`;
+
+export const LogoImage = styled(Image)`
+	width: 55px;
+	height: 55px;
+	@media screen and (max-width: 567px) {
+		width: 45px !important;
+		height: 45px !important;
+	}
 `;

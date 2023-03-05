@@ -19,7 +19,7 @@ export const Navbar: React.FC = () => {
 			<S.NavbarContainer className="container" >
 				<Link href="/" passHref>
 					<a>
-						<Image src={LogoPNG.src} alt="보안관제 동아리 로고" width="55" height="55" />
+						<S.LogoImage src={LogoPNG.src} alt="보안관제 동아리 로고" width="55px" height="55px" />
 					</a>
 				</Link>
 				<S.NavTog ><S.TogIcon /></S.NavTog>

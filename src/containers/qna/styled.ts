@@ -84,4 +84,7 @@ export const AnswerContainer = styled(motion.div) <{ isOpen: boolean }>`
 `;
 
 export const Answer = styled(motion.p)`
+	@media screen  and (max-width: 575px) {
+		font-size: 14px;
+	}
 `;

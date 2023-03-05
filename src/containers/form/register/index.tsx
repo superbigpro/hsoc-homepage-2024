@@ -2,7 +2,6 @@ import { NextPage } from "next";
 import * as S from "../styled";
 import LogoBig from "src/assets/png/logo-big.png";
 import { useForm } from "react-hook-form";
-import { Input } from "src/components/Input/input";
 import { Instance } from "src/utils/api";
 import FormButton from "src/components/FormButton";
 import { FormProps } from "../../../utils/interface";
@@ -11,7 +10,7 @@ import { Success, Error, CatchError } from "src/utils/notification";
 import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
-import { ValueInput } from "src/components/Input/input-value";
+import { Input } from "src/components/Input/input";
 
 const RegisterPage: NextPage = () => {
     const { status } = useSession();
@@ -60,11 +59,11 @@ const RegisterPage: NextPage = () => {
             <S.RegisterWrap>
                 <S.FormDiv>
                     <S.InfoDiv>
-                        <Input register={register} errors={errors} title="아이디" name="nickName" divStyle={{ marginTop: "0" }} type="username" />
-                        <ValueInput register={register} errors={errors} title="이름" name="name" minValue={2} maxValue={5} type="text" />
-                        <ValueInput register={register} errors={errors} title="학번" example="예) 클라우드보안과 1학년 1반 1번 - C1111" name="studentId" minValue={5} maxValue={5} type="text" />
-                        <Input register={register} errors={errors} title="비밀번호" name="password" type="password" example="비밀번호는 영문, 숫자를 포함한 8자 이상이어야 합니다." />
-                        <Input register={register} errors={errors} title="비밀번호 확인" name="passwordCheck" type="password" />
+                        <Input register={register} errors={errors} title="아이디" name="nickName" divStyle={{ marginTop: "0" }} type="username" minValue={4} maxValue={12} />
+                        <Input register={register} errors={errors} title="이름" name="name" minValue={2} maxValue={5} type="text" />
+                        <Input register={register} errors={errors} title="학번" example="예) 클라우드보안과 1학년 1반 1번 - C1111" name="studentId" minValue={5} maxValue={5} type="text" />
+                        <Input register={register} errors={errors} title="비밀번호" name="password" type="password" example="비밀번호는 영문, 숫자를 포함한 8자 이상이어야 합니다." minValue={8} maxValue={20} />
+                        <Input register={register} errors={errors} title="비밀번호 확인" name="passwordCheck" type="password" minValue={8} maxValue={20} />
                     </S.InfoDiv>
                     <FormButton handleSubmit={handleSubmit} onValid={onValid} title="회원가입" />
                     <S.LinkButton >이미 계정이 있으신가요?

@@ -10,13 +10,10 @@ import RightArrowSVG from "src/assets/svg/right-arrow.svg";
 import { Instance } from "src/utils/api";
 import { useEffect, useState } from "react";
 import Router from "next/router";
-import { ValueInput } from "src/components/Input/input-value";
 import { useSession } from "next-auth/react";
 
 const ApplyPage: NextPage = () => {
     const { data, status } = useSession();
-    const nickName = data?.user?.name;
-
     const [info, setInfo] = useState(false)
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
@@ -53,6 +50,15 @@ const ApplyPage: NextPage = () => {
         }
         if (inputValue.length === 13) {
             setValue("phoneNumber", inputValue.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'));
+        }
+    }
+
+    const textAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        const inputValue = e.target.value;
+        console.log(inputValue.length)
+        if (inputValue.length > 3000) {
+            setValue("introduce", inputValue.slice(0, 3000));
+            setValue("portfolio", inputValue.slice(0, 3000));
         }
     }
 
@@ -94,10 +100,10 @@ const ApplyPage: NextPage = () => {
                                 <RightArrowSVG style={{ marginBottom: "4px" }} />
                             </S.GetMyInfoMessage>
                             <S.InfoDiv>
-                                <ValueInput register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "10px" }} />
-                                <ValueInput register={register} errors={errors} title="자기소개" name="introduce" minValue={1} maxValue={3000} />
-                                <ValueInput register={register} errors={errors} title="자기 역량" name="portfolio" minValue={1} maxValue={3000} example="다룰 줄 아는 프로그래밍 언어나 진행해본 프로젝트 같은 것이 있다면 자유롭게 적어주세요." />
-                                <Input register={register} errors={errors} title="배우고싶은 분야" name="field" />
+                                <Input register={register} errors={errors} title="전화번호" name="phoneNumber" minValue={13} maxValue={13} onChange={onChange} divStyle={{ marginTop: "10px" }} />
+                                <Input register={register} errors={errors} title="자기소개" name="introduce" minValue={1} maxValue={3000} textAreaChange={textAreaChange} />
+                                <Input register={register} errors={errors} title="자기 역량" name="portfolio" minValue={1} maxValue={3000} example="다룰 줄 아는 프로그래밍 언어나 진행해본 프로젝트 같은 것이 있다면 자유롭게 적어주세요." textAreaChange={textAreaChange} />
+                                <Input register={register} errors={errors} title="배우고싶은 분야" name="field" minValue={1} maxValue={1} />
                             </S.InfoDiv>
                             <FormButton handleSubmit={handleSubmit} onValid={onValid} title={info ? "수정하기" : "지원하기"} />
                         </S.FormDiv>

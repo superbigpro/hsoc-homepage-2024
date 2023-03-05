@@ -49,8 +49,8 @@ const LoginPage: NextPage = () => {
             <S.LoginWrap>
                 <S.FormDiv>
                     <S.InfoDiv>
-                        <Input register={register} errors={errors} title="아이디" name="nickName" divStyle={{ marginTop: "0" }} />
-                        <Input register={register} errors={errors} title="비밀번호" name="password" type={"password"} />
+                        <Input register={register} errors={errors} title="아이디" name="nickName" divStyle={{ marginTop: "0" }} minValue={4} maxValue={12} />
+                        <Input register={register} errors={errors} title="비밀번호" name="password" type={"password"} minValue={8} maxValue={20} />
                     </S.InfoDiv>
                     <FormButton handleSubmit={handleSubmit} onValid={onValid} title="로그인" />
                     <S.LinkButton >아직 계정이 없으신가요?

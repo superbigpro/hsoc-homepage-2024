@@ -50,7 +50,7 @@ export const RegisterWrap = styled(Wrap)`
 `;
 
 export const ApplyWrap = styled(Wrap)`
-    @media screen and (min-height: 900px){
+    @media screen and (min-height: 1300px){
         margin: 0;
         position: absolute;
         top: 50%;
