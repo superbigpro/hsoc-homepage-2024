@@ -80,9 +80,12 @@ export const Input: React.FC<InputProps> = ({ register, errors, title, example, 
                             } : title === "비밀번호" ? {
                                 value: passwordPattern,
                                 message: "비밀번호 형식이 올바르지 않습니다."
-                            } : {
+                            } : title === "전화번호" ? {
                                 value: phoneNumberPattern,
                                 message: "전화번호 형식이 올바르지 않습니다."
+                            } : {
+                                value: passwordPattern,
+                                message: "비밀번호 확인 형식이 올바르지 않습니다."
                             }
                         })} type={type} onChange={onChange} placeholder={`${title}${otherCheck} 입력해주세요...`} />
                     )}
