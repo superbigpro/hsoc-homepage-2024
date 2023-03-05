@@ -26,31 +26,22 @@ export default async function Update(req: NextApiRequest, res: NextApiResponse) 
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
 
-    // if (year === 2023 && month === 3 && day >= 6 && day <= 8) {
-    //     await student.update({
-    //         where: {
-    //             studentId,
-    //         },
-    //         data: {
-    //             phoneNumber,
-    //             introduce,
-    //         },
-    //     })
-    // } else {
-    //     return res.send({ ok: false, message: "신청 기간이 아닙니다." });
-    // }
+    if (year === 2023 && month === 3 && day >= 6 && day <= 9) {
+        await student.update({
+            where: {
+                nickName: nickName || "",
+            },
+            data: {
+                phoneNumber,
+                introduce,
+                field,
+                portfolio
+            },
+        })
+        res.send({ ok: true, message: "신청이 완료되었습니다." });
+    } else {
+        return res.send({ ok: false, message: "신청 기간이 아닙니다." });
+    }
 
-    await student.update({
-        where: {
-            nickName: nickName || "",
-        },
-        data: {
-            phoneNumber,
-            introduce,
-            field,
-            portfolio
-        },
-    })
-
-    res.send({ ok: true, message: "신청이 완료되었습니다." });
 }
+
