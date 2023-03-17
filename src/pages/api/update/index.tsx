@@ -26,7 +26,7 @@ export default async function Update(req: NextApiRequest, res: NextApiResponse) 
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
 
-    if (year === 2023 && month === 3 && day >= 6 && day <= 9) {
+    if (year === 2023 && month === 3 && day >= 6 && day <= 7) {
         await student.update({
             where: {
                 nickName: nickName || "",

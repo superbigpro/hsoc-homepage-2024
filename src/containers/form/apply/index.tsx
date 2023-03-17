@@ -96,7 +96,7 @@ const ApplyPage: NextPage = () => {
                     <S.ApplyWrap>
                         <S.FormDiv>
                             <S.GetMyInfoMessage onClick={getMyInfo}>
-                                내 정보 불러오기
+                                수정하기
                                 <RightArrowSVG style={{ marginBottom: "4px" }} />
                             </S.GetMyInfoMessage>
                             <S.InfoDiv>

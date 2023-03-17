@@ -16,7 +16,7 @@ const fields = [
         src: NetWorkLogo.src
     },
     {
-        bigTitle: "오픈스테고를 HxD를 이용한",
+        bigTitle: "오픈스테고와HxD를 이용한",
         title: "포렌식",
         description: "포렌식 분야에서는 HxD와 오픈스테고(OpenStego)를 활용해요. 오픈스테고는 안티포렌(Anti-Forensic)기술 중 하나인 스테가노그래피(Steganography)를 위한 도구에요. 스테가노그래피는 각종 파일에 특정 메시지를 숨겨서 전송하는 방식으로, 오픈스테고를 활용하면 파일을 숨기거나 발견할 수 있어요. 또한 HxD를 사용하여 파일을 파괴하거나 복구하는 등 다양한 작업이 가능해요.",
         src: ForensicLogo.src
