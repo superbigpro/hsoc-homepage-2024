@@ -1,7 +1,6 @@
+import { student } from "@/utils";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
-import prisma from "src/utils/prisma";
-import { student } from "src/utils/constant/student";
 import { authOptions } from "../auth/[...nextauth]";
 
 export default async function Update(req: NextApiRequest, res: NextApiResponse) {
