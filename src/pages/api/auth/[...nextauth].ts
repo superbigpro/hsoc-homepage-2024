@@ -2,7 +2,7 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import * as bcrypt from 'bcrypt';
-import { prisma, student } from "@/utils";
+import { student } from "@/utils";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -18,7 +18,7 @@ export const authOptions: NextAuthOptions = {
           id: string;
           password: string;
         };
-        const exitsStudent = await student.findUnique({
+        const exitsStudent = await student?.findUnique({
           where: {
             nickName: id,
           }

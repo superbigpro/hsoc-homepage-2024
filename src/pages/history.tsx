@@ -1,1 +1,1 @@
-export { default } from "src/containers/history";
+export { default } from "@/containers/history";

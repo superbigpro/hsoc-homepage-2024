@@ -1,1 +1,1 @@
-export { default } from "src/containers/qna";
+export { default } from "@/containers/qna";

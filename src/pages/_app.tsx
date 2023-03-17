@@ -4,11 +4,11 @@ import { useRouter } from "next/router";
 import { SessionProvider } from "next-auth/react";
 import Head from "next/head";
 import { useEffect } from "react";
-import { Navbar } from "src/components";
-import { GlobalStyle } from "src/styles/globalStyle";
+import { Navbar } from "@/components";
+import { GlobalStyle } from "@/styles/globalStyle";
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import * as ga from "src/utils/ga/index";
+import * as ga from "@/utils/ga/index";
 import { ToastContainer } from "react-toastify";
 
 function MyApp({ Component, pageProps }: AppProps) {

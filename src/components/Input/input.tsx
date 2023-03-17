@@ -1,7 +1,6 @@
+import { FormProps, idPattern, nameNumberPattern, passwordPattern, phoneNumberPattern, studentNumberPattern } from "@/utils";
 import { HTMLInputTypeAttribute } from "react";
 import { FieldErrors, UseFormRegister } from "react-hook-form"
-import { idPattern, nameNumberPattern, passwordPattern, phoneNumberPattern, studentNumberPattern } from "src/utils/constant";
-import { FormProps } from "src/utils/interface";
 import * as S from "./styled"
 
 interface InputProps {

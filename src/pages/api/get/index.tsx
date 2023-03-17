@@ -12,13 +12,13 @@ function exclude<Student, Key extends keyof Student>(
 }
 
 export default async function Get(req: NextApiRequest, res: NextApiResponse) {
-    const students = await student.findMany({
+    const students = await student?.findMany({
         orderBy: {
             id: "asc",
         },
     })
 
-    const studentsWithoutPassword = students.map((student) => {
+    const studentsWithoutPassword = students?.map((student) => {
         return exclude(student, ["password"])
     })
 

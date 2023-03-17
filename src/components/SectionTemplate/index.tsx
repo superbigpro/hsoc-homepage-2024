@@ -3,8 +3,8 @@ import * as S from "./styled";
 import { Section } from "..";
 import Link from "next/link";
 
-import RightArrowSVG from "src/assets/svg/right-arrow.svg";
-import { useScrollFadeIn } from "src/hooks/useScrollFaedIn";
+import RightArrowSVG from "@/assets/svg/right-arrow.svg";
+import { useScrollFadeIn } from "@/hooks/useScrollFaedIn";
 
 interface SectionTemplateProps {
 	isSecondary?: boolean;

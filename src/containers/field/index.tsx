@@ -1,12 +1,12 @@
 import * as S from "./styled";
 import type { NextPage } from "next";
-import { SectionTemplate } from "src/components";
-import NetWorkLogo from 'src/assets/png/network-logo.png';
-import ForensicLogo from 'src/assets/png/forensic-logo.png';
-import SystemLogo from 'src/assets/png/system-logo.png';
-import CryptoLogo from 'src/assets/png/crypto-logo.png';
-import WebLogo from 'src/assets/png/web-logo.png';
-import { TitleSection } from "src/components/TitleSection";
+import { SectionTemplate } from "@/components";
+import NetWorkLogo from '@/assets/png/network-logo.png';
+import ForensicLogo from '@/assets/png/forensic-logo.png';
+import SystemLogo from '@/assets/png/system-logo.png';
+import CryptoLogo from '@/assets/png/crypto-logo.png';
+import WebLogo from '@/assets/png/web-logo.png';
+import { TitleSection } from "@/components/TitleSection";
 
 const fields = [
     {

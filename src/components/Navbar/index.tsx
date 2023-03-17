@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./styled";
-import LogoPNG from "src/assets/png/logo.png";
+import LogoPNG from "@/assets/png/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";

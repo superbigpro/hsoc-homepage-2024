@@ -1,1 +1,1 @@
-export { default } from "src/containers/field";
+export { default } from "@/containers/field";

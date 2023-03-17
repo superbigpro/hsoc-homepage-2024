@@ -5,7 +5,7 @@ import { student } from "@/utils";
 export default async function Create(req: NextApiRequest, res: NextApiResponse) {
     const { nickName, name, studentId, password } = req.body;
 
-    const exitsNickName = await student.findUnique({
+    const exitsNickName = await student?.findUnique({
         where: {
             nickName,
         },
@@ -22,7 +22,7 @@ export default async function Create(req: NextApiRequest, res: NextApiResponse) 
 
     const hashedPassword = await hashPassword();
 
-    await student.create({
+    await student?.create({
         data: {
             nickName,
             name,

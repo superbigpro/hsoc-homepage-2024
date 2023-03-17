@@ -1,5 +1,5 @@
 import { Section } from "../Section";
-import LogoBig from "src/assets/png/logo-big.png";
+import LogoBig from "@/assets/png/logo-big.png";
 import * as S from "./styled";
 
 interface TitleSectionProps {

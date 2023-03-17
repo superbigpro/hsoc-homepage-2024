@@ -1,17 +1,17 @@
 import type { NextPage } from "next";
 import * as S from "./styled";
-import {SectionTemplate } from "src/components";
-import FieldIntroduce from "src/assets/png/fieldIntroduce.jpg";
-import FieldIntroduce2 from "src/assets/png/fieldIntroduce2.jpg";
-import FieldIntroduce3 from "src/assets/png/fieldIntroduce3.jpg";
-import Ctf from "src/assets/png/ctf1.jpg";
-import Ctf2 from "src/assets/png/ctf2.jpg";
-import Ctf3 from "src/assets/png/ctf3.jpg";
-import Ctf4 from "src/assets/png/ctf4.jpg";
-import Mentoring from "src/assets/png/mentoring.jpg";
-import Mentoring2 from "src/assets/png/mentoring2.jpg";
-import Mentoring3 from "src/assets/png/mentoring3.jpg";
-import { TitleSection } from "src/components/TitleSection";
+import {SectionTemplate } from "@/components";
+import FieldIntroduce from "@/assets/jpg/fieldIntroduce.jpg";
+import FieldIntroduce2 from "@/assets/jpg/fieldIntroduce2.jpg";
+import FieldIntroduce3 from "@/assets/jpg/fieldIntroduce3.jpg";
+import Ctf from "@/assets/jpg/ctf1.jpg";
+import Ctf2 from "@/assets/jpg/ctf2.jpg";
+import Ctf3 from "@/assets/jpg/ctf3.jpg";
+import Ctf4 from "@/assets/jpg/ctf4.jpg";
+import Mentoring from "@/assets/jpg/mentoring.jpg";
+import Mentoring2 from "@/assets/jpg/mentoring2.jpg";
+import Mentoring3 from "@/assets/jpg/mentoring3.jpg";
+import { TitleSection } from "@/components/TitleSection";
 
 const HistoryPage: NextPage = () => {
     return (

@@ -1,8 +1,8 @@
 import * as S from "./styled";
 import Link from "next/link";
-import { Student } from "src/utils/interface";
 import { NextRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
+import { Student } from "@/utils";
 
 interface ModalProps {
     student: Student;

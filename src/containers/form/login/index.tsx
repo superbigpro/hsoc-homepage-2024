@@ -1,9 +1,9 @@
 import { signIn, useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
-import LogoBig from "src/assets/png/logo-big.png";
-import { Input } from "src/components/Input/input";
+import LogoBig from "@/assets/png/logo-big.png";
+import { Input } from "@/components/Input/input";
 import * as S from "../styled"
-import FormButton from "src/components/FormButton";
+import FormButton from "@/components/FormButton";
 import Link from "next/link";
 import { useEffect } from "react";
 import Router, { useRouter } from "next/router";

@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 export default async function RoleUpdate(req: NextApiRequest, res: NextApiResponse) {
     const { nickName, role } = req.body;
 
-    await student.update({
+    await student?.update({
         where: {
             nickName,
         },

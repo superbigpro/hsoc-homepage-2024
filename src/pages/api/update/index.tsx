@@ -9,7 +9,7 @@ export default async function Update(req: NextApiRequest, res: NextApiResponse) 
 
     const nickName = session?.user?.name;
 
-    const exitsStudentId = await student.findUnique({
+    const exitsStudentId = await student?.findUnique({
         where: {
             nickName: nickName || undefined,
         },
@@ -26,7 +26,7 @@ export default async function Update(req: NextApiRequest, res: NextApiResponse) 
     let year = date.getFullYear();
 
     if (year === 2023 && month === 3 && day >= 6 && day <= 7) {
-        await student.update({
+        await student?.update({
             where: {
                 nickName: nickName || "",
             },
