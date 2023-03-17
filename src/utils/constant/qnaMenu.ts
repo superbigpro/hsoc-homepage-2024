@@ -1,23 +1,9 @@
-export const navMenuList: { href: string; text: string; }[] = [
-    {
-        href: "/qna",
-        text: "Q&A",
-    },
-    {
-        href: "/field",
-        text: "분야 소개",
-    },
-    {
-        href: "/history",
-        text: "관제 일지",
-    },
-    {
-        href: "/apply",
-        text: "지원하기",
-    },
-];
+export interface QnAItem {
+    question: string;
+    answer: string;
+}
 
-export const questions: { question: string, answer: string }[] = [
+export const QNA_List: QnAItem[] = [
     {
         question: "보안관제는 어떤 동아리 인가요?",
         answer: "해킹 대회 문제를 학습 및 연구하며 교내/외 대회 문제를 출제하고 개최하는 동아리에요",
@@ -39,14 +25,3 @@ export const questions: { question: string, answer: string }[] = [
         answer: "모집 인원 미정이에요 (언제든 열려있으니, 많은 관심과 지원 부탁드려요!)",
     },
 ];
-
-export const idPattern = /^[a-zA-Z0-9가-힣]{2,12}$/;
-
-export const passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/
-
-export const phoneNumberPattern = /^01([0|1|6|7|8|9]?)-?[0-9]{3,4}-?[0-9]{4}$/;
-
-export const nameNumberPattern = /^[가-힣]{2,4}$/; // 
-
-export const studentNumberPattern = /^[C|N][0-9]{4}$/;
-

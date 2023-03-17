@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "src/utils/prisma";
-import { student } from "src/utils/student";
+import { student } from "src/utils/constant/student";
 
 // Exclude keys from student
 function exclude<Student, Key extends keyof Student>(
