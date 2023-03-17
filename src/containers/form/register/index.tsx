@@ -8,40 +8,33 @@ import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
 import { Input } from "@/components/Input/input";
-import { CatchError, FormProps, instance, Error } from "@/utils";
+import { FormProps, instance, Error } from "@/utils";
 
 const RegisterPage: NextPage = () => {
     const { status } = useSession();
 
     const { register, handleSubmit, formState: { errors }, setError } = useForm<FormProps>();
 
-    const onValid = async (data: FormProps) => {
-        if (data.password !== data.passwordCheck) {
+    const onValid = async (formData: FormProps) => {
+        if (formData.password !== formData.passwordCheck) {
             setError(
-                'passwordCheck', // 에러 핸들링할 input요소 name
-                { message: '비밀번호가 일치하지 않습니다.' }, // 에러 메세지
-                { shouldFocus: true }, // 에러가 발생한 input으로 focus 이동
+                'passwordCheck',
+                { message: '비밀번호가 일치하지 않습니다.' },
+                { shouldFocus: true },
             );
         } else {
-            try {
-                await instance.post('/api/create', {
-                    nickName: data.nickName,
-                    name: data.name,
-                    studentId: data.studentId,
-                    password: data.password,
-                }).then((res) => {
-                    res.data.ok ? (
-                        Router.replace("/login")
-                    ) : (
-                        Error(res.data.message)
-                    )
-                });
-            } catch (err) {
-                console.log(err)
-                CatchError("Error!")
-            }
+            const { data } = await instance.post('/api/create', {
+                nickName: formData.nickName,
+                name: formData.name,
+                studentId: formData.studentId,
+                password: formData.password,
+            })
+            data.ok ? (
+                Router.replace("/login")
+            ) : (
+                Error(data.message)
+            )
         }
-
     };
 
     useEffect(() => {
