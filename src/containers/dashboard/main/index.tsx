@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Modal from "../modal";
 import { Button } from "@/components";
-import { CatchError, instance, Student, Success } from "@/utils";
+import { CatchError, Error, instance, Student, Success } from "@/utils";
 
 interface MainProps {
     students: Student[];

@@ -8,7 +8,7 @@ import RightArrowSVG from "@/assets/svg/right-arrow.svg";
 import { useEffect, useState } from "react";
 import Router from "next/router";
 import { useSession } from "next-auth/react";
-import { CatchError, FormProps, instance, Success } from "@/utils";
+import { CatchError, Error, FormProps, instance, Success } from "@/utils";
 
 const ApplyPage: NextPage = () => {
     const { data, status } = useSession();
@@ -16,27 +16,21 @@ const ApplyPage: NextPage = () => {
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
 
-    const onValid = async (data: FormProps) => {
-        try {
-            await instance.post('/api/update', {
-                phoneNumber: data.phoneNumber,
-                introduce: data.introduce,
-                field: data.field,
-                portfolio: data.portfolio
-            }).then((res) => {
-                res.data.ok ? (
-                    Success(res.data.message),
-                    setValue("phoneNumber", ""),
-                    setValue("introduce", ""),
-                    setValue("portfolio", "")
-                ) : (
-                    Error(res.data.message)
-                )
-            });
-        } catch (err) {
-            console.log(err)
-            CatchError("Error!")
-        }
+    const onValid = async (formData: FormProps) => {
+        const { data } = await instance.post('/api/update', {
+            phoneNumber: formData.phoneNumber,
+            introduce: formData.introduce,
+            field: formData.field,
+            portfolio: formData.portfolio
+        })
+        data.ok ? (
+            Success(data.message),
+            setValue("phoneNumber", ""),
+            setValue("introduce", ""),
+            setValue("portfolio", "")
+        ) : (
+            Error(data.message)
+        )
     };
 
 
@@ -52,7 +46,6 @@ const ApplyPage: NextPage = () => {
 
     const textAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const inputValue = e.target.value;
-        console.log(inputValue.length)
         if (inputValue.length > 3000) {
             setValue("introduce", inputValue.slice(0, 3000));
             setValue("portfolio", inputValue.slice(0, 3000));
@@ -60,23 +53,18 @@ const ApplyPage: NextPage = () => {
     }
 
     const getMyInfo = async () => {
-        try {
-            await instance.post('/api/user').then((res) => {
-                res.data.ok ? (
-                    setValue("phoneNumber", res.data.student.phoneNumber),
-                    setValue("introduce", res.data.student.introduce),
-                    setValue("field", res.data.student.field),
-                    setValue("portfolio", res.data.student.portfolio),
-                    setInfo(true)
-                ) : (
-                    Error(res.data.message)
-                )
-            });
-        } catch (err) {
-            console.log(err)
-            CatchError("Error!")
-        }
+        const { data } = await instance.post('/api/user')
+        data.ok ? (
+            setInfo(true),
+            setValue("phoneNumber", data.phoneNumber),
+            setValue("introduce", data.introduce),
+            setValue("portfolio", data.portfolio),
+            setValue("field", data.field)
+        ) : (
+            Error(data.message)
+        )
     }
+
 
     useEffect(() => {
         if (status === "unauthenticated") {

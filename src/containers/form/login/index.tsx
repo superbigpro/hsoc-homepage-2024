@@ -8,7 +8,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import Router, { useRouter } from "next/router";
 import { NextPage } from "next";
-import { FormProps, Info } from "@/utils";
+import { Error, FormProps, Info } from "@/utils";
 
 const LoginPage: NextPage = () => {
     const { status } = useSession();
@@ -22,6 +22,7 @@ const LoginPage: NextPage = () => {
             password: formData.password,
             redirect: false,
         }).then((res) => {
+            console.log(res)
             res?.ok ? (
                 Router.replace("/")
             ) : (
@@ -39,7 +40,6 @@ const LoginPage: NextPage = () => {
         if (router.query.redirect) {
             Info("지원하려면, 먼저 로그인을 하셔야 합니다.")
         }
-        console.log(router.query.redirect)
     }, [])
 
     return (

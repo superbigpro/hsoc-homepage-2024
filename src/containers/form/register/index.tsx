@@ -8,7 +8,7 @@ import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
 import { Input } from "@/components/Input/input";
-import { CatchError, FormProps, instance } from "@/utils";
+import { CatchError, FormProps, instance, Error } from "@/utils";
 
 const RegisterPage: NextPage = () => {
     const { status } = useSession();
