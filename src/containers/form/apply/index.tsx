@@ -1,28 +1,26 @@
 import { useForm } from "react-hook-form";
 import LogoBig from "@/assets/png/logo-big.png";
-import { Input } from "@/components/Input/input";
 import * as S from "../styled"
-import FormButton from "@/components/FormButton";
 import { NextPage } from "next";
 import RightArrowSVG from "@/assets/svg/right-arrow.svg";
 import { useEffect, useState } from "react";
 import Router from "next/router";
 import { useSession } from "next-auth/react";
 import { Error, FormProps, instance, Success } from "@/utils";
+import { FormButton, Input } from "@/components";
 
 const ApplyPage: NextPage = () => {
-    const { data, status } = useSession();
+    const { status } = useSession();
     const [info, setInfo] = useState(false)
 
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
 
     const onValid = async (formData: FormProps) => {
         const { data } = await instance.post('/api/update', {
-            // phoneNumber: formData.phoneNumber,
-            // introduce: formData.introduce,
-            // field: formData.field,
-            // portfolio: formData.portfolio
-            formData
+            phoneNumber: formData.phoneNumber,
+            introduce: formData.introduce,
+            field: formData.field,
+            portfolio: formData.portfolio
         })
         data.ok ? (
             Success(data.message),

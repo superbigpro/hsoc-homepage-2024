@@ -1,6 +1,6 @@
+import { FormProps } from '@/utils';
 import { BaseSyntheticEvent } from 'react';
 import { SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
-import { FormProps } from 'src/utils/interface';
 import * as S from './styled';
 
 interface FormButtonProps {
@@ -9,7 +9,7 @@ interface FormButtonProps {
     onValid: SubmitHandler<FormProps>;
 }
 
-const FormButton: React.FC<FormButtonProps> = ({ title, handleSubmit, onValid }) => {
+export const FormButton: React.FC<FormButtonProps> = ({ title, handleSubmit, onValid }) => {
     return (
         <>
             <S.ButtonDiv>
@@ -18,5 +18,3 @@ const FormButton: React.FC<FormButtonProps> = ({ title, handleSubmit, onValid })
         </>
     )
 }
-
-export default FormButton;

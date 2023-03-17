@@ -1,7 +1,7 @@
 import { instance, Student } from "@/utils";
 import { NextPage } from "next"
 import { useSession } from "next-auth/react";
-import NonePage from "@/containers/404";
+import NonePage from "../404";
 import Main from "./main";
 
 interface DashboardPageProps {

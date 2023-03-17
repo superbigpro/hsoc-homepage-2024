@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import * as S from "./styled";
 import { Section } from "@/components";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { TitleSection } from "@/components/TitleSection";
 import { QNA_List } from "@/utils";
 

@@ -2,13 +2,12 @@ import { NextPage } from "next";
 import * as S from "../styled";
 import LogoBig from "@/assets/png/logo-big.png";
 import { useForm } from "react-hook-form";
-import FormButton from "@/components/FormButton";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
-import { Input } from "@/components/Input/input";
 import { FormProps, instance, Error } from "@/utils";
+import { FormButton, Input } from "@/components";
 
 const RegisterPage: NextPage = () => {
     const { status } = useSession();

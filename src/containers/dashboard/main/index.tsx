@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import Modal from "../modal";
 import { Button } from "@/components";
-import { CatchError, Error, instance, Student, Success } from "@/utils";
+import { Error, instance, Student, Success } from "@/utils";
 
 interface MainProps {
     students: Student[];
@@ -15,24 +15,18 @@ const Main: React.FC<MainProps> = ({ students }) => {
     const intro = router.query.intro;
     const folio = router.query.folio;
 
-    const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const onChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
         const nickName = e.target.parentElement?.children[2].textContent;
         const role = e.target.value;
-        try {
-            instance.post('/api/role-update', {
-                nickName,
-                role
-            }).then((res) => {
-                res.data.ok ? (
-                    Success(res.data.message)
-                ) : (
-                    Error(res.data.message)
-                )
-            })
-        } catch (err) {
-            console.log(err)
-            CatchError("Error!")
-        }
+        const { data } = await instance.post('/api/role-update', {
+            nickName,
+            role
+        })
+        data.ok ? (
+            Success(data.message)
+        ) : (
+            Error(data.message)
+        )
     }
     return (
         <>
