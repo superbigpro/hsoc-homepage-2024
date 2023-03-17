@@ -17,7 +17,6 @@ enum Role {
 model student {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
-  // updateAt DateTime @default(now()) @updatedAt
   nickName    String   @unique
   name        String
   studentId   String

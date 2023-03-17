@@ -21,7 +21,6 @@ const LoginPage: NextPage = () => {
             password: formData.password,
             redirect: false,
         }).then((res) => {
-            console.log(res)
             res?.ok ? (
                 Router.replace("/")
             ) : (
