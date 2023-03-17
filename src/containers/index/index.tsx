@@ -14,7 +14,7 @@ import Contest3JPG from "src/assets/png/contest-3.jpg";
 import MentorJPG from "src/assets/png/mentor.jpg";
 import Link from "next/link";
 import React from "react";
-import { APPLY_DATE } from "src/utils/apply-date";
+import { APPLY_DATE } from "@/utils";
 
 
 const IndexPage: NextPage = () => {

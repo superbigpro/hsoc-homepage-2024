@@ -4,7 +4,7 @@ import LogoPNG from "src/assets/png/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
-import { navMenuList } from "src/utils/constant";
+import { Nav_Menu_List } from "@/utils";
 
 export const Navbar: React.FC = () => {
 	const { status } = useSession();
@@ -25,7 +25,7 @@ export const Navbar: React.FC = () => {
 				<S.NavTog ><S.TogIcon /></S.NavTog>
 				<S.NavbarMenuList id="basic-navbar-nav">
 					<S.NavbarMenuItemWrap className="me-auto">
-						{navMenuList.map((menu, i) => {
+						{Nav_Menu_List.map((menu, i) => {
 							return (
 								<div key={i} onClick={onClick} >
 									<Link key={i} href={`${menu.href}`}>

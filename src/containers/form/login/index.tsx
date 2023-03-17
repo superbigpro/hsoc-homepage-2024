@@ -4,12 +4,11 @@ import LogoBig from "src/assets/png/logo-big.png";
 import { Input } from "src/components/Input/input";
 import * as S from "../styled"
 import FormButton from "src/components/FormButton";
-import { FormProps } from "src/utils/interface";
 import Link from "next/link";
 import { useEffect } from "react";
 import Router, { useRouter } from "next/router";
-import { Error, Info } from "src/utils/notification";
 import { NextPage } from "next";
+import { FormProps, Info } from "@/utils";
 
 const LoginPage: NextPage = () => {
     const { status } = useSession();

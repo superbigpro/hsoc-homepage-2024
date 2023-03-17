@@ -1,13 +1,10 @@
 import React from "react";
 import * as S from "./styled"
 import { useRouter } from "next/router";
-import { Student } from "src/utils/interface";
-import { baseUrl } from "src/utils/base-url";
-import { Instance } from "src/utils/api";
-import { CatchError, Error, Success } from "src/utils/notification";
 import Link from "next/link";
 import Modal from "../modal";
 import { Button } from "src/components";
+import { CatchError, instance, Student, Success } from "@/utils";
 
 interface MainProps {
     students: Student[];
@@ -21,9 +18,8 @@ const Main: React.FC<MainProps> = ({ students }) => {
     const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const nickName = e.target.parentElement?.children[2].textContent;
         const role = e.target.value;
-        const instance = Instance(`${baseUrl}/api/role-update`);
         try {
-            instance.post('', {
+            instance.post('/api/role-update', {
                 nickName,
                 role
             }).then((res) => {

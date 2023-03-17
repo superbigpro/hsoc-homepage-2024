@@ -1,12 +1,10 @@
 import axios from "axios";
+import { BASE_URL } from "./baseUrl";
 
-export const Instance = (baseURL: string) => {
-    const instance = axios.create({
-        baseURL: `${baseURL}`,
-        headers: {
-            'Content-Type': 'application/json',
-            'dataType': 'json'
-        }
-    });
-    return instance;
-}
+export const instance = axios.create({
+    baseURL: `${BASE_URL}`,
+    headers: {
+        'Content-Type': 'application/json',
+        'dataType': 'json'
+    }
+});

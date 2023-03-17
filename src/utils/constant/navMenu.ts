@@ -1,4 +1,9 @@
-export const Nav_Menu_List: { href: string; text: string; }[] = [
+export interface NavItems{
+    href: string;
+    text: string;
+}
+
+export const Nav_Menu_List: NavItems[] = [
     {
         href: "/qna",
         text: "Q&A",

@@ -8,7 +8,7 @@ import RightArrowSVG from "src/assets/svg/right-arrow.svg";
 import { useEffect, useState } from "react";
 import Router from "next/router";
 import { useSession } from "next-auth/react";
-import { CatchError, FormProps, Instance, Success } from "@/utils";
+import { CatchError, FormProps, instance, Success } from "@/utils";
 
 const ApplyPage: NextPage = () => {
     const { data, status } = useSession();
@@ -17,9 +17,8 @@ const ApplyPage: NextPage = () => {
     const { register, handleSubmit, formState: { errors }, setValue } = useForm<FormProps>();
 
     const onValid = async (data: FormProps) => {
-        const instance = Instance(`/api/update`)
         try {
-            await instance.post('', {
+            await instance.post('/api/update', {
                 phoneNumber: data.phoneNumber,
                 introduce: data.introduce,
                 field: data.field,
@@ -61,9 +60,8 @@ const ApplyPage: NextPage = () => {
     }
 
     const getMyInfo = async () => {
-        const instance = Instance(`/api/user`)
         try {
-            await instance.post('').then((res) => {
+            await instance.post('/api/user').then((res) => {
                 res.data.ok ? (
                     setValue("phoneNumber", res.data.student.phoneNumber),
                     setValue("introduce", res.data.student.introduce),

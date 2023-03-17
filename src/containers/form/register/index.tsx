@@ -2,15 +2,13 @@ import { NextPage } from "next";
 import * as S from "../styled";
 import LogoBig from "src/assets/png/logo-big.png";
 import { useForm } from "react-hook-form";
-import { Instance } from "src/utils/api";
 import FormButton from "src/components/FormButton";
-import { FormProps } from "../../../utils/interface";
 import Link from "next/link";
-import { Success, Error, CatchError } from "src/utils/notification";
 import { useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
 import { Input } from "src/components/Input/input";
+import { CatchError, FormProps, instance } from "@/utils";
 
 const RegisterPage: NextPage = () => {
     const { status } = useSession();
@@ -25,9 +23,8 @@ const RegisterPage: NextPage = () => {
                 { shouldFocus: true }, // 에러가 발생한 input으로 focus 이동
             );
         } else {
-            const instance = Instance(`/api/create`)
             try {
-                await instance.post('', {
+                await instance.post('/api/create', {
                     nickName: data.nickName,
                     name: data.name,
                     studentId: data.studentId,

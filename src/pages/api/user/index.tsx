@@ -1,6 +1,6 @@
+import { prisma } from "@/utils";
 import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from 'next-auth/next'
-import prisma from "src/utils/prisma";
 import { authOptions } from "../auth/[...nextauth]";
 
 export default async function User(req: NextApiRequest, res: NextApiResponse): Promise<void> {

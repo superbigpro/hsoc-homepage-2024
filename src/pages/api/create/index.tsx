@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import * as bcrypt from 'bcrypt'
-import prisma from "src/utils/prisma";
-import { student } from "src/utils/constant/student";
+import { student } from "@/utils";
 
 export default async function Create(req: NextApiRequest, res: NextApiResponse) {
     const { nickName, name, studentId, password } = req.body;

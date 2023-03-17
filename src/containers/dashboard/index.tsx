@@ -1,9 +1,7 @@
+import { instance, Student } from "@/utils";
 import { NextPage } from "next"
 import { useSession } from "next-auth/react";
 import NonePage from "src/containers/404";
-import { Instance } from "src/utils/api";
-import { baseUrl } from "src/utils/base-url";
-import { Student } from "src/utils/interface";
 import Main from "./main";
 
 interface DashboardPageProps {
@@ -28,8 +26,7 @@ const DashboardPage: NextPage<DashboardPageProps> = ({ students }) => {
 
 
 DashboardPage.getInitialProps = async () => {
-    const instance = Instance(`${baseUrl}/api/get`)
-    const { data } = await instance.get('')
+    const { data } = await instance.get('/api/get')
     return { students: data }
 }
 

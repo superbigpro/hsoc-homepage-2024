@@ -2,10 +2,10 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import * as bcrypt from 'bcrypt';
-import apply from "../../../utils/prisma";
+import { prisma, student } from "@/utils";
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(apply),
+  adapter: PrismaAdapter(prisma),
   session: {
     strategy: "jwt",
   },
@@ -18,7 +18,7 @@ export const authOptions: NextAuthOptions = {
           id: string;
           password: string;
         };
-        const student = await apply.student.findUnique({
+        const exitsStudent = await student.findUnique({
           where: {
             nickName: id,
           }
@@ -30,8 +30,8 @@ export const authOptions: NextAuthOptions = {
           return ok;
         }
 
-        if (student && await checkPassword(password)) {
-          return { id: "1", name: student.nickName, email: student.role };
+        if (exitsStudent && await checkPassword(password)) {
+          return { id: "1", name: exitsStudent.nickName, email: exitsStudent.role };
         } else {
           return null;
         }
