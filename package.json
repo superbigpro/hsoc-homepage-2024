@@ -50,5 +50,11 @@
 		"eslint-config-next": "12.0.10",
 		"prisma": "^4.11.0",
 		"typescript": "4.5.5"
-	}
+	},
+	"include": [
+		"next-env.d.ts",
+		"global.d.ts",
+		"**/*.ts",
+		"**/*.tsx"
+	]
 }

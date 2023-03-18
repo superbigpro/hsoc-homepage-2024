@@ -25,7 +25,7 @@ export const authOptions: NextAuthOptions = {
         })
 
         async function checkPassword(password: string) {
-          const hashedPassword = await bcrypt.hash(password, 10);
+          const hashedPassword = await bcrypt.hash(exitsStudent?.password || "", 10);
           const ok = await bcrypt.compare(password, hashedPassword);
           return ok;
         }
