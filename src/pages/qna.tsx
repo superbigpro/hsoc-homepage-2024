@@ -1,1 +1,1 @@
-export { default } from "@/containers/qna";
+export { default } from '@/containers/qna';

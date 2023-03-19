@@ -1,1 +1,1 @@
-export { default } from "@/containers/dashboard";
+export { default } from '@/containers/dashboard';
