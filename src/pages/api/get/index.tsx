@@ -1,4 +1,4 @@
-import { student } from "@/utils";
+import { student } from "../../../utils/constant/prisma";
 import { NextApiRequest, NextApiResponse } from "next";
 
 function exclude<Student, Key extends keyof Student>(

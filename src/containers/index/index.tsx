@@ -32,7 +32,7 @@ const IndexPage: NextPage = () => {
               보안관제 동아리반 모집
             </S.Title>
             <S.RecruitmentDateText>{APPLY_DATE}</S.RecruitmentDateText>
-            <Link href="/applies" passHref>
+            <Link href="/apply" passHref>
               <Button>지원하러 가기 &nbsp;{'>'}</Button>
             </Link>
           </div>
