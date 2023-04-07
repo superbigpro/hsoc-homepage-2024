@@ -17,7 +17,7 @@ export const Nav_Menu_List: NavItems[] = [
     text: '관제 일지',
   },
   {
-    href: "/apply",
-    text: "지원하기",
+    href: '/apply',
+    text: '지원하기',
   },
 ];

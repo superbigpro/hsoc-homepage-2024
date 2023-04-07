@@ -36,19 +36,21 @@ export const Navbar: React.FC = () => {
                 </div>
               );
             })}
-            {status !== "authenticated" ? (
-							<div onClick={onClick} >
-								<Link href='/login'>
-									로그인
-								</Link>
-							</div>
-						) : (
-							<>
-								<div onClick={onClick} >
-									<p onClick={() => { signOut({ redirect: false }) }}>로그아웃</p>
-								</div>
-							</>
-	   )}
+            {status !== 'authenticated' ? (
+              <div onClick={onClick}>
+                <Link href="/login">로그인</Link>
+              </div>
+            ) : (
+              <div onClick={onClick}>
+                <p
+                  onClick={() => {
+                    signOut({ redirect: false });
+                  }}
+                >
+                  로그아웃
+                </p>
+              </div>
+            )}
           </S.NavbarMenuItemWrap>
         </S.NavbarMenuList>
       </S.NavbarContainer>

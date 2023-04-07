@@ -1,46 +1,45 @@
-import { student } from "../../../utils/constant/prisma";
-import { NextApiRequest, NextApiResponse } from "next";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]";
+import { NextApiRequest, NextApiResponse } from 'next';
+import { getServerSession } from 'next-auth';
+
+import { student } from '../../../utils/constant/prisma';
+import { authOptions } from '../auth/[...nextauth]';
 
 export default async function Update(req: NextApiRequest, res: NextApiResponse) {
-    const { phoneNumber, introduce, field, portfolio } = req.body;
-    const session = await getServerSession(req, res, authOptions)
+  const { phoneNumber, introduce, field, portfolio } = req.body;
+  const session = await getServerSession(req, res, authOptions);
 
-    const nickName = session?.user?.name;
+  const nickName = session?.user?.name;
 
-    const exitsStudentId = await student?.findUnique({
-        where: {
-            nickName: nickName || undefined,
-        },
-    })
+  const exitsStudentId = await student?.findUnique({
+    where: {
+      nickName: nickName || undefined,
+    },
+  });
 
-    if (!exitsStudentId) {
-        return res.send({ ok: false, message: "존재하지 않는 학생입니다." });
-    }
+  if (!exitsStudentId) {
+    return res.send({ ok: false, message: '존재하지 않는 학생입니다.' });
+  }
 
-    const date = new Date();
+  const date = new Date();
 
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
 
-    if (year === 2023 && month === 3 && day >= 6 && day <= 7) {
-        await student?.update({
-            where: {
-                nickName: nickName || "",
-            },
-            data: {
-                phoneNumber,
-                introduce,
-                field,
-                portfolio
-            },
-        })
-        res.send({ ok: true, message: "신청이 완료되었습니다." });
-    } else {
-        return res.send({ ok: false, message: "신청 기간이 아닙니다." });
-    }
-
+  if (year === 2023 && month === 3 && day >= 6 && day <= 7) {
+    await student?.update({
+      where: {
+        nickName: nickName || '',
+      },
+      data: {
+        phoneNumber,
+        introduce,
+        field,
+        portfolio,
+      },
+    });
+    res.send({ ok: true, message: '신청이 완료되었습니다.' });
+  } else {
+    return res.send({ ok: false, message: '신청 기간이 아닙니다.' });
+  }
 }
-

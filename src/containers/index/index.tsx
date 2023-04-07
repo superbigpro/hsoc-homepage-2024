@@ -4,18 +4,20 @@ import Link from 'next/link';
 import React from 'react';
 
 import { Button, HighlightText, Section, SectionTemplate } from '@/components';
-import LogoBig from '@/assets/png/logo-big.png';
-import SixthSecurityContestJPG from '@/assets/jpg/6th-security-contest.jpg';
-import SeventhSecurityContestJPG from '@/assets/jpg/7th-security-contest.jpg';
-import ServerRoom1JPG from '@/assets/jpg/server-room-1.jpg';
-import ServerRoom2JPG from '@/assets/jpg/server-room-2.jpg';
-import ServerRoom3JPG from '@/assets/jpg/server-room-3.jpg';
-import ServerRoom4JPG from '@/assets/jpg/server-room-4.jpg';
-import Contest1PNG from '@/assets/png/contest-1.png';
-import Contest2JPG from '@/assets/jpg/contest-2.jpg';
-import Contest3JPG from '@/assets/jpg/contest-3.jpg';
-import MentorJPG from '@/assets/jpg/mentor.jpg';
 import { APPLY_DATE } from '@/utils';
+import {
+  Contest1PNG,
+  Contest2JPG,
+  Contest3JPG,
+  LogoBigPNG,
+  MentorJPG,
+  ServerRoom1JPG,
+  SeventhSecurityContestJPG,
+  SixthSecurityContestJPG,
+  ServerRoom2JPG,
+  ServerRoom3JPG,
+  ServerRoom4JPG,
+} from '@/assets';
 
 import * as S from './styled';
 
@@ -38,7 +40,7 @@ const IndexPage: NextPage = () => {
           </div>
 
           <div>
-            <S.LogoBigImage src={LogoBig.src} />
+            <S.LogoBigImage src={LogoBigPNG.src} />
           </div>
         </S.SectionContentContainer>
       </Section>

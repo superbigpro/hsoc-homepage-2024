@@ -1,33 +1,29 @@
-import { instance, Student } from "@/utils";
-import { NextPage } from "next"
-import { useSession } from "next-auth/react";
-import NonePage from "../404";
-import Main from "./main";
+import { NextPage } from 'next';
+import { useSession } from 'next-auth/react';
+
+import { instance, Student } from '@/utils';
+
+import NonePage from '../404';
+
+import Main from './main';
 
 interface DashboardPageProps {
-    students: Student[];
+  students: Student[];
 }
 
 const DashboardPage: NextPage<DashboardPageProps> = ({ students }) => {
-    const { data, status } = useSession();
+  const { data, status } = useSession();
 
-    if (status === "authenticated" && data?.user?.email === "ADMIN") {
-        return (
-            <Main students={students} />
-        )
-    } else {
-        return (
-            <>
-                <NonePage />
-            </>
-        )
-    }
-}
-
+  if (status === 'authenticated' && data?.user?.email === 'ADMIN') {
+    return <Main students={students} />;
+  } else {
+    return <NonePage />;
+  }
+};
 
 DashboardPage.getInitialProps = async () => {
-    const { data } = await instance.get('/api/get')
-    return { students: data }
-}
+  const { data } = await instance.get('/api/get');
+  return { students: data };
+};
 
 export default DashboardPage;

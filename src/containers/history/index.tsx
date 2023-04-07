@@ -1,17 +1,19 @@
 import type { NextPage } from 'next';
 
 import { SectionTemplate } from '@/components';
-import FieldIntroduce from '@/assets/jpg/fieldIntroduce.jpg';
-import FieldIntroduce2 from '@/assets/jpg/fieldIntroduce2.jpg';
-import FieldIntroduce3 from '@/assets/jpg/fieldIntroduce3.jpg';
-import Ctf from '@/assets/jpg/ctf1.jpg';
-import Ctf2 from '@/assets/jpg/ctf2.jpg';
-import Ctf3 from '@/assets/jpg/ctf3.jpg';
-import Ctf4 from '@/assets/jpg/ctf4.jpg';
-import Mentoring from '@/assets/jpg/mentoring.jpg';
-import Mentoring2 from '@/assets/jpg/mentoring2.jpg';
-import Mentoring3 from '@/assets/jpg/mentoring3.jpg';
 import { TitleSection } from '@/components/TitleSection';
+import {
+  CTF1JPG,
+  CTF2JPG,
+  CTF3JPG,
+  CTF4JPG,
+  FieldIntroduce1JPG,
+  FieldIntroduce2JPG,
+  FieldIntroduce3JPG,
+  Mentoring1JPG,
+  Mentoring2JPG,
+  Mentoring3JPG,
+} from '@/assets';
 
 import * as S from './styled';
 
@@ -34,7 +36,7 @@ const HistoryPage: NextPage = () => {
       >
         <S.FieldIntroduceImage
           src=""
-          images={[FieldIntroduce.src, FieldIntroduce2.src, FieldIntroduce3.src]}
+          images={[FieldIntroduce1JPG.src, FieldIntroduce2JPG.src, FieldIntroduce3JPG.src]}
         />
       </SectionTemplate>
       <SectionTemplate
@@ -48,7 +50,10 @@ const HistoryPage: NextPage = () => {
           </>
         }
       >
-        <S.MentoringImage src="" images={[Mentoring.src, Mentoring3.src, Mentoring2.src]} />
+        <S.MentoringImage
+          src=""
+          images={[Mentoring1JPG.src, Mentoring3JPG.src, Mentoring2JPG.src]}
+        />
       </SectionTemplate>
       <SectionTemplate
         isSecondary
@@ -64,7 +69,7 @@ const HistoryPage: NextPage = () => {
           </>
         }
       >
-        <S.ContestImage src="" images={[Ctf.src, Ctf2.src, Ctf3.src, Ctf4.src]} />
+        <S.ContestImage src="" images={[CTF1JPG.src, CTF2JPG.src, CTF3JPG.src, CTF4JPG.src]} />
       </SectionTemplate>
     </main>
   );

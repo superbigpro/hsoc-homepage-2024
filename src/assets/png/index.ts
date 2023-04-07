@@ -1,9 +1,9 @@
-export * from './contest-1.png';
-export * from './crypto-logo.png';
-export * from './forensic-logo.png';
-export * from './hiscon.png';
-export * from './logo-big.png';
-export * from './logo.png';
-export * from './network-logo.png';
-export * from './system-logo.png';
-export * from './web-logo.png';
+export { default as Contest1PNG } from './contest-1.png';
+export { default as CryptoLogoPNG } from './crypto-logo.png';
+export { default as ForensicLogoPNG } from './forensic-logo.png';
+export { default as HisconPNG } from './hiscon.png';
+export { default as LogoBigPNG } from './logo-big.png';
+export { default as LogoPNG } from './logo.png';
+export { default as NetworkLogoPNG } from './network-logo.png';
+export { default as SystemLogoPNG } from './system-logo.png';
+export { default as WebLogoPNG } from './web-logo.png';
