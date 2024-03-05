@@ -17,10 +17,10 @@ enum Role {
 model student {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
-  nickName    String   @unique
+  nickName    String   
   name        String
   studentId   String
-  phoneNumber String?  @unique
+  phoneNumber String?  
   password    String
   introduce   String?  @db.MediumText
   field       String?
