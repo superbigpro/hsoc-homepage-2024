@@ -17,7 +17,14 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    // 추가할 설정
+    "noImplicitAny": true, // 암시적인 'any' 타입을 허용하지 않도록 설정
+    "strictNullChecks": true, // null 및 undefined를 엄격하게 체크
+    "noUnusedLocals": true, // 사용되지 않는 지역 변수에 대한 오류를 활성화
+    "noUnusedParameters": true, // 사용되지 않는 매개변수에 대한 오류를 활성화
+    "noImplicitReturns": true, // 함수 내에서 모든 코드 경로가 값을 반환하지 않을 경우 오류를 활성화
+    "noFallthroughCasesInSwitch": true // switch 문에서 case를 통과하는 것을 허용하지 않음
   },
   "include": ["next-env.d.ts", "global.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
