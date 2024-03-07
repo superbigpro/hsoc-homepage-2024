@@ -14,16 +14,27 @@ enum Role {
   ADMIN
 }
 
-model student {
+model user {
   id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
-  nickName    String   
+  username    String   
   name        String
-  studentId   String
-  phoneNumber String?  
+  school_id   String 
   password    String
-  introduce   String?  @db.MediumText
-  field       String?
-  portfolio   String?  @db.MediumText
   role        Role     @default(STUDENT)
+}
+
+model Application {
+  id           Int      @id @default(autoincrement())
+  phone_number String   @db.VarChar(20)
+  introduce    String   @db.VarChar(1000)
+  field        String   @db.VarChar(1000)
+  portfolio    String   @db.VarChar(1000)
+  created_at   DateTime @updatedAt
+
+  // student 테이블과의 관계를 정의합니다.
+  // user_id 필드는 student 테이블의 id 필드를 참조합니다.
+  // Prisma에서는 @relation 속성을 사용하여 관계를 명시적으로 표현할 수 있습니다.
+  // 'Student'는 이미 정의된 모델이라고 가정합니다.
+  userId    Int
+  user   User @relation(fields: [userId], references: [id])
 }
