@@ -7,7 +7,7 @@ import { user } from '../../../utils/constant/prisma';
 export default async function Create(req: NextApiRequest, res: NextApiResponse) {
   const { username, name, school_id, password } = req.body;
 
-  const exitsUserName = await user?.findUnique({
+  const exitsUserName = await user.findUnique({
     where: {
       username : username
     },
@@ -24,7 +24,7 @@ export default async function Create(req: NextApiRequest, res: NextApiResponse) 
 
   const hashedPassword = await hashPassword();
 
-  await user?.create({
+  const userData = await user.create({
     data: {
       username,
       name,
@@ -32,6 +32,7 @@ export default async function Create(req: NextApiRequest, res: NextApiResponse) 
       password: hashedPassword,
     },
   });
+  console.log(userData)
 
   res.send({ ok: true, message: '회원가입이 완료되었습니다.' });
 }

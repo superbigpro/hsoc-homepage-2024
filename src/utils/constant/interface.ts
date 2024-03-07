@@ -1,12 +1,12 @@
 export interface FormProps {
   errors: {
-    nickName: {
+    username: {
       message: string;
     };
     name: {
       message: string;
     };
-    studentId: {
+    school_id: {
       message: string;
     };
     introduce: {
@@ -25,10 +25,10 @@ export interface FormProps {
       message: string;
     };
   };
-  nickName: string;
+  username: string;
   name: string;
-  studentId: string;
-  phoneNumber: string;
+  school_id: string;
+  phone_number: string;
   introduce: string;
   password: string;
   passwordCheck: string;

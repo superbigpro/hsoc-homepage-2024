@@ -11,6 +11,7 @@ import { FormProps, instance } from '@/utils';
 import { FormButton, Input } from '@/components';
 
 import * as S from '../styled';
+import axios from 'axios';
 
 const RegisterPage: NextPage = () => {
   const { status } = useSession();
@@ -29,11 +30,12 @@ const RegisterPage: NextPage = () => {
         { message: '비밀번호가 일치하지 않습니다.' },
         { shouldFocus: true },
       );
-    } else {
-      const { data } = await instance.post('/api/create', {
-        nickName: formData.nickName,
+    }  
+    else {
+      const { data } = await axios.post('/api/create', {
+        username: formData.username,
         name: formData.name,
-        studentId: formData.studentId,
+        school_id: formData.school_id,
         password: formData.password,
       });
       data.ok ? Router.replace('/login') : Error(data.message);
@@ -56,7 +58,7 @@ const RegisterPage: NextPage = () => {
               register={register}
               errors={errors}
               title="아이디"
-              name="nickName"
+              name="username"
               divStyle={{ marginTop: '0' }}
               type="username"
               minValue={2}
@@ -76,7 +78,7 @@ const RegisterPage: NextPage = () => {
               errors={errors}
               title="학번"
               example="예) 클라우드보안과 1학년 1반 1번 - C1101"
-              name="studentId"
+              name="school_id"
               minValue={5}
               maxValue={5}
               type="text"
