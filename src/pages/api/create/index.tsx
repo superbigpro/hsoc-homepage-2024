@@ -5,11 +5,11 @@ import * as bcrypt from 'bcrypt';
 import { student } from '../../../utils/constant/prisma';
 
 export default async function Create(req: NextApiRequest, res: NextApiResponse) {
-  const { nickName, name, studentId, password } = req.body;
+  const { username, name, school_id, password } = req.body;
 
-  const exitsNickName = await student?.findUnique({
+  const exitsNickName = await student?.first({
     where: {
-      nickName,
+      username : username
     },
   });
 

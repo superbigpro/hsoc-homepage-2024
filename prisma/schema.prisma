@@ -21,9 +21,10 @@ model user {
   school_id   String 
   password    String
   role        Role     @default(STUDENT)
+  application application[]
 }
 
-model Application {
+model application {
   id           Int      @id @default(autoincrement())
   phone_number String   @db.VarChar(20)
   introduce    String   @db.VarChar(1000)
@@ -36,5 +37,5 @@ model Application {
   // Prisma에서는 @relation 속성을 사용하여 관계를 명시적으로 표현할 수 있습니다.
   // 'Student'는 이미 정의된 모델이라고 가정합니다.
   userId    Int
-  user   User @relation(fields: [userId], references: [id])
+  user      user @relation(fields: [userId], references: [id])
 }
