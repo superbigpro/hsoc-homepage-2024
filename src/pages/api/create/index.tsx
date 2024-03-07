@@ -2,18 +2,18 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import * as bcrypt from 'bcrypt';
 
-import { student } from '../../../utils/constant/prisma';
+import { user } from '../../../utils/constant/prisma';
 
 export default async function Create(req: NextApiRequest, res: NextApiResponse) {
   const { username, name, school_id, password } = req.body;
 
-  const exitsNickName = await student?.first({
+  const exitsUserName = await user?.findUnique({
     where: {
       username : username
     },
   });
 
-  if (exitsNickName) {
+  if (exitsUserName) {
     return res.send({ ok: false, message: '이미 존재하는 학생입니다.' });
   }
 
@@ -24,11 +24,11 @@ export default async function Create(req: NextApiRequest, res: NextApiResponse) 
 
   const hashedPassword = await hashPassword();
 
-  await student?.create({
+  await user?.create({
     data: {
-      nickName,
+      username,
       name,
-      studentId,
+      school_id,
       password: hashedPassword,
     },
   });

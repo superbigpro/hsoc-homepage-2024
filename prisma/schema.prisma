@@ -16,9 +16,9 @@ enum Role {
 
 model user {
   id          Int      @id @default(autoincrement())
-  username    String   
-  name        String
-  school_id   String 
+  username    String   @unique
+  name        String   @unique
+  school_id   String   @unique
   password    String
   role        Role     @default(STUDENT)
   application application[]
