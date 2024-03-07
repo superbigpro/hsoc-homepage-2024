@@ -25,13 +25,15 @@ const LoginPage: NextPage = () => {
 
   const onValid = async (formData: FormProps) => {
     await signIn('credentials', {
-      id: formData.nickName,
+      username: formData.username, //// <<< id => username 
       password: formData.password,
       redirect: false,
     }).then((res) => {
       res?.ok
         ? Router.replace('/')
-        : (Error('로그인에 실패하셨습니다'), setValue('nickName', ''), setValue('password', ''));
+        : ((Error('로그인에 실패하셨습니다'), setValue('username', ''), setValue('password', '')),
+        console.log(formData)
+        );
     });
   };
 
@@ -54,7 +56,7 @@ const LoginPage: NextPage = () => {
               register={register}
               errors={errors}
               title="아이디"
-              name="nickName"
+              name="username"
               divStyle={{ marginTop: '0' }}
               minValue={2}
               maxValue={12}
