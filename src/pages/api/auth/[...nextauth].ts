@@ -21,7 +21,7 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials, req) {
         const { id, password } = credentials as {
           id: string;
-          password: string;
+          password: string
         };
         const exitsStudent = await user?.findUnique({
           where: {
