@@ -1,20 +1,22 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-
 import * as bcrypt from 'bcrypt';
-
 import { user } from '../../../utils/constant/prisma';
 
 export default async function Create(req: NextApiRequest, res: NextApiResponse) {
   const { username, name, school_id, password } = req.body;
 
-  const exitsUserName = await user.findUnique({
+  const existingUser = await user.findMany({
     where: {
-      username : username
+      OR: [
+        { username: username },
+        { name: name },
+        { school_id: school_id },
+      ],
     },
   });
 
-  if (exitsUserName) {
-    return res.send({ ok: false, message: '이미 존재하는 학생입니다.' });
+  if (existingUser.length > 0) {
+    return res.send({ ok: false, message: '이미 존재하는 사용자입니다.' });
   }
 
   async function hashPassword() {
@@ -32,7 +34,7 @@ export default async function Create(req: NextApiRequest, res: NextApiResponse) 
       password: hashedPassword,
     },
   });
-  console.log(userData)
 
+  console.log(userData);
   res.send({ ok: true, message: '회원가입이 완료되었습니다.' });
 }
