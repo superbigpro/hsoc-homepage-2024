@@ -1,5 +1,6 @@
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import { NextApiRequest } from 'next';
 
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import * as bcrypt from 'bcrypt';
@@ -15,17 +16,17 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       type: 'credentials',
       credentials: {
-        id: { label: "username", type: "text", placeholder: "jsmith" },
+        username: { label: "username", type: "text" },
         password: {  label: "password", type: "password" }
       },
-      async authorize(credentials, req) {
-        const { id, password } = credentials as {
-          id: string;
+      async authorize(credentials: Record<any, any>, req: NextApiRequest) {
+        const { username, password } = credentials as {
+          username: string;
           password: string
         };
         const exitsStudent = await user?.findUnique({
           where: {
-            username: id,
+            username: username,
           },
         });
 
@@ -36,7 +37,7 @@ export const authOptions: NextAuthOptions = {
         }
 
         if (exitsStudent && (await checkPassword(password))) {
-          return { id: '1', name: exitsStudent.username, email: exitsStudent.role };
+          return { id: exitsStudent.id, name: exitsStudent.username, email: exitsStudent.role };
         } else {
           return null;
         }

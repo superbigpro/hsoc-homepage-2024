@@ -26,17 +26,16 @@ const LoginPage: NextPage = () => {
   } = useForm<FormProps>();
 
   const onValid = async (formData: FormProps) => {
-    await signIn('credentials', {
-      username: formData.username, //// <<< id => username 
-      password: formData.password,
-      redirect: false,
-    }).then((res) => {
-      res?.ok
-        ? Router.replace('/')
-        : ((Error('로그인에 실패하셨습니다'), setValue('username', ''), setValue('password', '')),
-        console.log(formData)
-        );
-    });
+    // await signIn('credentials', {
+    //   username: formData.username, //// <<< id => username 
+    //   password: formData.password,
+    //   redirect: false,
+    // }).then((res) => {
+    //   res?.ok
+    //     ? Router.replace('/')
+    //     : (Error('로그인에 실패하셨습니다'), setValue('username', ''), setValue('password', ''));
+    // });
+    console.log(formData)
   };
 
   useEffect(() => {

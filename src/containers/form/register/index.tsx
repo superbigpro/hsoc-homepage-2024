@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
 
 import LogoBig from '@/assets/png/logo-big.png';
-import { FormProps, instance } from '@/utils';
+import { FormProps } from '@/utils';
 import { FormButton, Input } from '@/components';
 
 import * as S from '../styled';
