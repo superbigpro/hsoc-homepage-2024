@@ -1,18 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getServerSession } from 'next-auth';
 
-import { student } from '../../../utils/constant/prisma';
-import { authOptions } from '../auth/[...nextauth]';
+import { user, application } from '@/utils/constant/prisma';
 
 export default async function Update(req: NextApiRequest, res: NextApiResponse) {
-  const { phoneNumber, introduce, field, portfolio } = req.body;
-  const session = await getServerSession(req, res, authOptions);
+  const { phoneNumber, introduce, field, portfolio, token } = req.body;
 
-  const nickName = session?.user?.name;
-
-  const exitsStudentId = await student?.findUnique({
+  const exitsStudentId = await user?.findUnique({
     where: {
-      nickName: nickName || undefined,
+      id : token.id || undefined,
     },
   });
 
