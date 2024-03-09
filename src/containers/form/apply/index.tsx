@@ -24,11 +24,14 @@ const ApplyPage: NextPage = () => {
   } = useForm<FormProps>();
 
   const onValid = async (formData: FormProps) => {
+    const { data: { token } } = await instance.get('/api/auth/verifyToken');
+
     const { data } = await instance.post('/api/update', {
       phone_number: formData.phone_number,
       introduce: formData.introduce,
       field: formData.field,
       portfolio: formData.portfolio,
+      token: token
     });
     data.ok
       ? (Success(data.message),

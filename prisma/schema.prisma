@@ -22,7 +22,6 @@ model user {
   password           String
   role               Role          @default(STUDENT)
   applicationsById   application[] @relation("UserById")
-  applicationsByName application[] @relation("UserByName")
 }
 
 model application {
@@ -32,11 +31,9 @@ model application {
   field        String   @db.VarChar(1000)
   portfolio    String   @db.VarChar(1000)
   created_at   DateTime @updatedAt
+  userName     String
 
   // user 모델과의 관계를 정의합니다.
   userId   Int
   userById user @relation("UserById", fields: [userId], references: [id])
-
-  userName   String
-  userByName user   @relation("UserByName", fields: [userName], references: [username])
 }

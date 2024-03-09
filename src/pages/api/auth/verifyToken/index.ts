@@ -1,3 +1,4 @@
+import { user } from '@/utils/constant/prisma';
 import jwt from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
 
@@ -14,7 +15,8 @@ export default function handler(req : NextApiRequest, res : NextApiResponse) {
         if (userData.id === undefined) {
             throw new Error('Unauthorized');
         }
-        res.status(200).json({ id: userData });
+        const user = userData.id; // Fix: Assign userData.id to a new variable 'user'
+        res.status(200).json({ user });
     } catch (error) {
         res.status(401).json({ error: 'Unauthorized' });
     }
