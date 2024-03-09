@@ -27,7 +27,7 @@ export default async function handler(req: Request, res: Response) {
 
     // JWT 토큰 생성
     const token = jwt.sign(
-        { userId: user.id, username: user.username },
+        { id: user.id },
         process.env.JWT_SECRET ?? 'D3FAu1T53cR3tK3Y!',
         { expiresIn: '3d' }
     );

@@ -35,16 +35,15 @@ const LoginPage: NextPage = () => {
       });
 
       if (response.status === 200) {
-        const data = response.data; // Parse the response data
+        const data = response.data; 
         localStorage.setItem('token', data.token);
         Router.replace('/');
         console.log("로그인 성공");
       } else {
-        const errorData = response.data; // Parse the error response data
-        throw new Error(errorData.error.message) as Error; // Throw the error with explicit type
+        const errorData = response.data; 
+        throw new Error(errorData.message || response.statusText);
       }
     } catch (error) {
-      // 에러 처리
       console.error(error);
     }
   };

@@ -25,14 +25,14 @@ const ApplyPage: NextPage = () => {
 
   const onValid = async (formData: FormProps) => {
     const { data } = await instance.post('/api/update', {
-      phoneNumber: formData.phoneNumber,
+      phone_number: formData.phone_number,
       introduce: formData.introduce,
       field: formData.field,
       portfolio: formData.portfolio,
     });
     data.ok
       ? (Success(data.message),
-        setValue('phoneNumber', ''),
+        setValue('phone_number', ''),
         setValue('introduce', ''),
         setValue('portfolio', ''))
       : Error(data.message);
@@ -41,11 +41,11 @@ const ApplyPage: NextPage = () => {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     if (inputValue.length === 10) {
-      setValue('phoneNumber', inputValue.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
+      setValue('phone_number', inputValue.replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'));
     }
     if (inputValue.length === 13) {
       setValue(
-        'phoneNumber',
+        'phone_number',
         inputValue.replace(/-/g, '').replace(/(\d{3})(\d{4})(\d{4})/, '$1-$2-$3'),
       );
     }
@@ -63,7 +63,7 @@ const ApplyPage: NextPage = () => {
     const { data } = await instance.post('/api/user');
     data.ok
       ? (setInfo(true),
-        setValue('phoneNumber', data.phoneNumber),
+        setValue('phone_number', data.phoneNumber),
         setValue('introduce', data.introduce),
         setValue('portfolio', data.portfolio),
         setValue('field', data.field))
@@ -92,7 +92,7 @@ const ApplyPage: NextPage = () => {
                   register={register}
                   errors={errors}
                   title="전화번호"
-                  name="phoneNumber"
+                  name="phone_number"
                   minValue={13}
                   maxValue={13}
                   onChange={onChange}
