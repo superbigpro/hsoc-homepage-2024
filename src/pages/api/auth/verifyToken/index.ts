@@ -1,11 +1,10 @@
-import { user } from '@/utils/constant/prisma';
 import jwt from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default function handler(req : NextApiRequest, res : NextApiResponse) {
-    const { token } = req.cookies;
+    const token = req.cookies.token;
     const JWT_SECRET = process.env.JWT_SECRET;
-
+    console.log(token);
     try {
         // 토큰 검증
         const decoded = jwt.verify(token || '', JWT_SECRET ?? 'D3FAu1T53cR3tK3Y!');

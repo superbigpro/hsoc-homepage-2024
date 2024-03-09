@@ -1,7 +1,4 @@
 import { NextPage } from 'next';
-import Router from 'next/router';
-import { useSession } from 'next-auth/react';
-
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -13,7 +10,6 @@ import { FormButton, Input } from '@/components';
 import * as S from '../styled';
 
 const ApplyPage: NextPage = () => {
-  const { status } = useSession();
   const [info, setInfo] = useState(false);
 
   const {
@@ -24,14 +20,18 @@ const ApplyPage: NextPage = () => {
   } = useForm<FormProps>();
 
   const onValid = async (formData: FormProps) => {
-    const { data: { token } } = await instance.get('/api/auth/verifyToken');
+    const token = localStorage.getItem('token');
+    const response = await instance.get('/api/auth/verifyToken', {
+      headers: { 'Authorization': `Bearer ${token}` },
+    });
+    console.log(token);
 
-    const { data } = await instance.post('/api/update', {
+    const { data } = await instance.post('/api/createApply', {
       phone_number: formData.phone_number,
       introduce: formData.introduce,
       field: formData.field,
       portfolio: formData.portfolio,
-      token: token
+      token: response.data.id
     });
     data.ok
       ? (Success(data.message),
@@ -73,15 +73,15 @@ const ApplyPage: NextPage = () => {
       : Error(data.message);
   };
 
-  useEffect(() => {
-    if (status === 'unauthenticated') {
-      Router.replace('/login?redirect=/apply');
-    }
-  }, [status, info]);
+  // useEffect(() => {
+  //   if (status === 'unauthenticated') {
+  //     Router.replace('/login?redirect=/apply');
+  //   }
+  // }, [status, info]);
 
   return (
     <>
-      {status === 'authenticated' && (
+      {/* {status === 'authenticated' && ( */}
         <>
           <S.LogoBigImage src={LogoBig.src} />
           <S.ApplyWrap>
@@ -137,7 +137,7 @@ const ApplyPage: NextPage = () => {
             </S.FormDiv>
           </S.ApplyWrap>
         </>
-      )}
+      {/* )} */}
     </>
   );
 };
