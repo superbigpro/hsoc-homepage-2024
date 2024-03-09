@@ -1,6 +1,6 @@
 "use client";
 
-import { signIn, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import Router, { useRouter } from 'next/router';
 import { NextPage } from 'next';
@@ -13,6 +13,7 @@ import { Error, FormProps, Info } from '@/utils';
 import { FormButton, Input } from '@/components';
 
 import * as S from '../styled';
+import axios from 'axios';
 
 const LoginPage: NextPage = () => {
   const { status } = useSession();
@@ -22,19 +23,30 @@ const LoginPage: NextPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
   } = useForm<FormProps>();
 
   const onValid = async (formData: FormProps) => {
-    await signIn('credentials', {
-      username: formData.username, //// <<< id => username 
-      password: formData.password,
-      redirect: false,
-    }).then((res) => {
-      res?.ok
-        ? Router.replace('/')
-        : (Error('로그인에 실패하셨습니다'), setValue('username', ''), setValue('password', ''));
-    });
+    try {
+      const response = await axios.post('/api/create', {
+        username: formData.username,
+        name: formData.name,
+        school_id: formData.school_id,
+        password: formData.password,
+      });
+
+      if (response.status === 200) {
+        const data = response.data; // Parse the response data
+        localStorage.setItem('token', data.token);
+        Router.replace('/');
+        console.log("로그인 성공");
+      } else {
+        const errorData = response.data; // Parse the error response data
+        throw new Error(errorData.error.message) as Error; // Throw the error with explicit type
+      }
+    } catch (error) {
+      // 에러 처리
+      console.error(error);
+    }
   };
 
   useEffect(() => {
