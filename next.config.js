@@ -3,6 +3,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  env: {
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL
+  },
 
   webpack: (config) => {
     config.module.rules.push({

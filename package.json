@@ -27,7 +27,7 @@
     "bootstrap": "^5.2.3",
     "framer-motion": "^9.0.7",
     "next": "^12.3.4",
-    "next-auth": "^4.19.2",
+    "next-auth": "^4.24.7",
     "next-auth-client": "^1.5.0",
     "next-seo": "^5.1.0",
     "react": "^18.0.0",
