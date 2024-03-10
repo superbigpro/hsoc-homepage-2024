@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { NextRouter } from 'next/router';
-
 import { ParsedUrlQuery } from 'querystring';
 
 import { Student } from '@/utils';

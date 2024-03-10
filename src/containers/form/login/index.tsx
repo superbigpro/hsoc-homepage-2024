@@ -35,8 +35,6 @@ const LoginPage: NextPage = () => {
       });
 
       if (response.status === 200) {
-        const data = response.data; 
-        localStorage.setItem('token', data.token);
         Router.replace('/');
         console.log("로그인 성공");
       } else {

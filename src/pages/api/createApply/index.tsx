@@ -3,17 +3,13 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { user, application } from '@/utils/constant/prisma';
 
 export default async function Update(req: NextApiRequest, res: NextApiResponse) {
-  const { phone_number, introduce, field, portfolio, token } = req.body;
-  console.log(token);
+  const { phone_number, introduce, field, portfolio } = req.body;
   // 토큰이 존재하지 않거나 id 속성이 없는 경우 에러를 반환합니다.
-  if (!token || !token.id) {
-    return res.send({ ok: false, message: '유효한 토큰이 제공되지 않았습니다.' });
-  }
-
+  const token = req.headers.cookie;
   // 토큰이 유효한 경우 해당하는 학생 정보를 찾습니다.
   const existingStudent = await user?.findUnique({
     where: {
-      id: token.id,
+      id: token?.id, // Update type assertion to ensure 'id' property is of type 'number'
     },
   });
 
@@ -36,7 +32,7 @@ export default async function Update(req: NextApiRequest, res: NextApiResponse) 
           introduce,
           field,
           portfolio,
-          userId: token.id, // 신청서와 학생을 연결합니다. userId 필드는 학생의 ID를 가리킵니다.
+          userId: existingStudent.id, // 신청서와 학생을 연결합니다. userId 필드는 학생의 ID를 가리킵니다.
           userName: existingStudent.name // 사용자 이름 추가
         }
       });

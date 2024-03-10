@@ -8,6 +8,7 @@ import { Error, FormProps, instance, Success } from '@/utils';
 import { FormButton, Input } from '@/components';
 
 import * as S from '../styled';
+import axios from 'axios';
 
 const ApplyPage: NextPage = () => {
   const [info, setInfo] = useState(false);
@@ -20,18 +21,18 @@ const ApplyPage: NextPage = () => {
   } = useForm<FormProps>();
 
   const onValid = async (formData: FormProps) => {
-    const token = localStorage.getItem('token');
-    const response = await instance.get('/api/auth/verifyToken', {
-      headers: { 'Authorization': `Bearer ${token}` },
-    });
-    console.log(token);
+    const response = await instance.get('/api/auth/verifyToken');
+    if (!response.data.user) {
+      Error('로그인이 필요합니다.');
+      return;
+    }
 
-    const { data } = await instance.post('/api/createApply', {
+    const { data } = await axios.post('/api/createApply', {
       phone_number: formData.phone_number,
       introduce: formData.introduce,
       field: formData.field,
       portfolio: formData.portfolio,
-      token: response.data.id
+      token: response.data.token
     });
     data.ok
       ? (Success(data.message),
