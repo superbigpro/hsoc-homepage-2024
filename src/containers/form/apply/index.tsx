@@ -22,6 +22,7 @@ const ApplyPage: NextPage = () => {
 
   const onValid = async (formData: FormProps) => {
     const response = await instance.get('/api/auth/verifyToken');
+    console.log(`here is your console : ${response.data.token}`);
     if (!response.data.user) {
       Error('로그인이 필요합니다.');
       return;

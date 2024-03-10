@@ -27,16 +27,15 @@ const LoginPage: NextPage = () => {
 
   const onValid = async (formData: FormProps) => {
     try {
-      const response = await axios.post('/api/create', {
+      const response = await axios.post('/api/auth/login', {
         username: formData.username,
-        name: formData.name,
-        school_id: formData.school_id,
         password: formData.password,
       });
 
       if (response.status === 200) {
+        console.log(response.data.token);
+        localStorage.setItem('token', response.data.token);
         Router.replace('/');
-        console.log("로그인 성공");
       } else {
         const errorData = response.data; 
         throw new Error(errorData.message || response.statusText);

@@ -4,7 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 export default function handler(req : NextApiRequest, res : NextApiResponse) {
     const token = req.cookies.token;
     const JWT_SECRET = process.env.JWT_SECRET;
-    console.log(token);
+    // console.log(token);
     try {
         const decoded = jwt.verify(token as string, JWT_SECRET ?? 'D3FAu1T53cR3tK3Y!');
         const userData = {

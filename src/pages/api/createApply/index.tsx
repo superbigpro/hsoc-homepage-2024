@@ -3,10 +3,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { user, application } from '@/utils/constant/prisma';
 
 export default async function Update(req: NextApiRequest, res: NextApiResponse) {
-  const { phone_number, introduce, field, portfolio } = req.body;
-  // 토큰이 존재하지 않거나 id 속성이 없는 경우 에러를 반환합니다.
-  const token = req.headers.cookie;
-  // 토큰이 유효한 경우 해당하는 학생 정보를 찾습니다.
+  const { phone_number, introduce, field, portfolio, token } = req.body;
+
   const existingStudent = await user?.findUnique({
     where: {
       id: token?.id, // Update type assertion to ensure 'id' property is of type 'number'
