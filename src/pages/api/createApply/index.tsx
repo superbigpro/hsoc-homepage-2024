@@ -4,10 +4,9 @@ import { user, application } from '@/utils/constant/prisma';
 
 export default async function Update(req: NextApiRequest, res: NextApiResponse) {
   const { phone_number, introduce, field, portfolio, token } = req.body;
-
   const existingStudent = await user?.findUnique({
     where: {
-      id: token?.id, // Update type assertion to ensure 'id' property is of type 'number'
+      id: token, // Update type assertion to ensure 'id' property is of type 'number'
     },
   });
 
@@ -16,12 +15,22 @@ export default async function Update(req: NextApiRequest, res: NextApiResponse) 
     return res.send({ ok: false, message: '존재하지 않는 학생입니다.' });
   }
 
+  const alreadyApplied = await application.findFirst({
+    where: {
+      userId: existingStudent.id,
+    },
+  });
+
+  if (alreadyApplied) {
+    return res.send({ ok: false, message: '이미 신청했습니다. 수정하기를 통해 수정 해주세요.' });
+  }
+
   const date = new Date();
   const day = date.getDate();
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
 
-  if (year === 2024 && month === 3 && day >= 6 && day <= 7) {
+  if (year === 2024 && month === 3 && day >= 10 && day <= 15) {
     try {
       // 신청 기간이라면, 새로운 신청서를 생성합니다.
       await application.create({
