@@ -14,7 +14,6 @@ export default async function handler(req: Request, res: Response) {
   const { username, password } = req.body;
 
   try {
-    // Prisma를 사용하여 사용자 이름으로 사용자 찾기
     const user = await prisma.user.findUnique({
       where: {
         username: username,
@@ -23,21 +22,21 @@ export default async function handler(req: Request, res: Response) {
 
     // 사용자가 없거나 비밀번호가 일치하지 않으면 오류를 반환합니다.
     if (!user || !bcrypt.compareSync(password, user.password)) {
-        return res.status(401).json({ message: 'Invalid username or password' });
+        return res.send({ ok: false, message: '아이디 또는 비밀번호가 일치하지 않습니다.' });
     }
 
     // JWT 토큰 생성
     const token = jwt.sign(
         { id: user.id },
-        process.env.JWT_SECRET ?? 'D3FAu1T53cR3tK3Y!',
+        process.env.JWT_SECRET ?? 'D3!FAuC1T5#@3c%R3tK3Y!@1!SA#@',
         { expiresIn: '3d' }
     );
 
     // 쿠키로 토큰 설정
-    res.setHeader('Set-Cookie', `token=${token}; Path=${BASE_URL}; Max-Age=${3 * 24 * 60 * 60}`); //배포시엔 Secure 꼭 설정하기!!!!
+    res.setHeader('Set-Cookie', `HttpOnly token=${token}; Path=${BASE_URL}; Max-Age=${3 * 24 * 60 * 60}`); //배포시엔 Secure 꼭 설정하기!!!!
     
     // 응답 반환
-    res.status(200).json({ message: 'Login successful', token : token});
+    res.status(200).json({ ok: true, token : token});
   } catch (error) {
     console.error('Login request failed:', error);
     res.status(500).json({ message: 'Internal server error' });

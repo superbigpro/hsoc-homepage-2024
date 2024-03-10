@@ -4,6 +4,11 @@ import { user, application } from '@/utils/constant/prisma';
 
 export default async function Update(req: NextApiRequest, res: NextApiResponse) {
   const { phone_number, introduce, field, portfolio, token } = req.body;
+
+  if (!token)  {
+    return res.send({ ok: false, message: '로그인이 필요합니다.' });
+  }
+
   const existingStudent = await user?.findUnique({
     where: {
       id: token, // Update type assertion to ensure 'id' property is of type 'number'
@@ -22,7 +27,7 @@ export default async function Update(req: NextApiRequest, res: NextApiResponse) 
   });
 
   if (alreadyApplied) {
-    return res.send({ ok: false, message: '이미 신청했습니다. 수정하기를 통해 수정 해주세요.' });
+    return res.send({ ok: false, message: '이미 신청하셨습니다.' });
   }
 
   const date = new Date();

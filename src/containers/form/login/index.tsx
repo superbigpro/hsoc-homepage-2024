@@ -32,13 +32,12 @@ const LoginPage: NextPage = () => {
         password: formData.password,
       });
 
-      if (response.status === 200) {
+      if (response.data.ok === true) {
         console.log(response.data.token);
         localStorage.setItem('token', response.data.token);
         Router.replace('/');
       } else {
-        const errorData = response.data; 
-        throw new Error(errorData.message || response.statusText);
+        Error(response.data.message);
       }
     } catch (error) {
       console.error(error);

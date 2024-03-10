@@ -1,6 +1,7 @@
 import { NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
 
 import RightArrowSVG from '@/assets/svg/right-arrow.svg';
 import LogoBig from '@/assets/png/logo-big.png';
@@ -12,6 +13,7 @@ import axios from 'axios';
 
 const ApplyPage: NextPage = () => {
   const [info, setInfo] = useState(false);
+  const router = useRouter();
 
   const {
     register,
@@ -20,12 +22,18 @@ const ApplyPage: NextPage = () => {
     setValue,
   } = useForm<FormProps>();
 
+  const jwt_token = localStorage.getItem('token');
+  if (!jwt_token) {
+    Error('로그인이 필요합니다.');
+    router.push('/');
+  }
+
   const onValid = async (formData: FormProps) => {
     const response = await instance.get('/api/auth/verifyToken');
     console.log(`here is your console : ${response.data.token}`);
-    if (!response.data.token) {
+    if (response.status === 401 || response.status === 500 || !response.data.token){
       Error('로그인이 필요합니다.');
-      return;
+      router.push('/');
     }
 
     const { data } = await axios.post('/api/createApply', {
@@ -58,9 +66,9 @@ const ApplyPage: NextPage = () => {
 
   const textAreaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const inputValue = e.target.value;
-    if (inputValue.length > 3000) {
-      setValue('introduce', inputValue.slice(0, 3000));
-      setValue('portfolio', inputValue.slice(0, 3000));
+    if (inputValue.length > 1000) {
+      setValue('introduce', inputValue.slice(0, 1000));
+      setValue('portfolio', inputValue.slice(0, 1000));
     }
   };
 
@@ -88,10 +96,10 @@ const ApplyPage: NextPage = () => {
           <S.LogoBigImage src={LogoBig.src} />
           <S.ApplyWrap>
             <S.FormDiv>
-              <S.GetMyInfoMessage onClick={getMyInfo}>
+              {/* <S.GetMyInfoMessage onClick={getMyInfo}>
                 수정하기
                 <RightArrowSVG style={{ marginBottom: '4px' }} />
-              </S.GetMyInfoMessage>
+              </S.GetMyInfoMessage> */}
               <S.InfoDiv>
                 <Input
                   register={register}
@@ -136,6 +144,7 @@ const ApplyPage: NextPage = () => {
                 onValid={onValid}
                 title={info ? '수정하기' : '지원하기'}
               />
+              <S.WarnText>한번 제출 시 수정이 불가합니다.</S.WarnText>
             </S.FormDiv>
           </S.ApplyWrap>
         </>

@@ -155,6 +155,10 @@ export const Message = styled.p`
   }
 `;
 
+export const WarnText = styled.p`
+  color: #ff4d4f;
+  `;
+
 export const GetMyInfoMessageDiv = styled.div`
   border: 1px solid red;
   width: 100%;
