@@ -1,9 +1,8 @@
 import { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 
-import RightArrowSVG from '@/assets/svg/right-arrow.svg';
 import LogoBig from '@/assets/png/logo-big.png';
 import { Error, FormProps, instance, Success } from '@/utils';
 import { FormButton, Input } from '@/components';

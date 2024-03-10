@@ -33,7 +33,7 @@ export default async function handler(req: Request, res: Response) {
     );
 
     // 쿠키로 토큰 설정
-    res.setHeader('Set-Cookie', `HttpOnly token=${token}; Path=${BASE_URL}; Max-Age=${3 * 24 * 60 * 60}`); //배포시엔 Secure 꼭 설정하기!!!!
+    res.setHeader('Set-Cookie', `token=${token}; Path=${BASE_URL}; Max-Age=${3 * 24 * 60 * 60}`); //배포시엔 Secure 꼭 설정하기!!!!
     
     // 응답 반환
     res.status(200).json({ ok: true, token : token});
