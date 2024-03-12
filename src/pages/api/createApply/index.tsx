@@ -35,7 +35,7 @@ export default async function Update(req: NextApiRequest, res: NextApiResponse) 
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
 
-  if (year === 2024 && month === 3 && day >= 12 && day <= 15) {
+  if (year === 2024 && month === 3 && day >= 13 && day <= 15) {
     try {
       await application.create({
         data: {

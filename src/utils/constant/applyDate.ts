@@ -1,1 +1,1 @@
-export const APPLY_DATE = '2023. 3. 6(월) ~ 2023. 3. 8(수)';
+export const APPLY_DATE = '2023. 3. 13(수) ~ 2023. 3. 15(금)';
