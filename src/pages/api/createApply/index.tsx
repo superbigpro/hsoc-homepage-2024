@@ -5,7 +5,7 @@ import { user, application } from '@/utils/constant/prisma';
 export default async function Update(req: NextApiRequest, res: NextApiResponse) {
   const { phone_number, introduce, field, portfolio, token } = req.body;
 
-  if (!token)  {
+  if (!token) {
     return res.send({ ok: false, message: '로그인이 필요합니다.' });
   }
 
@@ -35,18 +35,17 @@ export default async function Update(req: NextApiRequest, res: NextApiResponse) 
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
 
-  if (year === 2024 && month === 3 && day >= 10 && day <= 15) {
+  if (year === 2024 && month === 3 && day >= 12 && day <= 15) {
     try {
-      // 신청 기간이라면, 새로운 신청서를 생성합니다.
       await application.create({
         data: {
           phone_number,
           introduce,
           field,
           portfolio,
-          userId: existingStudent.id, // 신청서와 학생을 연결합니다. userId 필드는 학생의 ID를 가리킵니다.
-          userName: existingStudent.name // 사용자 이름 추가
-        }
+          userId: existingStudent.id,
+          userName: existingStudent.name,
+        },
       });
       res.send({ ok: true, message: '신청이 완료되었습니다.' });
     } catch (error) {
