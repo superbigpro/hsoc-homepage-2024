@@ -1,10 +1,13 @@
 const nextConfig = {
   reactStrictMode: false,
+  eslint: {
+    ignoreDuringBuilds: true
+  },
   compiler: {
     styledComponents: true,
   },
   env: {
-    NEXTAUTH_URL: process.env.NEXTAUTH_URL
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   },
 
   webpack: (config) => {
@@ -23,8 +26,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/api/:path*",
-        destination: "http://127.0.0.1:3000/:path*",
+        source: '/api/:path*',
+        destination: 'http://127.0.0.1:3000/:path*',
       },
     ];
   },

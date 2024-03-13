@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
@@ -8,12 +8,13 @@ import { NextPage } from 'next';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
+import axios from 'axios';
+
 import LogoBig from '@/assets/png/logo-big.png';
 import { Error, FormProps, Info } from '@/utils';
 import { FormButton, Input } from '@/components';
 
 import * as S from '../styled';
-import axios from 'axios';
 
 const LoginPage: NextPage = () => {
   const { status } = useSession();

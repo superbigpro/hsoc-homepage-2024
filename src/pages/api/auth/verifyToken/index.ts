@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const token = req.cookies.token;
   const JWT_SECRET = process.env.JWT_SECRET;
-  
+
   try {
     const decoded = jwt.verify(token as string, JWT_SECRET ?? 'D3FAu1T53cR3tK3Y!');
     const userData = {

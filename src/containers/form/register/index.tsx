@@ -6,12 +6,13 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
 
+import axios from 'axios';
+
 import LogoBig from '@/assets/png/logo-big.png';
 import { FormProps } from '@/utils';
 import { FormButton, Input } from '@/components';
 
 import * as S from '../styled';
-import axios from 'axios';
 
 const RegisterPage: NextPage = () => {
   const { status } = useSession();
@@ -30,8 +31,7 @@ const RegisterPage: NextPage = () => {
         { message: '비밀번호가 일치하지 않습니다.' },
         { shouldFocus: true },
       );
-    }  
-    else {
+    } else {
       const { data } = await axios.post('/api/create', {
         username: formData.username,
         name: formData.name,

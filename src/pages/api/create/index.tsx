@@ -1,5 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+
 import * as bcrypt from 'bcrypt';
+
 import { user } from '../../../utils/constant/prisma';
 
 export default async function Create(req: NextApiRequest, res: NextApiResponse) {
@@ -7,11 +9,7 @@ export default async function Create(req: NextApiRequest, res: NextApiResponse) 
 
   const existingUser = await user.findMany({
     where: {
-      OR: [
-        { username: username },
-        { name: name },
-        { school_id: school_id },
-      ],
+      OR: [{ username: username }, { name: name }, { school_id: school_id }],
     },
   });
 
