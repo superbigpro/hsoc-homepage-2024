@@ -7,13 +7,13 @@ import { user } from '../../../utils/constant/prisma';
 export default async function Create(req: NextApiRequest, res: NextApiResponse) {
   const { username, name, school_id, password } = req.body;
 
-  const existingUser = await user.findMany({
+  const existingUser = await user.findUnique({
     where: {
-      OR: [{ username: username }, { name: name }, { school_id: school_id }],
+      username: username,
     },
   });
 
-  if (existingUser.length > 0) {
+  if (existingUser !== null) {
     return res.send({ ok: false, message: '이미 존재하는 사용자입니다.' });
   }
 
